@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Generate sitemap entries for each locale
   const sitemapEntries: MetadataRoute.Sitemap = []
 
-  locales.forEach((locale) => {
+  locales.forEach(locale => {
     // Main pages
     const pages = [
       {

@@ -10,7 +10,10 @@ export default async function Header({ locale }: { locale: string }) {
   return (
     <header className="border-b bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 py-4 flex items-center justify-between">
-        <Link href={`/${locale}`} className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+        <Link
+          href={`/${locale}`}
+          className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+        >
           <div className="w-8 h-8">
             <Image
               src="/logo.svg"

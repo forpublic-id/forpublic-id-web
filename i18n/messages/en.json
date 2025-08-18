@@ -139,5 +139,100 @@
     "connect": "Connect",
     "email": "Email: hello@forpublic.id",
     "copyright": "© 2024 ForPublic.id. All rights reserved. Made with ❤️ for public good."
+  },
+  "applications": {
+    "page": {
+      "title": "Explore Applications",
+      "subtitle": "Discover various digital applications designed to facilitate public access to services and information",
+      "back": "Back",
+      "search": {
+        "placeholder": "Search applications...",
+        "noResults": "No applications found",
+        "noResultsDescription": "Try changing your search terms or category filters",
+        "viewAll": "View All Applications"
+      },
+      "filters": {
+        "all": "All",
+        "viewGrid": "Grid View",
+        "viewList": "List View"
+      },
+      "stats": {
+        "available": "Available Apps",
+        "comingSoon": "Coming Soon",
+        "categories": "Categories",
+        "applications": "applications"
+      },
+      "featured": "Featured Applications",
+      "allApps": "All Applications",
+      "app": {
+        "featured": "Featured",
+        "comingSoon": "Soon",
+        "openApp": "Open Application",
+        "open": "Open",
+        "soon": "Soon"
+      },
+      "cta": {
+        "title": "Have an idea for a new application?",
+        "description": "We are always open to suggestions and feedback from the community to develop more useful applications",
+        "button": "Send Suggestion"
+      }
+    },
+    "title": "Application Categories",
+    "description": "Discover a comprehensive suite of tools designed to serve various aspects of public life",
+    "categories": {
+      "openData": {
+        "title": "Open Data",
+        "description": "Easy access to public data and insights",
+        "content": "Transparent access to government datasets, statistics, and public records in easy-to-understand formats."
+      },
+      "developmentInfo": {
+        "title": "Development Info",
+        "description": "Transparency in regional development projects",
+        "content": "Monitor infrastructure projects, budget allocations, and development progress in your area."
+      },
+      "publicServices": {
+        "title": "Public Services",
+        "description": "Tools to simplify access to government services",
+        "content": "Simplified access to permits, documents, and other government services online."
+      },
+      "education": {
+        "title": "Education",
+        "description": "Learning applications for the community",
+        "content": "Educational resources, school information, and learning tools for all ages."
+      },
+      "health": {
+        "title": "Health",
+        "description": "Public health information and tools",
+        "content": "Healthcare facility finder, vaccination schedules, and public health resources."
+      },
+      "economy": {
+        "title": "Economy",
+        "description": "Accessible economic data and analysis",
+        "content": "Market data, economic indicators, and financial literacy resources for the community."
+      }
+    }
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "Sorry, the page you are looking for could not be found. It may have been moved, deleted, or the URL entered is incorrect.",
+    "backToHome": "Back to Home",
+    "previousPage": "Previous Page",
+    "quickLinks": {
+      "applications": {
+        "title": "Explore Applications",
+        "description": "Discover various digital applications for public good",
+        "action": "View Applications"
+      },
+      "about": {
+        "title": "About Us",
+        "description": "Learn more about ForPublic.id's mission",
+        "action": "Read More"
+      },
+      "contact": {
+        "title": "Contact Us",
+        "description": "Have questions? We're here to help",
+        "action": "Contact"
+      }
+    }
   }
 }
