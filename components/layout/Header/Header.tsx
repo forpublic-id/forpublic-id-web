@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui'
 import { LanguageSwitcherWrapper } from '@/components/ui/language-switcher-wrapper'
 import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'

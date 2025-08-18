@@ -1,9 +1,9 @@
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui'
 import { Home, Search, ArrowLeft, AlertTriangle } from 'lucide-react'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
-import Header from '@/components/header'
+import { Header } from '@/components/layout'
 import { Footer } from '@/components/layout'
 
 interface NotFoundProps {

@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter, usePathname } from 'next/navigation'
-import { Button } from './button'
+import { Button } from './Button'
 import { Globe } from 'lucide-react'
 import { useTransition } from 'react'
 
