@@ -20,11 +20,12 @@ import {
   Twitter,
   Linkedin,
 } from "lucide-react"
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import Image from 'next/image'
 
 export default function HomePage() {
   const t = useTranslations()
+  const locale = useLocale()
   
   return (
     <div className="min-h-screen bg-background">
