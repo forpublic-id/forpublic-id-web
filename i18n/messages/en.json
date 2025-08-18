@@ -1,0 +1,143 @@
+{
+  "header": {
+    "brand": "ForPublic.id",
+    "nav": {
+      "applications": "Applications",
+      "features": "Features",
+      "about": "About", 
+      "contact": "Contact"
+    }
+  },
+  "hero": {
+    "badge": "Digital Solutions for Public Good",
+    "title": "Empowering Communities Through",
+    "titleHighlight": "Technology",
+    "description": "A collection of digital applications and tools developed specifically to help communities access public information and services with ease",
+    "cta": {
+      "explore": "Explore Applications",
+      "learnMore": "Learn More"
+    }
+  },
+  "applications": {
+    "title": "Application Categories",
+    "description": "Discover a comprehensive suite of tools designed to serve various aspects of public life",
+    "categories": {
+      "openData": {
+        "title": "Open Data",
+        "description": "Easy access to public data and insights",
+        "content": "Transparent access to government datasets, statistics, and public records in easy-to-understand formats."
+      },
+      "developmentInfo": {
+        "title": "Development Info",
+        "description": "Transparency in regional development projects",
+        "content": "Monitor infrastructure projects, budget allocations, and development progress in your area."
+      },
+      "publicServices": {
+        "title": "Public Services",
+        "description": "Tools to simplify access to government services",
+        "content": "Simplified access to permits, documents, and other government services online."
+      },
+      "education": {
+        "title": "Education",
+        "description": "Learning applications for the community",
+        "content": "Educational resources, school information, and learning tools for all ages."
+      },
+      "health": {
+        "title": "Health",
+        "description": "Public health information and tools",
+        "content": "Healthcare facility finder, vaccination schedules, and public health resources."
+      },
+      "economy": {
+        "title": "Economy",
+        "description": "Accessible economic data and analysis",
+        "content": "Market data, economic indicators, and financial literacy resources for the community."
+      }
+    }
+  },
+  "features": {
+    "title": "Why Choose ForPublic.id",
+    "description": "Built with the community as our primary focus, our platform prioritizes accessibility, trust, and continuous improvement",
+    "items": {
+      "free": {
+        "title": "Free for Everyone",
+        "description": "All applications are accessible at no cost to ensure equal access for the entire community."
+      },
+      "easyToUse": {
+        "title": "Easy to Use",
+        "description": "Simple design that can be used by all groups, from tech-savvy to digital beginners."
+      },
+      "trustedData": {
+        "title": "Trusted Data",
+        "description": "Uses official and verified data sources to ensure accuracy and reliability."
+      },
+      "responsive": {
+        "title": "Responsive",
+        "description": "Accessible on all devices - desktop, tablet, and mobile for maximum convenience."
+      },
+      "fastReliable": {
+        "title": "Fast & Reliable",
+        "description": "Optimized for speed and reliability to serve the community efficiently."
+      },
+      "continuousGrowth": {
+        "title": "Continuously Growing",
+        "description": "New applications are added regularly based on community needs and feedback."
+      }
+    }
+  },
+  "comingSoon": {
+    "title": "Coming Soon",
+    "description": "Exciting new applications are in development to serve the community better",
+    "apps": {
+      "smartCity": {
+        "title": "Smart City Dashboard",
+        "description": "Real-time city metrics and services",
+        "content": "Comprehensive dashboard displaying traffic, air quality, public transportation, and city service status.",
+        "status": "In Development"
+      },
+      "communityForum": {
+        "title": "Community Forum",
+        "description": "Discuss and address local issues",
+        "content": "Platform for citizens to discuss local issues, formulate solutions, and interact with local government.",
+        "status": "Q2 2024"
+      },
+      "emergencyAlerts": {
+        "title": "Emergency Alerts",
+        "description": "Real-time emergency notifications",
+        "content": "Instant notifications for natural disasters, public safety warnings, and emergency services.",
+        "status": "Q3 2024"
+      }
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Get notified when new applications are launched",
+      "placeholder": "Enter your email"
+    }
+  },
+  "about": {
+    "title": "About ForPublic.id",
+    "vision": "Our Vision:",
+    "visionText": "Empowering communities through accessible and beneficial technology that bridges the gap between citizens and public services.",
+    "content1": "We are committed to transparency, public service, and creating digital solutions that truly serve the public interest. Every application we develop is designed with community needs as the top priority, ensuring that technology becomes a tool for empowerment, not exclusion.",
+    "content2": "Our team believes that access to public information and services should be a right, not a privilege. Through ForPublic.id, we work to realize this vision for communities throughout Indonesia and beyond."
+  },
+  "footer": {
+    "description": "Digital solutions for public good, empowering communities through accessible technology.",
+    "sections": {
+      "applications": "Applications",
+      "support": "Support"
+    },
+    "links": {
+      "openData": "Open Data",
+      "developmentInfo": "Development Info",
+      "publicServices": "Public Services", 
+      "education": "Education",
+      "helpCenter": "Help Center",
+      "contactUs": "Contact Us",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    },
+    "connect": "Connect",
+    "email": "Email: hello@forpublic.id",
+    "copyright": "© 2024 ForPublic.id. All rights reserved. Made with ❤️ for public good."
+  }
+}
