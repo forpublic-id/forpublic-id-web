@@ -1,0 +1,143 @@
+{
+  "header": {
+    "brand": "ForPublic.id",
+    "nav": {
+      "applications": "Aplikasi",
+      "features": "Fitur", 
+      "about": "Tentang",
+      "contact": "Kontak"
+    }
+  },
+  "hero": {
+    "badge": "Solusi Digital untuk Kepentingan Publik",
+    "title": "Memberdayakan Masyarakat Melalui",
+    "titleHighlight": "Teknologi",
+    "description": "Kumpulan aplikasi dan tools digital yang dikembangkan khusus untuk membantu masyarakat mengakses informasi dan layanan publik dengan mudah",
+    "cta": {
+      "explore": "Jelajahi Aplikasi",
+      "learnMore": "Pelajari Lebih Lanjut"
+    }
+  },
+  "applications": {
+    "title": "Kategori Aplikasi",
+    "description": "Temukan rangkaian lengkap tools yang dirancang untuk melayani berbagai aspek kehidupan publik",
+    "categories": {
+      "openData": {
+        "title": "Data Terbuka",
+        "description": "Akses mudah ke data publik dan wawasan",
+        "content": "Akses transparan ke dataset pemerintah, statistik, dan catatan publik dalam format yang mudah dipahami."
+      },
+      "developmentInfo": {
+        "title": "Info Pembangunan", 
+        "description": "Transparansi dalam proyek pembangunan daerah",
+        "content": "Pantau proyek infrastruktur, alokasi anggaran, dan kemajuan pembangunan di daerah Anda."
+      },
+      "publicServices": {
+        "title": "Layanan Publik",
+        "description": "Tools untuk menyederhanakan akses ke layanan pemerintah",
+        "content": "Akses yang disederhanakan ke izin, dokumen, dan layanan pemerintah lainnya secara online."
+      },
+      "education": {
+        "title": "Pendidikan",
+        "description": "Aplikasi pembelajaran untuk masyarakat",
+        "content": "Sumber daya pendidikan, informasi sekolah, dan tools pembelajaran untuk segala usia."
+      },
+      "health": {
+        "title": "Kesehatan",
+        "description": "Informasi dan tools kesehatan publik",
+        "content": "Pencari fasilitas kesehatan, jadwal vaksinasi, dan sumber daya kesehatan publik."
+      },
+      "economy": {
+        "title": "Ekonomi",
+        "description": "Data dan analisis ekonomi yang mudah diakses",
+        "content": "Data pasar, indikator ekonomi, dan sumber daya literasi keuangan untuk masyarakat."
+      }
+    }
+  },
+  "features": {
+    "title": "Mengapa Memilih ForPublic.id",
+    "description": "Dibangun dengan masyarakat sebagai fokus utama, platform kami mengutamakan aksesibilitas, kepercayaan, dan perbaikan berkelanjutan",
+    "items": {
+      "free": {
+        "title": "Gratis untuk Semua",
+        "description": "Semua aplikasi dapat diakses tanpa biaya untuk memastikan akses yang setara bagi seluruh masyarakat."
+      },
+      "easyToUse": {
+        "title": "Mudah Digunakan", 
+        "description": "Desain sederhana yang dapat digunakan oleh semua kalangan, dari yang melek teknologi hingga pemula digital."
+      },
+      "trustedData": {
+        "title": "Data Terpercaya",
+        "description": "Menggunakan sumber data resmi dan terverifikasi untuk memastikan akurasi dan keandalan."
+      },
+      "responsive": {
+        "title": "Responsif",
+        "description": "Dapat diakses di semua perangkat - desktop, tablet, dan mobile untuk kemudahan maksimal."
+      },
+      "fastReliable": {
+        "title": "Cepat & Andal",
+        "description": "Dioptimalkan untuk kecepatan dan keandalan untuk melayani masyarakat secara efisien."
+      },
+      "continuousGrowth": {
+        "title": "Terus Berkembang",
+        "description": "Aplikasi baru ditambahkan secara berkala berdasarkan kebutuhan dan umpan balik masyarakat."
+      }
+    }
+  },
+  "comingSoon": {
+    "title": "Segera Hadir",
+    "description": "Aplikasi baru yang menarik sedang dalam pengembangan untuk melayani masyarakat dengan lebih baik",
+    "apps": {
+      "smartCity": {
+        "title": "Dashboard Kota Pintar",
+        "description": "Metrik dan layanan kota real-time",
+        "content": "Dashboard komprehensif yang menampilkan lalu lintas, kualitas udara, transportasi publik, dan status layanan kota.",
+        "status": "Dalam Pengembangan"
+      },
+      "communityForum": {
+        "title": "Forum Masyarakat",
+        "description": "Diskusikan dan tangani isu lokal",
+        "content": "Platform bagi warga untuk mendiskusikan isu lokal, merumuskan solusi, dan berinteraksi dengan pemerintah daerah.",
+        "status": "Q2 2024"
+      },
+      "emergencyAlerts": {
+        "title": "Peringatan Darurat",
+        "description": "Notifikasi darurat real-time",
+        "content": "Notifikasi instan untuk bencana alam, peringatan keamanan publik, dan layanan darurat.",
+        "status": "Q3 2024"
+      }
+    },
+    "newsletter": {
+      "title": "Tetap Update",
+      "description": "Dapatkan notifikasi ketika aplikasi baru diluncurkan",
+      "placeholder": "Masukkan email Anda"
+    }
+  },
+  "about": {
+    "title": "Tentang ForPublic.id",
+    "vision": "Visi Kami:",
+    "visionText": "Memberdayakan masyarakat melalui teknologi yang mudah diakses dan bermanfaat yang menjembatani kesenjangan antara warga dan layanan publik.",
+    "content1": "Kami berkomitmen pada transparansi, pelayanan publik, dan menciptakan solusi digital yang benar-benar melayani kepentingan publik. Setiap aplikasi yang kami kembangkan dirancang dengan kebutuhan masyarakat sebagai prioritas utama, memastikan bahwa teknologi menjadi alat untuk pemberdayaan, bukan pengucilan.",
+    "content2": "Tim kami percaya bahwa akses ke informasi dan layanan publik harus menjadi hak, bukan hak istimewa. Melalui ForPublic.id, kami bekerja untuk mewujudkan visi ini bagi masyarakat di seluruh Indonesia dan sekitarnya."
+  },
+  "footer": {
+    "description": "Solusi digital untuk kepentingan publik, memberdayakan masyarakat melalui teknologi yang mudah diakses.",
+    "sections": {
+      "applications": "Aplikasi",
+      "support": "Dukungan"
+    },
+    "links": {
+      "openData": "Data Terbuka",
+      "developmentInfo": "Info Pembangunan", 
+      "publicServices": "Layanan Publik",
+      "education": "Pendidikan",
+      "helpCenter": "Pusat Bantuan",
+      "contactUs": "Hubungi Kami",
+      "privacyPolicy": "Kebijakan Privasi",
+      "termsOfService": "Syarat Layanan"
+    },
+    "connect": "Terhubung",
+    "email": "Email: hello@forpublic.id",
+    "copyright": "© 2024 ForPublic.id. Semua hak dilindungi. Dibuat dengan ❤️ untuk kepentingan publik."
+  }
+}
