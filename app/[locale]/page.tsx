@@ -452,7 +452,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
 
           <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-300">
-            <p>{t('footer.copyright')}</p>
+            <p>{t('footer.copyright').replace('2024', new Date().getFullYear().toString())}</p>
           </div>
         </div>
       </footer>
