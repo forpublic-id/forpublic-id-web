@@ -1,24 +1,13 @@
-import {getRequestConfig} from 'next-intl/server';
+import { getRequestConfig } from 'next-intl/server'
 
-export default getRequestConfig(async ({locale}) => {
-  // For undefined locale, fallback to default locale
-  if (!locale) {
-    return {
-      locale: 'id',
-      messages: (await import(`./messages/id.json`)).default
-    };
-  }
-  
-  // Fallback for invalid locales
-  if (!['id', 'en'].includes(locale)) {
-    return {
-      locale: 'id',
-      messages: (await import(`./messages/id.json`)).default
-    };
-  }
-  
+export default getRequestConfig(async ({ locale }) => {
+  // Validate locale and fallback to 'id' if invalid
+  const validLocale: string = ['id', 'en'].includes(locale as string) ? (locale as string) : 'id'
+
+  const messages = (await import(`./messages/${validLocale}.json`)).default
+
   return {
-    locale: locale,
-    messages: (await import(`./messages/${locale}.json`)).default
-  };
-});
+    locale: validLocale,
+    messages,
+  }
+})

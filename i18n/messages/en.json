@@ -4,7 +4,7 @@
     "nav": {
       "applications": "Applications",
       "features": "Features",
-      "about": "About", 
+      "about": "About",
       "contact": "Contact"
     }
   },
@@ -129,7 +129,7 @@
     "links": {
       "openData": "Open Data",
       "developmentInfo": "Development Info",
-      "publicServices": "Public Services", 
+      "publicServices": "Public Services",
       "education": "Education",
       "helpCenter": "Help Center",
       "contactUs": "Contact Us",

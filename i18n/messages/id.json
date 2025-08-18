@@ -3,7 +3,7 @@
     "brand": "ForPublic.id",
     "nav": {
       "applications": "Aplikasi",
-      "features": "Fitur", 
+      "features": "Fitur",
       "about": "Tentang",
       "contact": "Kontak"
     }
@@ -28,7 +28,7 @@
         "content": "Akses transparan ke dataset pemerintah, statistik, dan catatan publik dalam format yang mudah dipahami."
       },
       "developmentInfo": {
-        "title": "Info Pembangunan", 
+        "title": "Info Pembangunan",
         "description": "Transparansi dalam proyek pembangunan daerah",
         "content": "Pantau proyek infrastruktur, alokasi anggaran, dan kemajuan pembangunan di daerah Anda."
       },
@@ -63,7 +63,7 @@
         "description": "Semua aplikasi dapat diakses tanpa biaya untuk memastikan akses yang setara bagi seluruh masyarakat."
       },
       "easyToUse": {
-        "title": "Mudah Digunakan", 
+        "title": "Mudah Digunakan",
         "description": "Desain sederhana yang dapat digunakan oleh semua kalangan, dari yang melek teknologi hingga pemula digital."
       },
       "trustedData": {
@@ -128,7 +128,7 @@
     },
     "links": {
       "openData": "Data Terbuka",
-      "developmentInfo": "Info Pembangunan", 
+      "developmentInfo": "Info Pembangunan",
       "publicServices": "Layanan Publik",
       "education": "Pendidikan",
       "helpCenter": "Pusat Bantuan",
