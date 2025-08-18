@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import Header from '@/components/header'
+import { Footer } from '@/components/layout'
 import {
   Database,
   Building2,
@@ -16,15 +17,13 @@ import {
   Zap,
   Plus,
   Mail,
-  Github,
-  Twitter,
-  Linkedin,
 } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
-import Image from 'next/image'
+import Link from 'next/link'
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params
+  const resolvedParams = await params
+  const locale = resolvedParams?.locale || 'id'
   const t = await getTranslations({ locale })
 
   return (
@@ -47,8 +46,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {t('hero.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 bg-red-600 hover:bg-red-700 text-white">
-              {t('hero.cta.explore')}
+            <Button
+              size="lg"
+              className="text-lg px-8 bg-red-600 hover:bg-red-700 text-white"
+              asChild
+            >
+              <Link href={`/${locale}/applications`}>{t('hero.cta.explore')}</Link>
             </Button>
             <Button
               variant="outline"
@@ -358,104 +361,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4 md:px-6 lg:px-8">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8">
-                  <Image
-                    src="/logo.svg"
-                    alt="ForPublic.id Logo"
-                    width={32}
-                    height={32}
-                    className="w-full h-full"
-                  />
-                </div>
-                <span className="text-xl font-bold">
-                  ForPublic<span className="text-red-600">.id</span>
-                </span>
-              </div>
-              <p className="text-gray-300 text-sm">{t('footer.description')}</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">{t('footer.sections.applications')}</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    {t('footer.links.openData')}
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    {t('footer.links.developmentInfo')}
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    {t('footer.links.publicServices')}
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    {t('footer.links.education')}
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">{t('footer.sections.support')}</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    {t('footer.links.helpCenter')}
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    {t('footer.links.contactUs')}
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    {t('footer.links.privacyPolicy')}
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    {t('footer.links.termsOfService')}
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">{t('footer.connect')}</h4>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                  <Github className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </div>
-              <div className="mt-4 text-sm text-gray-300">
-                <p>{t('footer.email')}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-300">
-            <p>{t('footer.copyright').replace('2024', new Date().getFullYear().toString())}</p>
-          </div>
-        </div>
-      </footer>
+      <Footer locale={locale} />
     </div>
   )
 }

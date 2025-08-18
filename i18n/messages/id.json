@@ -139,5 +139,100 @@
     "connect": "Terhubung",
     "email": "Email: hello@forpublic.id",
     "copyright": "© 2024 ForPublic.id. Semua hak dilindungi. Dibuat dengan ❤️ untuk kepentingan publik."
+  },
+  "applications": {
+    "page": {
+      "title": "Jelajahi Aplikasi",
+      "subtitle": "Temukan berbagai aplikasi digital yang dirancang untuk memudahkan akses masyarakat ke layanan dan informasi publik",
+      "back": "Kembali",
+      "search": {
+        "placeholder": "Cari aplikasi...",
+        "noResults": "Tidak ada aplikasi ditemukan",
+        "noResultsDescription": "Coba ubah kata kunci pencarian atau filter kategori",
+        "viewAll": "Lihat Semua Aplikasi"
+      },
+      "filters": {
+        "all": "Semua",
+        "viewGrid": "Tampilan Grid",
+        "viewList": "Tampilan List"
+      },
+      "stats": {
+        "available": "Aplikasi Tersedia",
+        "comingSoon": "Segera Hadir",
+        "categories": "Kategori",
+        "applications": "aplikasi"
+      },
+      "featured": "Aplikasi Unggulan",
+      "allApps": "Semua Aplikasi",
+      "app": {
+        "featured": "Unggulan",
+        "comingSoon": "Segera",
+        "openApp": "Buka Aplikasi",
+        "open": "Buka",
+        "soon": "Segera"
+      },
+      "cta": {
+        "title": "Ada ide untuk aplikasi baru?",
+        "description": "Kami selalu terbuka untuk saran dan masukan dari masyarakat untuk mengembangkan aplikasi yang lebih bermanfaat",
+        "button": "Kirim Saran"
+      }
+    },
+    "title": "Kategori Aplikasi",
+    "description": "Temukan rangkaian lengkap tools yang dirancang untuk melayani berbagai aspek kehidupan publik",
+    "categories": {
+      "openData": {
+        "title": "Data Terbuka",
+        "description": "Akses mudah ke data publik dan wawasan",
+        "content": "Akses transparan ke dataset pemerintah, statistik, dan catatan publik dalam format yang mudah dipahami."
+      },
+      "developmentInfo": {
+        "title": "Info Pembangunan",
+        "description": "Transparansi dalam proyek pembangunan daerah",
+        "content": "Pantau proyek infrastruktur, alokasi anggaran, dan kemajuan pembangunan di daerah Anda."
+      },
+      "publicServices": {
+        "title": "Layanan Publik",
+        "description": "Tools untuk menyederhanakan akses ke layanan pemerintah",
+        "content": "Akses yang disederhanakan ke izin, dokumen, dan layanan pemerintah lainnya secara online."
+      },
+      "education": {
+        "title": "Pendidikan",
+        "description": "Aplikasi pembelajaran untuk masyarakat",
+        "content": "Sumber daya pendidikan, informasi sekolah, dan tools pembelajaran untuk segala usia."
+      },
+      "health": {
+        "title": "Kesehatan",
+        "description": "Informasi dan tools kesehatan publik",
+        "content": "Pencari fasilitas kesehatan, jadwal vaksinasi, dan sumber daya kesehatan publik."
+      },
+      "economy": {
+        "title": "Ekonomi",
+        "description": "Data dan analisis ekonomi yang mudah diakses",
+        "content": "Data pasar, indikator ekonomi, dan sumber daya literasi keuangan untuk masyarakat."
+      }
+    }
+  },
+  "notFound": {
+    "title": "Halaman Tidak Ditemukan",
+    "description": "Maaf, halaman yang Anda cari tidak dapat ditemukan. Mungkin halaman tersebut telah dipindahkan, dihapus, atau URL yang dimasukkan salah.",
+    "backToHome": "Kembali ke Beranda",
+    "previousPage": "Halaman Sebelumnya",
+    "quickLinks": {
+      "applications": {
+        "title": "Jelajahi Aplikasi",
+        "description": "Temukan berbagai aplikasi digital untuk kepentingan publik",
+        "action": "Lihat Aplikasi"
+      },
+      "about": {
+        "title": "Tentang Kami",
+        "description": "Pelajari lebih lanjut tentang misi ForPublic.id",
+        "action": "Baca Selengkapnya"
+      },
+      "contact": {
+        "title": "Hubungi Kami",
+        "description": "Ada pertanyaan? Kami siap membantu Anda",
+        "action": "Kontak"
+      }
+    }
   }
 }
