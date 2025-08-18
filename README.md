@@ -11,7 +11,7 @@ Empowering communities through accessible and beneficial technology that bridges
 ## ✨ Features
 
 - **Open Data**: Easy access to public data and insights
-- **Development Info**: Transparency in regional development projects  
+- **Development Info**: Transparency in regional development projects
 - **Public Services**: Tools to simplify access to government services
 - **Education**: Learning applications for the community
 - **Health**: Public health information and tools
@@ -32,27 +32,32 @@ Empowering communities through accessible and beneficial technology that bridges
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - [Bun](https://bun.sh) installed on your machine
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/forpublic-id/forpublic-id-web.git
 cd forpublic-id-web
 ```
 
 2. Install dependencies:
+
 ```bash
 bun install
 ```
 
 3. Set up environment variables:
+
 ```bash
 cp .env.local.example .env.local
 ```
 
 4. Start the development server:
+
 ```bash
 bun run dev
 ```
@@ -68,8 +73,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## 🌍 Environment Variables
 
-| Variable | Description | Example |
-|----------|-------------|---------|
+| Variable            | Description                     | Example        |
+| ------------------- | ------------------------------- | -------------- |
 | `NEXT_PUBLIC_GA_ID` | Google Analytics Measurement ID | `G-8B1BVF8KKG` |
 
 ## 🚀 Deployment

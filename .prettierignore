@@ -1,0 +1,12 @@
+node_modules
+.next
+.env*
+*.lock
+*.log
+dist
+build
+coverage
+.vercel
+.turbo
+*.min.js
+*.min.css
