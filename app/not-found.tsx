@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { SimpleFooter } from '@/components/layout/Footer'
 
 // Translation object for both languages
 const translations = {
@@ -250,17 +251,7 @@ export default function GlobalNotFound() {
           </div>
         </main>
 
-        <footer className="footer">
-          <div className="container">
-            <div className="footer-logo">
-              <Image src="/logo.svg" alt="ForPublic.id Logo" width={24} height={24} />
-              <span className="brand-text">
-                ForPublic<span className="brand-accent">.id</span>
-              </span>
-            </div>
-            <p className="footer-text">{t.copyright}</p>
-          </div>
-        </footer>
+        <SimpleFooter copyrightText={t.copyright} />
       </body>
     </html>
   )
