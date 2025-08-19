@@ -45,7 +45,10 @@ export function SearchInput({
   }, [category, locale, router])
   
   const debouncedSearch = useCallback(
-    debounce<[string]>((value: string) => handleSearch(value), 300),
+    (value: string) => {
+      const debounced = debounce<[string]>((val: string) => handleSearch(val), 300)
+      debounced(value)
+    },
     [handleSearch]
   )
   
