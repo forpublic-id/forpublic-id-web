@@ -48,7 +48,9 @@ export default function CategoryCard({
   const colorClass = colorClasses[color]
 
   return (
-    <Card className={`hover:shadow-lg transition-shadow border-l-4 ${colorClass.border} cursor-pointer ${className}`}>
+    <Card
+      className={`hover:shadow-lg transition-shadow border-l-4 ${colorClass.border} cursor-pointer ${className}`}
+    >
       <CardHeader>
         <Icon className={`w-12 h-12 ${colorClass.icon} mb-4`} />
         <CardTitle>{title}</CardTitle>

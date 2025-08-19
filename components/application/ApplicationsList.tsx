@@ -74,7 +74,9 @@ export default function ApplicationsList({ applications, t }: ApplicationsListPr
                 <Button
                   variant={app.status === 'available' ? 'default' : 'secondary'}
                   className={
-                    app.status === 'available' ? `bg-${app.color}-600 hover:bg-${app.color}-700` : ''
+                    app.status === 'available'
+                      ? `bg-${app.color}-600 hover:bg-${app.color}-700`
+                      : ''
                   }
                   disabled={app.status !== 'available'}
                 >

@@ -25,18 +25,18 @@ export function useNavigation({ locale, translations }: UseNavigationProps) {
       {
         href: `${routes.home(locale)}#applications`,
         label: translations?.applications || 'Applications',
-        section: 'applications'
+        section: 'applications',
       },
       {
         href: `${routes.home(locale)}#features`,
-        label: translations?.features || 'Features', 
-        section: 'features'
+        label: translations?.features || 'Features',
+        section: 'features',
       },
       {
         href: `${routes.home(locale)}#about`,
         label: translations?.about || 'About',
-        section: 'about'
-      }
+        section: 'about',
+      },
     ]
 
     return baseItems
@@ -62,7 +62,7 @@ export function useNavigation({ locale, translations }: UseNavigationProps) {
     routes: {
       home: routes.home(locale),
       applications: routes.applications(locale),
-      notFound: routes.notFound(locale)
-    }
+      notFound: routes.notFound(locale),
+    },
   }
 }

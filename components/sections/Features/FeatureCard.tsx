@@ -39,7 +39,9 @@ export default function FeatureCard({ icon: Icon, title, description, color }: F
 
   return (
     <div className="text-center">
-      <div className={`w-16 h-16 ${colorClass.bg} rounded-full flex items-center justify-center mx-auto mb-4`}>
+      <div
+        className={`w-16 h-16 ${colorClass.bg} rounded-full flex items-center justify-center mx-auto mb-4`}
+      >
         <Icon className={`w-8 h-8 ${colorClass.text}`} />
       </div>
       <h3 className="text-xl font-semibold mb-2 text-gray-900">{title}</h3>

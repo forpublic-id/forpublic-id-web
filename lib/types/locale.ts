@@ -1,6 +1,6 @@
 import { supportedLocales, defaultLocale } from '@/lib/constants'
 
-export type Locale = typeof supportedLocales[number]
+export type Locale = (typeof supportedLocales)[number]
 export type DefaultLocale = typeof defaultLocale
 
 export interface LocalizedString {

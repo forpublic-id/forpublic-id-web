@@ -3,9 +3,9 @@ import { LocalizedString } from './locale'
 
 export type ApplicationStatus = 'available' | 'coming-soon' | 'maintenance'
 
-export type ApplicationCategory = 
+export type ApplicationCategory =
   | 'openData'
-  | 'developmentInfo' 
+  | 'developmentInfo'
   | 'publicServices'
   | 'education'
   | 'health'
