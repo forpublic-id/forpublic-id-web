@@ -11,10 +11,8 @@ export function useLocale() {
   const currentLocale = useMemo(() => {
     const segments = pathname.split('/')
     const localeSegment = segments[1]
-    
-    return supportedLocales.includes(localeSegment as Locale) 
-      ? localeSegment 
-      : defaultLocale
+
+    return supportedLocales.includes(localeSegment as Locale) ? localeSegment : defaultLocale
   }, [pathname])
 
   const switchLocale = useCallback(
@@ -26,9 +24,9 @@ export function useLocale() {
 
       const segments = pathname.split('/')
       const currentLocaleSegment = segments[1]
-      
+
       let newPath: string
-      
+
       if (supportedLocales.includes(currentLocaleSegment as Locale)) {
         // Replace existing locale
         segments[1] = newLocale
@@ -37,7 +35,7 @@ export function useLocale() {
         // Add locale to path
         newPath = `/${newLocale}${pathname}`
       }
-      
+
       router.push(newPath)
     },
     [pathname, router]
@@ -51,11 +49,11 @@ export function useLocale() {
     [currentLocale]
   )
 
-  return { 
-    currentLocale, 
-    switchLocale, 
+  return {
+    currentLocale,
+    switchLocale,
     getLocalizedPath,
     supportedLocales,
-    defaultLocale
+    defaultLocale,
   }
 }

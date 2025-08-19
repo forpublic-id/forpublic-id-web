@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui'
-import { Input } from '@/components/ui'
 import { Badge } from '@/components/ui'
 import { Header } from '@/components/layout'
 import { Footer } from '@/components/layout'
@@ -18,10 +17,12 @@ import {
   Grid3X3,
   List,
   ArrowLeft,
+  Calendar,
 } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { Suspense } from 'react'
+import { SearchInput } from '@/components/application'
 
 interface ApplicationsPageProps {
   params: Promise<{ locale: string }>
@@ -48,6 +49,21 @@ interface TranslationFunction {
 // Mock data for applications - in a real app, this would come from a database or API
 const getApplications = (locale: string) => [
   {
+    id: 'holiday-calendar',
+    category: 'publicServices',
+    title: locale === 'id' ? 'Kalender Hari Libur Indonesia' : 'Holiday Calendar Indonesia',
+    description:
+      locale === 'id'
+        ? 'Kalender interaktif untuk hari libur nasional, regional, dan cuti bersama Indonesia'
+        : 'Interactive calendar for Indonesian national holidays, regional holidays, and joint leave days',
+    status: 'available' as const,
+    featured: true,
+    icon: Calendar,
+    color: 'red',
+    link: 'https://holiday.forpublic.id',
+    tags: locale === 'id' ? ['Gratis', 'Web', 'Mobile', 'Dwi Bahasa'] : ['Free', 'Web', 'Mobile', 'Bilingual'],
+  },
+  {
     id: 'data-transparency',
     category: 'openData',
     title: locale === 'id' ? 'Portal Transparansi Data' : 'Data Transparency Portal',
@@ -55,12 +71,12 @@ const getApplications = (locale: string) => [
       locale === 'id'
         ? 'Akses mudah ke data anggaran, belanja daerah, dan informasi keuangan publik'
         : 'Easy access to budget data, regional spending, and public financial information',
-    status: 'available' as const,
-    featured: true,
+    status: 'coming-soon' as const,
+    featured: false,
     icon: Database,
     color: 'blue',
     link: '#',
-    tags: locale === 'id' ? ['Gratis', 'Web', 'Mobile'] : ['Free', 'Web', 'Mobile'],
+    tags: locale === 'id' ? ['Segera Hadir', 'Web', 'Mobile'] : ['Coming Soon', 'Web', 'Mobile'],
   },
   {
     id: 'infrastructure-monitor',
@@ -70,12 +86,12 @@ const getApplications = (locale: string) => [
       locale === 'id'
         ? 'Pantau kemajuan proyek infrastruktur dan pembangunan di wilayah Anda'
         : 'Monitor infrastructure projects and development progress in your area',
-    status: 'available' as const,
-    featured: true,
+    status: 'coming-soon' as const,
+    featured: false,
     icon: Building2,
     color: 'green',
     link: '#',
-    tags: locale === 'id' ? ['Gratis', 'Real-time'] : ['Free', 'Real-time'],
+    tags: locale === 'id' ? ['Segera Hadir', 'Real-time'] : ['Coming Soon', 'Real-time'],
   },
   {
     id: 'public-service-portal',
@@ -85,12 +101,12 @@ const getApplications = (locale: string) => [
       locale === 'id'
         ? 'Platform terintegrasi untuk mengakses berbagai layanan pemerintah online'
         : 'Integrated platform to access various government services online',
-    status: 'available' as const,
+    status: 'coming-soon' as const,
     featured: false,
     icon: Users,
     color: 'purple',
     link: '#',
-    tags: locale === 'id' ? ['Gratis', 'Terintegrasi'] : ['Free', 'Integrated'],
+    tags: locale === 'id' ? ['Segera Hadir', 'Terintegrasi'] : ['Coming Soon', 'Integrated'],
   },
   {
     id: 'education-hub',
@@ -130,12 +146,12 @@ const getApplications = (locale: string) => [
       locale === 'id'
         ? 'Data pasar real-time, indikator ekonomi, dan analisis ekonomi lokal'
         : 'Real-time market data, economic indicators, and local economic analysis',
-    status: 'available' as const,
-    featured: true,
+    status: 'coming-soon' as const,
+    featured: false,
     icon: TrendingUp,
     color: 'teal',
     link: '#',
-    tags: locale === 'id' ? ['Gratis', 'Real-time', 'Analisis'] : ['Free', 'Real-time', 'Analysis'],
+    tags: locale === 'id' ? ['Segera Hadir', 'Real-time', 'Analisis'] : ['Coming Soon', 'Real-time', 'Analysis'],
   },
 ]
 
@@ -148,12 +164,68 @@ const categories = [
   { key: 'economy', icon: TrendingUp, color: 'teal' },
 ]
 
+// Utility function to get color classes
+const getColorClasses = (color: string) => {
+  switch (color) {
+    case 'blue':
+      return {
+        border: 'border-l-blue-500',
+        bg: 'bg-blue-100',
+        text: 'text-blue-600',
+        button: 'bg-blue-600 hover:bg-blue-700',
+      }
+    case 'green':
+      return {
+        border: 'border-l-green-500',
+        bg: 'bg-green-100',
+        text: 'text-green-600',
+        button: 'bg-green-600 hover:bg-green-700',
+      }
+    case 'purple':
+      return {
+        border: 'border-l-purple-500',
+        bg: 'bg-purple-100',
+        text: 'text-purple-600',
+        button: 'bg-purple-600 hover:bg-purple-700',
+      }
+    case 'orange':
+      return {
+        border: 'border-l-orange-500',
+        bg: 'bg-orange-100',
+        text: 'text-orange-600',
+        button: 'bg-orange-600 hover:bg-orange-700',
+      }
+    case 'red':
+      return {
+        border: 'border-l-red-500',
+        bg: 'bg-red-100',
+        text: 'text-red-600',
+        button: 'bg-red-600 hover:bg-red-700',
+      }
+    case 'teal':
+      return {
+        border: 'border-l-teal-500',
+        bg: 'bg-teal-100',
+        text: 'text-teal-600',
+        button: 'bg-teal-600 hover:bg-teal-700',
+      }
+    default:
+      return {
+        border: 'border-l-gray-500',
+        bg: 'bg-gray-100',
+        text: 'text-gray-600',
+        button: 'bg-gray-600 hover:bg-gray-700',
+      }
+  }
+}
+
 function ApplicationCard({ app, t }: { app: Application; t: TranslationFunction }) {
   const Icon = app.icon
+  const colorClasses = getColorClasses(app.color)
 
   return (
     <Card
-      className={`hover:shadow-lg transition-all duration-300 border-l-4 border-l-${app.color}-500 ${app.status === 'available' ? 'cursor-pointer' : 'opacity-75'}`}
+      className={`hover:shadow-lg transition-all duration-300 border-l-4 ${colorClasses.border} ${app.status === 'available' ? 'cursor-pointer' : 'opacity-75'}`}
     >
       {app.featured && (
         <div className="absolute top-4 right-4">
@@ -167,9 +239,9 @@ function ApplicationCard({ app, t }: { app: Application; t: TranslationFunction 
       <CardHeader>
         <div className="flex items-start justify-between">
           <div
-            className={`w-12 h-12 bg-${app.color}-100 rounded-lg flex items-center justify-center mb-4`}
+            className={`w-12 h-12 ${colorClasses.bg} rounded-lg flex items-center justify-center mb-4`}
           >
-            <Icon className={`w-6 h-6 text-${app.color}-600`} />
+            <Icon className={`w-6 h-6 ${colorClasses.text}`} />
           </div>
           {app.status === 'coming-soon' && (
             <Badge variant="outline" className="text-gray-500">
@@ -177,6 +249,14 @@ function ApplicationCard({ app, t }: { app: Application; t: TranslationFunction 
               {t('applications.page.app.comingSoon')}
             </Badge>
           )}
+        </div>
+        <div className="mb-2">
+          <Badge 
+            variant="outline" 
+            className={`text-xs ${colorClasses.text} border-current`}
+          >
+            {t(`applications.categories.${app.category}.title`)}
+          </Badge>
         </div>
         <CardTitle className="text-lg">{app.title}</CardTitle>
         <CardDescription className="text-sm leading-relaxed">{app.description}</CardDescription>
@@ -191,20 +271,22 @@ function ApplicationCard({ app, t }: { app: Application; t: TranslationFunction 
           ))}
         </div>
 
-        <Button
-          variant={app.status === 'available' ? 'default' : 'secondary'}
-          className={`w-full ${app.status === 'available' ? `bg-${app.color}-600 hover:bg-${app.color}-700` : ''}`}
-          disabled={app.status !== 'available'}
-        >
-          {app.status === 'available' ? (
-            <>
+        {app.status === 'available' ? (
+          <Button
+            variant="default"
+            className={`w-full ${colorClasses.button} text-white`}
+            asChild
+          >
+            <a href={app.link} target="_blank" rel="noopener noreferrer">
               {t('applications.page.app.openApp')}
               <ExternalLink className="w-4 h-4 ml-2" />
-            </>
-          ) : (
-            t('applications.page.app.comingSoon')
-          )}
-        </Button>
+            </a>
+          </Button>
+        ) : (
+          <Button variant="secondary" className="w-full" disabled>
+            {t('applications.page.app.comingSoon')}
+          </Button>
+        )}
       </CardContent>
     </Card>
   )
@@ -219,18 +301,21 @@ function ApplicationsList({
 }) {
   return (
     <div className="space-y-6">
-      {applications.map(app => (
-        <Card
-          key={app.id}
-          className={`hover:shadow-md transition-all duration-300 ${app.status === 'available' ? 'cursor-pointer' : 'opacity-75'}`}
-        >
-          <CardContent className="p-6">
-            <div className="flex items-start space-x-4">
-              <div
-                className={`w-16 h-16 bg-${app.color}-100 rounded-lg flex items-center justify-center flex-shrink-0`}
-              >
-                <app.icon className={`w-8 h-8 text-${app.color}-600`} />
-              </div>
+      {applications.map(app => {
+        const colorClasses = getColorClasses(app.color)
+        
+        return (
+          <Card
+            key={app.id}
+            className={`hover:shadow-md transition-all duration-300 ${app.status === 'available' ? 'cursor-pointer' : 'opacity-75'}`}
+          >
+            <CardContent className="p-6">
+              <div className="flex items-start space-x-4">
+                <div
+                  className={`w-16 h-16 ${colorClasses.bg} rounded-lg flex items-center justify-center flex-shrink-0`}
+                >
+                  <app.icon className={`w-8 h-8 ${colorClasses.text}`} />
+                </div>
 
               <div className="flex-1 min-w-0">
                 <div className="flex items-center space-x-2 mb-2">
@@ -252,6 +337,15 @@ function ApplicationsList({
                   )}
                 </div>
 
+                <div className="mb-2">
+                  <Badge 
+                    variant="outline" 
+                    className={`text-xs ${colorClasses.text} border-current`}
+                  >
+                    {t(`applications.categories.${app.category}.title`)}
+                  </Badge>
+                </div>
+
                 <p className="text-gray-600 mb-3 leading-relaxed">{app.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -263,30 +357,29 @@ function ApplicationsList({
                 </div>
               </div>
 
-              <div className="flex-shrink-0">
-                <Button
-                  variant={app.status === 'available' ? 'default' : 'secondary'}
-                  className={
-                    app.status === 'available'
-                      ? `bg-${app.color}-600 hover:bg-${app.color}-700`
-                      : ''
-                  }
-                  disabled={app.status !== 'available'}
-                >
+                <div className="flex-shrink-0">
                   {app.status === 'available' ? (
-                    <>
-                      {t('applications.page.app.open')}
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </>
+                    <Button
+                      variant="default"
+                      className={`${colorClasses.button} text-white`}
+                      asChild
+                    >
+                      <a href={app.link} target="_blank" rel="noopener noreferrer">
+                        {t('applications.page.app.open')}
+                        <ExternalLink className="w-4 h-4 ml-2" />
+                      </a>
+                    </Button>
                   ) : (
-                    t('applications.page.app.soon')
+                    <Button variant="secondary" disabled>
+                      {t('applications.page.app.soon')}
+                    </Button>
                   )}
-                </Button>
+                </div>
               </div>
-            </div>
-          </CardContent>
-        </Card>
-      ))}
+            </CardContent>
+          </Card>
+        )
+      })}
     </div>
   )
 }
@@ -370,13 +463,12 @@ export default async function ApplicationsPage({ params, searchParams }: Applica
           <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
             {/* Search */}
             <div className="flex-1 max-w-md">
-              <div className="relative">
-                <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                <Input
-                  placeholder={t('applications.page.search.placeholder')}
-                  className="pl-10 border-gray-200 focus:border-red-500"
-                />
-              </div>
+              <SearchInput
+                placeholder={t('applications.page.search.placeholder')}
+                locale={locale}
+                category={category}
+                defaultValue={search}
+              />
             </div>
 
             {/* Category Filter */}
@@ -390,22 +482,41 @@ export default async function ApplicationsPage({ params, searchParams }: Applica
                 <Link href={`/${locale}/applications`}>{t('applications.page.filters.all')}</Link>
               </Button>
 
-              {categories.map(cat => (
-                <Button
-                  key={cat.key}
-                  variant={category === cat.key ? 'default' : 'outline'}
-                  size="sm"
-                  className={
-                    category === cat.key ? `bg-${cat.color}-600 hover:bg-${cat.color}-700` : ''
+              {categories.map(cat => {
+                const getActiveClasses = (color: string) => {
+                  switch (color) {
+                    case 'blue':
+                      return 'bg-blue-600 hover:bg-blue-700 text-white'
+                    case 'green':
+                      return 'bg-green-600 hover:bg-green-700 text-white'
+                    case 'purple':
+                      return 'bg-purple-600 hover:bg-purple-700 text-white'
+                    case 'orange':
+                      return 'bg-orange-600 hover:bg-orange-700 text-white'
+                    case 'red':
+                      return 'bg-red-600 hover:bg-red-700 text-white'
+                    case 'teal':
+                      return 'bg-teal-600 hover:bg-teal-700 text-white'
+                    default:
+                      return 'bg-gray-600 hover:bg-gray-700 text-white'
                   }
-                  asChild
-                >
-                  <Link href={`/${locale}/applications?category=${cat.key}`}>
-                    <cat.icon className="w-4 h-4 mr-2" />
-                    {t(`applications.categories.${cat.key}.title`)}
-                  </Link>
-                </Button>
-              ))}
+                }
+
+                return (
+                  <Button
+                    key={cat.key}
+                    variant={category === cat.key ? 'default' : 'outline'}
+                    size="sm"
+                    className={category === cat.key ? getActiveClasses(cat.color) : ''}
+                    asChild
+                  >
+                    <Link href={`/${locale}/applications?category=${cat.key}`}>
+                      <cat.icon className="w-4 h-4 mr-2" />
+                      {t(`applications.categories.${cat.key}.title`)}
+                    </Link>
+                  </Button>
+                )
+              })}
             </div>
 
             {/* View Toggle */}

@@ -48,7 +48,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="text-lg px-8 bg-red-600 hover:bg-red-700 text-white"
+              className="text-lg px-8 bg-red-600 hover:bg-red-700 hover:shadow-lg transition-all duration-300 text-white"
               asChild
             >
               <Link href={`/${locale}/applications`}>{t('hero.cta.explore')}</Link>
@@ -56,7 +56,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <Button
               variant="outline"
               size="lg"
-              className="text-lg px-8 border-gray-300 text-gray-700 hover:bg-gray-50 bg-transparent"
+              className="text-lg px-8 border-gray-300 text-gray-700 hover:bg-gray-50 hover:shadow-lg transition-all duration-300 bg-transparent"
             >
               {t('hero.cta.learnMore')}
             </Button>

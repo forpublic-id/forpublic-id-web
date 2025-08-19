@@ -1,15 +1,15 @@
 // Re-export with explicit naming to avoid conflicts
 
 // Constants
-export { 
-  colors, 
-  spacing, 
-  containerSizes, 
-  borderRadius, 
+export {
+  colors,
+  spacing,
+  containerSizes,
+  borderRadius,
   typography,
   routes,
   supportedLocales,
-  defaultLocale
+  defaultLocale,
 } from './constants'
 
 export type {
@@ -26,10 +26,10 @@ export type {
   LineHeight,
   Locale as ConstantsLocale,
   RouteKey,
-  SectionKey
+  SectionKey,
 } from './constants'
 
-// Hooks  
+// Hooks
 export { useLocale, useNavigation } from './hooks'
 
 // Types
@@ -51,7 +51,7 @@ export type {
   ApplicationStats,
   CategoryInfo,
   ApplicationListProps,
-  ApplicationCardProps
+  ApplicationCardProps,
 } from './types'
 
 // Utils

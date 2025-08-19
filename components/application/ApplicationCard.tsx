@@ -1,4 +1,12 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, Badge, Button } from '@/components/ui'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  Badge,
+  Button,
+} from '@/components/ui'
 import { Star, Clock, ExternalLink } from 'lucide-react'
 import { LucideIcon } from 'lucide-react'
 

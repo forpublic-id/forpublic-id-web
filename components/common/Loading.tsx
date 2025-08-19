@@ -15,7 +15,7 @@ const Spinner = ({ size, className }: { size: string; className?: string }) => (
 
 const Dots = ({ className }: { className?: string }) => (
   <div className={cn('flex space-x-1', className)}>
-    {[0, 1, 2].map((i) => (
+    {[0, 1, 2].map(i => (
       <div
         key={i}
         className="w-2 h-2 bg-red-600 rounded-full animate-pulse"
@@ -40,15 +40,15 @@ const Skeleton = ({ className }: { className?: string }) => (
   </div>
 )
 
-export default function Loading({ 
-  variant = 'spinner', 
-  size = 'md', 
+export default function Loading({
+  variant = 'spinner',
+  size = 'md',
   className = '',
-  text 
+  text,
 }: LoadingProps) {
   const sizeClasses = {
     sm: 'w-4 h-4',
-    md: 'w-8 h-8', 
+    md: 'w-8 h-8',
     lg: 'w-12 h-12',
   }
 
@@ -68,9 +68,7 @@ export default function Loading({
   return (
     <div className="flex flex-col items-center justify-center space-y-2">
       {renderVariant()}
-      {text && (
-        <p className="text-sm text-gray-600 animate-pulse">{text}</p>
-      )}
+      {text && <p className="text-sm text-gray-600 animate-pulse">{text}</p>}
     </div>
   )
 }

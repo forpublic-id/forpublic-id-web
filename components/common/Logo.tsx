@@ -16,7 +16,7 @@ const sizeClasses = {
     text: 'text-lg',
   },
   md: {
-    icon: 'w-8 h-8', 
+    icon: 'w-8 h-8',
     text: 'text-xl',
   },
   lg: {
@@ -25,15 +25,15 @@ const sizeClasses = {
   },
 }
 
-export default function Logo({ 
-  locale, 
-  variant = 'default', 
+export default function Logo({
+  locale,
+  variant = 'default',
   size = 'md',
   className = '',
-  clickable = true 
+  clickable = true,
 }: LogoProps) {
   const sizeClass = sizeClasses[size]
-  
+
   const content = (
     <div className={cn('flex items-center space-x-2', className)}>
       {variant !== 'text-only' && (

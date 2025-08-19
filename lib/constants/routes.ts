@@ -27,6 +27,6 @@ export const routes = {
 export const supportedLocales = ['id', 'en'] as const
 export const defaultLocale = 'id' as const
 
-export type Locale = typeof supportedLocales[number]
+export type Locale = (typeof supportedLocales)[number]
 export type RouteKey = keyof typeof routes
 export type SectionKey = keyof typeof routes.sections

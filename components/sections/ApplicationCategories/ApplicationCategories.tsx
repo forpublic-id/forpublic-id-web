@@ -15,7 +15,11 @@ interface ApplicationCategoriesProps {
   }
 }
 
-export default function ApplicationCategories({ title, description, categories }: ApplicationCategoriesProps) {
+export default function ApplicationCategories({
+  title,
+  description,
+  categories,
+}: ApplicationCategoriesProps) {
   return (
     <section id="applications" className="py-20 px-4 md:px-6 lg:px-8 bg-white">
       <div className="container mx-auto max-w-7xl">

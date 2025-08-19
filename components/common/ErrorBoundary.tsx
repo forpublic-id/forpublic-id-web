@@ -46,13 +46,12 @@ export default class ErrorBoundary extends Component<Props, State> {
             <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <AlertTriangle className="w-8 h-8 text-red-600" />
             </div>
-            
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Oops! Something went wrong
-            </h2>
-            
+
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Oops! Something went wrong</h2>
+
             <p className="text-gray-600 mb-6">
-              We encountered an unexpected error. Please try refreshing the page or go back to the homepage.
+              We encountered an unexpected error. Please try refreshing the page or go back to the
+              homepage.
             </p>
 
             {process.env.NODE_ENV === 'development' && this.state.error && (
@@ -73,8 +72,8 @@ export default class ErrorBoundary extends Component<Props, State> {
                 <RefreshCw className="w-4 h-4 mr-2" />
                 Try Again
               </Button>
-              
-              <Button variant="outline" onClick={() => window.location.href = '/'}>
+
+              <Button variant="outline" onClick={() => (window.location.href = '/')}>
                 <Home className="w-4 h-4 mr-2" />
                 Go Home
               </Button>
@@ -89,10 +88,10 @@ export default class ErrorBoundary extends Component<Props, State> {
 }
 
 // Simplified error component for specific use cases
-export const SimpleError = ({ 
-  title = "Something went wrong", 
-  message = "Please try again later",
-  onRetry 
+export const SimpleError = ({
+  title = 'Something went wrong',
+  message = 'Please try again later',
+  onRetry,
 }: {
   title?: string
   message?: string

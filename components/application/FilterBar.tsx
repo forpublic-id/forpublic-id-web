@@ -62,7 +62,7 @@ export default function FilterBar({
               >
                 <Link href={`/${locale}/applications`}>{translations.allCategories}</Link>
               </Button>
-              {categories.map((cat) => (
+              {categories.map(cat => (
                 <Button
                   key={cat.key}
                   variant={category === cat.key ? 'default' : 'outline'}
