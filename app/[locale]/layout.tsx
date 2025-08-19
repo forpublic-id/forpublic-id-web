@@ -17,7 +17,7 @@ export function generateStaticParams() {
 export const metadata: Metadata = {
   title: 'ForPublic.id - Digital Solutions for Public Good',
   description:
-    'A platform providing various free digital applications and tools to help communities easily access public information and services.',
+    '🚀 Free digital tools for Indonesian communities. Access public data, government services & transparency tools. 100% free, mobile-friendly, bilingual.',
   keywords:
     'public applications, digital services, open data Indonesia, public transparency, technology for communities',
   generator: 'v0.app',
@@ -32,12 +32,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ForPublic.id - Digital Solutions for Public Good',
     description:
-      'A platform providing various free digital applications and tools to help communities easily access public information and services.',
+      '🚀 Free digital tools for Indonesian communities. Access public data, government services & transparency tools. 100% free, mobile-friendly, bilingual.',
     url: 'https://forpublic.id',
     siteName: 'ForPublic.id',
     images: [
       {
-        url: '/logo.svg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'ForPublic.id - Digital Solutions for Public Good',
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'ForPublic.id - Digital Solutions for Public Good',
     description:
-      'A platform providing various free digital applications and tools to help communities easily access public information and services.',
-    images: ['/logo.svg'],
+      '🚀 Free digital tools for Indonesian communities. Access public data, government services & transparency tools. 100% free, mobile-friendly, bilingual.',
+    images: ['/og-image.png'],
     creator: '@forpublic_id',
     site: '@forpublic_id',
   },
@@ -98,8 +98,11 @@ export default async function LocaleLayout({
   const messages = await getMessages({ locale })
 
   return (
-    <html lang={locale}>
+    <html lang={locale} dir="ltr">
       <head>
+        <meta name="language" content={locale === 'id' ? 'Indonesian' : 'English'} />
+        <meta name="geo.region" content="ID" />
+        <meta name="geo.country" content="Indonesia" />
         <style>{`
 html {
   font-family: ${GeistSans.style.fontFamily};

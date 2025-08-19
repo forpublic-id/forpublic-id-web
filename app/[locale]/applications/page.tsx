@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui'
 import { Header } from '@/components/layout'
 import { Footer } from '@/components/layout'
+import { StructuredData } from '@/components/common'
 import {
   Database,
   Building2,
@@ -23,6 +24,53 @@ import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import { SearchInput } from '@/components/application'
+import type { Metadata } from 'next'
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const resolvedParams = await params
+  const locale = resolvedParams?.locale || 'id'
+  const t = await getTranslations({ locale })
+
+  return {
+    title: `${t('applications.page.title')} - ForPublic.id`,
+    description: locale === 'id'
+      ? '📱 Direktori lengkap aplikasi digital GRATIS untuk masyarakat Indonesia. 7+ kategori, tools transparansi, layanan publik. Akses mudah, mobile-friendly.'
+      : '📱 Complete directory of FREE digital applications for Indonesian communities. 7+ categories, transparency tools, public services. Easy access, mobile-friendly.',
+    keywords: locale === 'id'
+      ? 'direktori aplikasi, layanan publik, aplikasi digital Indonesia, tools gratis, aplikasi masyarakat'
+      : 'application directory, public services, digital applications Indonesia, free tools, community applications',
+    openGraph: {
+      title: `${t('applications.page.title')} - ForPublic.id`,
+      description: locale === 'id'
+        ? '📱 Direktori lengkap aplikasi digital GRATIS untuk masyarakat Indonesia. 7+ kategori, tools transparansi, layanan publik. Akses mudah, mobile-friendly.'
+        : '📱 Complete directory of FREE digital applications for Indonesian communities. 7+ categories, transparency tools, public services. Easy access, mobile-friendly.',
+      locale: locale === 'id' ? 'id_ID' : 'en_US',
+      type: 'website',
+      images: [
+        {
+          url: '/og-image-applications.png',
+          width: 1200,
+          height: 630,
+          alt: 'ForPublic.id Applications - Free digital tools for public services and data access',
+        },
+      ],
+    },
+    twitter: {
+      title: `${t('applications.page.title')} - ForPublic.id`,
+      description: locale === 'id'
+        ? '📱 Direktori lengkap aplikasi digital GRATIS untuk masyarakat Indonesia. 7+ kategori, tools transparansi, layanan publik. Akses mudah, mobile-friendly.'
+        : '📱 Complete directory of FREE digital applications for Indonesian communities. 7+ categories, transparency tools, public services. Easy access, mobile-friendly.',
+      images: ['/og-image-applications.png'],
+    },
+    alternates: {
+      canonical: `/${locale}/applications`,
+      languages: {
+        'id-ID': '/id/applications',
+        'en-US': '/en/applications',
+      },
+    },
+  }
+}
 
 interface ApplicationsPageProps {
   params: Promise<{ locale: string }>
@@ -408,8 +456,29 @@ export default async function ApplicationsPage({ params, searchParams }: Applica
   const availableCount = applications.filter(app => app.status === 'available').length
   const comingSoonCount = applications.filter(app => app.status === 'coming-soon').length
 
+  // Generate breadcrumb schema manually for server component
+  const breadcrumbSchema = {
+    itemListElement: [
+      {
+        '@type': 'ListItem' as const,
+        position: 1,
+        name: t('header.brand'),
+        item: `https://forpublic.id/${locale}`
+      },
+      {
+        '@type': 'ListItem' as const,
+        position: 2,
+        name: t('applications.page.title'),
+        item: `https://forpublic.id/${locale}/applications`
+      }
+    ]
+  }
+
   return (
     <div className="min-h-screen bg-background">
+      <StructuredData 
+        breadcrumb={breadcrumbSchema}
+      />
       <Header locale={locale} />
 
       {/* Page Header */}

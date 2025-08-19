@@ -120,6 +120,32 @@
     "content1": "Kami berkomitmen pada transparansi, pelayanan publik, dan menciptakan solusi digital yang benar-benar melayani kepentingan publik. Setiap aplikasi yang kami kembangkan dirancang dengan kebutuhan masyarakat sebagai prioritas utama, memastikan bahwa teknologi menjadi alat untuk pemberdayaan, bukan pengucilan.",
     "content2": "Tim kami percaya bahwa akses ke informasi dan layanan publik harus menjadi hak, bukan hak istimewa. Melalui ForPublic.id, kami bekerja untuk mewujudkan visi ini bagi masyarakat di seluruh Indonesia dan sekitarnya."
   },
+  "faq": {
+    "title": "Pertanyaan yang Sering Diajukan",
+    "subtitle": "Temukan jawaban untuk pertanyaan umum tentang ForPublic.id",
+    "items": [
+      {
+        "question": "Apa itu ForPublic.id?",
+        "answer": "ForPublic.id adalah platform digital yang menyediakan berbagai aplikasi gratis untuk membantu masyarakat mengakses informasi dan layanan publik dengan mudah. Kami mengembangkan tools yang mendukung transparansi, keterbukaan data, dan akses layanan pemerintah."
+      },
+      {
+        "question": "Apakah semua aplikasi di ForPublic.id gratis?",
+        "answer": "Ya, semua aplikasi dan layanan di ForPublic.id sepenuhnya gratis untuk digunakan. Kami berkomitmen menyediakan akses teknologi yang setara untuk semua lapisan masyarakat tanpa biaya apapun."
+      },
+      {
+        "question": "Bagaimana cara mengakses aplikasi yang tersedia?",
+        "answer": "Anda dapat mengakses aplikasi melalui halaman Aplikasi di website kami. Klik pada aplikasi yang ingin digunakan dan Anda akan diarahkan ke platform aplikasi tersebut. Sebagian besar aplikasi dapat diakses langsung melalui browser web."
+      },
+      {
+        "question": "Kapan aplikasi baru akan tersedia?",
+        "answer": "Kami secara berkala mengembangkan aplikasi baru berdasarkan kebutuhan masyarakat dan feedback yang diterima. Untuk mendapatkan update terbaru, Anda dapat berlangganan newsletter kami atau mengikuti media sosial ForPublic.id."
+      },
+      {
+        "question": "Bagaimana keamanan data pengguna dijamin?",
+        "answer": "Keamanan dan privasi data pengguna adalah prioritas utama kami. Kami menerapkan standar keamanan tinggi dan hanya mengumpulkan data yang diperlukan untuk memberikan layanan. Data pengguna tidak akan dibagikan kepada pihak ketiga tanpa persetujuan."
+      }
+    ]
+  },
   "footer": {
     "description": "Solusi digital untuk kepentingan publik, memberdayakan masyarakat melalui teknologi yang mudah diakses.",
     "sections": {

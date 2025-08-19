@@ -4,6 +4,8 @@ import { Input } from '@/components/ui'
 import { Badge } from '@/components/ui'
 import { Header } from '@/components/layout'
 import { Footer } from '@/components/layout'
+import { StructuredData } from '@/components/common'
+import { FAQ } from '@/components/sections'
 import {
   Database,
   Building2,
@@ -20,14 +22,82 @@ import {
 } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const resolvedParams = await params
+  const locale = resolvedParams?.locale || 'id'
+  const t = await getTranslations({ locale })
+
+  return {
+    title: `${t('hero.title')} ${t('hero.titleHighlight')} - ForPublic.id`,
+    description: locale === 'id' 
+      ? '🎯 Tools digital GRATIS untuk masyarakat Indonesia. Akses data publik, layanan pemerintah & transparansi. 100% gratis, mobile-friendly, dwi bahasa.'
+      : '🎯 FREE digital tools for Indonesian communities. Access public data, government services & transparency. 100% free, mobile-friendly, bilingual.',
+    keywords: locale === 'id' 
+      ? 'aplikasi publik, layanan digital, data terbuka Indonesia, transparansi publik, teknologi untuk masyarakat'
+      : 'public applications, digital services, open data Indonesia, public transparency, technology for communities',
+    openGraph: {
+      title: `${t('hero.title')} ${t('hero.titleHighlight')} - ForPublic.id`,
+      description: locale === 'id' 
+        ? '🎯 Tools digital GRATIS untuk masyarakat Indonesia. Akses data publik, layanan pemerintah & transparansi. 100% gratis, mobile-friendly, dwi bahasa.'
+        : '🎯 FREE digital tools for Indonesian communities. Access public data, government services & transparency. 100% free, mobile-friendly, bilingual.',
+      locale: locale === 'id' ? 'id_ID' : 'en_US',
+      type: 'website',
+      images: [
+        {
+          url: '/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: 'ForPublic.id - Digital Solutions for Public Good',
+        },
+      ],
+    },
+    twitter: {
+      title: `${t('hero.title')} ${t('hero.titleHighlight')} - ForPublic.id`,
+      description: locale === 'id' 
+        ? '🎯 Tools digital GRATIS untuk masyarakat Indonesia. Akses data publik, layanan pemerintah & transparansi. 100% gratis, mobile-friendly, dwi bahasa.'
+        : '🎯 FREE digital tools for Indonesian communities. Access public data, government services & transparency. 100% free, mobile-friendly, bilingual.',
+      images: ['/og-image.png'],
+    },
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        'id-ID': '/id',
+        'en-US': '/en',
+      },
+    },
+  }
+}
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = await params
   const locale = resolvedParams?.locale || 'id'
   const t = await getTranslations({ locale })
 
+  // Generate FAQ schema manually for server component
+  const faqItems = t.raw('faq.items') as Array<{ question: string; answer: string }>
+  const faqSchema = {
+    mainEntity: faqItems.map(faq => ({
+      '@type': 'Question' as const,
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer' as const,
+        text: faq.answer
+      }
+    }))
+  }
+
   return (
     <div className="min-h-screen bg-background">
+      <StructuredData 
+        organization={{}}
+        website={{
+          description: t('hero.description'),
+          inLanguage: locale === 'id' ? ['id-ID'] : ['en-US']
+        }}
+        faq={faqSchema}
+      />
       <Header locale={locale} />
 
       {/* Hero Section */}
@@ -360,6 +430,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQ 
+        title={t('faq.title')}
+        subtitle={t('faq.subtitle')}
+        items={faqItems}
+      />
 
       <Footer locale={locale} />
     </div>
