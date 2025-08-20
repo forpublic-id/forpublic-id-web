@@ -88,23 +88,23 @@
     "title": "Segera Hadir",
     "description": "Aplikasi baru yang menarik sedang dalam pengembangan untuk melayani masyarakat dengan lebih baik",
     "apps": {
-      "smartCity": {
-        "title": "Dashboard Kota Pintar",
-        "description": "Metrik dan layanan kota real-time",
-        "content": "Dashboard komprehensif yang menampilkan lalu lintas, kualitas udara, transportasi publik, dan status layanan kota.",
-        "status": "Dalam Pengembangan"
+      "budget": {
+        "title": "Transparansi Anggaran Pemerintah",
+        "description": "Transparansi Anggaran Pemerintah",
+        "content": "Akses mudah ke data APBN dan APBD dengan visualisasi interaktif dan tracking realisasi anggaran.",
+        "status": "Segera Hadir"
       },
-      "communityForum": {
-        "title": "Forum Masyarakat",
-        "description": "Diskusikan dan tangani isu lokal",
-        "content": "Platform bagi warga untuk mendiskusikan isu lokal, merumuskan solusi, dan berinteraksi dengan pemerintah daerah.",
-        "status": "Q2 2024"
+      "salary": {
+        "title": "Database Gaji & Tunjangan Pejabat Publik",
+        "description": "Database Gaji & Tunjangan Pejabat Publik",
+        "content": "Database lengkap gaji PNS, tunjangan kinerja, dan kompensasi pejabat publik dengan kalkulator interaktif.",
+        "status": "Segera Hadir"
       },
-      "emergencyAlerts": {
-        "title": "Peringatan Darurat",
-        "description": "Notifikasi darurat real-time",
-        "content": "Notifikasi instan untuk bencana alam, peringatan keamanan publik, dan layanan darurat.",
-        "status": "Q3 2024"
+      "plan": {
+        "title": "Rencana Pembangunan & Tata Ruang",
+        "description": "Rencana Pembangunan & Tata Ruang",
+        "content": "Akses mudah ke RTRW, master plan pembangunan, dan peta zonasi dengan fitur partisipasi publik.",
+        "status": "Segera Hadir"
       }
     },
     "newsletter": {
@@ -219,6 +219,8 @@
       "support": "Dukungan"
     },
     "links": {
+      "holidayCalendar": "Kalender Hari Libur Indonesia",
+      "allApplications": "Semua Aplikasi",
       "openData": "Data Terbuka",
       "developmentInfo": "Info Pembangunan",
       "publicServices": "Layanan Publik",

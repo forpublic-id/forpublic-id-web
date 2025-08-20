@@ -7,7 +7,7 @@ import { useTransition } from 'react'
 
 const languages = [
   { code: 'id', name: 'Indonesia', flag: '🇮🇩' },
-  { code: 'en', name: 'English', flag: '🇺🇸' },
+  { code: 'en', name: 'English', flag: '🇬🇧' },
 ]
 
 export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {

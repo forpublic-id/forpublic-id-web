@@ -88,23 +88,23 @@
     "title": "Coming Soon",
     "description": "Exciting new applications are in development to serve the community better",
     "apps": {
-      "smartCity": {
-        "title": "Smart City Dashboard",
-        "description": "Real-time city metrics and services",
-        "content": "Comprehensive dashboard displaying traffic, air quality, public transportation, and city service status.",
-        "status": "In Development"
+      "budget": {
+        "title": "Government Budget Transparency",
+        "description": "Government Budget Transparency",
+        "content": "Easy access to national and regional budget data with interactive visualizations and realization tracking.",
+        "status": "Coming Soon"
       },
-      "communityForum": {
-        "title": "Community Forum",
-        "description": "Discuss and address local issues",
-        "content": "Platform for citizens to discuss local issues, formulate solutions, and interact with local government.",
-        "status": "Q2 2024"
+      "salary": {
+        "title": "Public Official Salary & Benefits Database",
+        "description": "Public Official Salary & Benefits Database",
+        "content": "Complete database of civil servant salaries, performance allowances, and public official compensation with interactive calculators.",
+        "status": "Coming Soon"
       },
-      "emergencyAlerts": {
-        "title": "Emergency Alerts",
-        "description": "Real-time emergency notifications",
-        "content": "Instant notifications for natural disasters, public safety warnings, and emergency services.",
-        "status": "Q3 2024"
+      "plan": {
+        "title": "Development Planning & Spatial Planning",
+        "description": "Development Planning & Spatial Planning",
+        "content": "Easy access to spatial planning, development master plans, and zoning maps with public participation features.",
+        "status": "Coming Soon"
       }
     },
     "newsletter": {
@@ -219,6 +219,8 @@
       "support": "Support"
     },
     "links": {
+      "holidayCalendar": "Holiday Calendar Indonesia",
+      "allApplications": "All Applications",
       "openData": "Open Data",
       "developmentInfo": "Development Info",
       "publicServices": "Public Services",

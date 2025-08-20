@@ -17,6 +17,10 @@ import {
   Shield,
   Zap,
   Plus,
+  Clock,
+  DollarSign,
+  MapPin,
+  ChartNoAxesCombined,
 } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
@@ -379,54 +383,90 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            <Card className="relative overflow-hidden border-l-4 border-l-blue-300 hover:shadow-lg transition-shadow">
-              <div className="absolute top-4 right-4">
-                <Badge variant="secondary" className="bg-blue-50 text-blue-700">
-                  {t('comingSoon.apps.smartCity.status')}
-                </Badge>
-              </div>
+            <Card className="hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500 opacity-75">
               <CardHeader>
-                <CardTitle>{t('comingSoon.apps.smartCity.title')}</CardTitle>
-                <CardDescription>{t('comingSoon.apps.smartCity.description')}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">{t('comingSoon.apps.smartCity.content')}</p>
-              </CardContent>
-            </Card>
-
-            <Card className="relative overflow-hidden border-l-4 border-l-green-300 hover:shadow-lg transition-shadow">
-              <div className="absolute top-4 right-4">
-                <Badge variant="secondary" className="bg-green-50 text-green-700">
-                  {t('comingSoon.apps.communityForum.status')}
-                </Badge>
-              </div>
-              <CardHeader>
-                <CardTitle>{t('comingSoon.apps.communityForum.title')}</CardTitle>
-                <CardDescription>{t('comingSoon.apps.communityForum.description')}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">
-                  {t('comingSoon.apps.communityForum.content')}
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="relative overflow-hidden border-l-4 border-l-orange-300 hover:shadow-lg transition-shadow">
-              <div className="absolute top-4 right-4">
-                <Badge variant="secondary" className="bg-orange-50 text-orange-700">
-                  {t('comingSoon.apps.emergencyAlerts.status')}
-                </Badge>
-              </div>
-              <CardHeader>
-                <CardTitle>{t('comingSoon.apps.emergencyAlerts.title')}</CardTitle>
-                <CardDescription>
-                  {t('comingSoon.apps.emergencyAlerts.description')}
+                <div className="flex items-start justify-between">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <ChartNoAxesCombined className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <Badge variant="outline" className="text-gray-500">
+                    <Clock className="w-3 h-3 mr-1" />
+                    {t('comingSoon.apps.budget.status')}
+                  </Badge>
+                </div>
+                <div className="mb-2">
+                  <Badge variant="outline" className="text-xs text-blue-600 border-current">
+                    {t('applications.categories.openData.title')}
+                  </Badge>
+                </div>
+                <CardTitle className="text-lg">{t('comingSoon.apps.budget.title')}</CardTitle>
+                <CardDescription className="text-sm leading-relaxed">
+                  {t('comingSoon.apps.budget.description')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-600">
-                  {t('comingSoon.apps.emergencyAlerts.content')}
-                </p>
+                <p className="text-sm text-gray-600 mb-4">{t('comingSoon.apps.budget.content')}</p>
+                <Button variant="secondary" className="w-full" disabled>
+                  {t('comingSoon.apps.budget.status')}
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-all duration-300 border-l-4 border-l-green-500 opacity-75">
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                    <DollarSign className="w-6 h-6 text-green-600" />
+                  </div>
+                  <Badge variant="outline" className="text-gray-500">
+                    <Clock className="w-3 h-3 mr-1" />
+                    {t('comingSoon.apps.salary.status')}
+                  </Badge>
+                </div>
+                <div className="mb-2">
+                  <Badge variant="outline" className="text-xs text-green-600 border-current">
+                    {t('applications.categories.openData.title')}
+                  </Badge>
+                </div>
+                <CardTitle className="text-lg">{t('comingSoon.apps.salary.title')}</CardTitle>
+                <CardDescription className="text-sm leading-relaxed">
+                  {t('comingSoon.apps.salary.description')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-gray-600 mb-4">{t('comingSoon.apps.salary.content')}</p>
+                <Button variant="secondary" className="w-full" disabled>
+                  {t('comingSoon.apps.salary.status')}
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-all duration-300 border-l-4 border-l-orange-500 opacity-75">
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                    <MapPin className="w-6 h-6 text-orange-600" />
+                  </div>
+                  <Badge variant="outline" className="text-gray-500">
+                    <Clock className="w-3 h-3 mr-1" />
+                    {t('comingSoon.apps.plan.status')}
+                  </Badge>
+                </div>
+                <div className="mb-2">
+                  <Badge variant="outline" className="text-xs text-orange-600 border-current">
+                    {t('applications.categories.developmentInfo.title')}
+                  </Badge>
+                </div>
+                <CardTitle className="text-lg">{t('comingSoon.apps.plan.title')}</CardTitle>
+                <CardDescription className="text-sm leading-relaxed">
+                  {t('comingSoon.apps.plan.description')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-gray-600 mb-4">{t('comingSoon.apps.plan.content')}</p>
+                <Button variant="secondary" className="w-full" disabled>
+                  {t('comingSoon.apps.plan.status')}
+                </Button>
               </CardContent>
             </Card>
           </div>
