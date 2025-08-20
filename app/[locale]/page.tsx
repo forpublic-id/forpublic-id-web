@@ -1,11 +1,10 @@
 import { Button } from '@/components/ui'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui'
-import { Input } from '@/components/ui'
 import { Badge } from '@/components/ui'
 import { Header } from '@/components/layout'
 import { Footer } from '@/components/layout'
 import { StructuredData } from '@/components/common'
-import { FAQ } from '@/components/sections'
+import { FAQ, About } from '@/components/sections'
 import {
   Database,
   Building2,
@@ -18,30 +17,36 @@ import {
   Shield,
   Zap,
   Plus,
-  Mail,
 } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
   const resolvedParams = await params
   const locale = resolvedParams?.locale || 'id'
   const t = await getTranslations({ locale })
 
   return {
     title: `${t('hero.title')} ${t('hero.titleHighlight')} - ForPublic.id`,
-    description: locale === 'id' 
-      ? '🎯 Tools digital GRATIS untuk masyarakat Indonesia. Akses data publik, layanan pemerintah & transparansi. 100% gratis, mobile-friendly, dwi bahasa.'
-      : '🎯 FREE digital tools for Indonesian communities. Access public data, government services & transparency. 100% free, mobile-friendly, bilingual.',
-    keywords: locale === 'id' 
-      ? 'aplikasi publik, layanan digital, data terbuka Indonesia, transparansi publik, teknologi untuk masyarakat'
-      : 'public applications, digital services, open data Indonesia, public transparency, technology for communities',
-    openGraph: {
-      title: `${t('hero.title')} ${t('hero.titleHighlight')} - ForPublic.id`,
-      description: locale === 'id' 
+    description:
+      locale === 'id'
         ? '🎯 Tools digital GRATIS untuk masyarakat Indonesia. Akses data publik, layanan pemerintah & transparansi. 100% gratis, mobile-friendly, dwi bahasa.'
         : '🎯 FREE digital tools for Indonesian communities. Access public data, government services & transparency. 100% free, mobile-friendly, bilingual.',
+    keywords:
+      locale === 'id'
+        ? 'aplikasi publik, layanan digital, data terbuka Indonesia, transparansi publik, teknologi untuk masyarakat'
+        : 'public applications, digital services, open data Indonesia, public transparency, technology for communities',
+    openGraph: {
+      title: `${t('hero.title')} ${t('hero.titleHighlight')} - ForPublic.id`,
+      description:
+        locale === 'id'
+          ? '🎯 Tools digital GRATIS untuk masyarakat Indonesia. Akses data publik, layanan pemerintah & transparansi. 100% gratis, mobile-friendly, dwi bahasa.'
+          : '🎯 FREE digital tools for Indonesian communities. Access public data, government services & transparency. 100% free, mobile-friendly, bilingual.',
       locale: locale === 'id' ? 'id_ID' : 'en_US',
       type: 'website',
       images: [
@@ -55,9 +60,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
       title: `${t('hero.title')} ${t('hero.titleHighlight')} - ForPublic.id`,
-      description: locale === 'id' 
-        ? '🎯 Tools digital GRATIS untuk masyarakat Indonesia. Akses data publik, layanan pemerintah & transparansi. 100% gratis, mobile-friendly, dwi bahasa.'
-        : '🎯 FREE digital tools for Indonesian communities. Access public data, government services & transparency. 100% free, mobile-friendly, bilingual.',
+      description:
+        locale === 'id'
+          ? '🎯 Tools digital GRATIS untuk masyarakat Indonesia. Akses data publik, layanan pemerintah & transparansi. 100% gratis, mobile-friendly, dwi bahasa.'
+          : '🎯 FREE digital tools for Indonesian communities. Access public data, government services & transparency. 100% free, mobile-friendly, bilingual.',
       images: ['/og-image.png'],
     },
     alternates: {
@@ -83,18 +89,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       name: faq.question,
       acceptedAnswer: {
         '@type': 'Answer' as const,
-        text: faq.answer
-      }
-    }))
+        text: faq.answer,
+      },
+    })),
   }
 
   return (
     <div className="min-h-screen bg-background">
-      <StructuredData 
+      <StructuredData
         organization={{}}
         website={{
           description: t('hero.description'),
-          inLanguage: locale === 'id' ? ['id-ID'] : ['en-US']
+          inLanguage: locale === 'id' ? ['id-ID'] : ['en-US'],
         }}
         faq={faqSchema}
       />
@@ -103,7 +109,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* Hero Section */}
       <section className="py-20 px-4 md:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto text-center max-w-4xl">
-          <Badge variant="secondary" className="mb-4 bg-red-50 text-red-700 border-red-200">
+          <Badge
+            variant="secondary"
+            className="mb-6 px-3 py-1.5 text-sm bg-red-50 text-red-700 border-red-200"
+          >
             {t('hero.badge')}
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
@@ -127,15 +136,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               variant="outline"
               size="lg"
               className="text-lg px-8 border-gray-300 text-gray-700 hover:bg-gray-50 hover:shadow-lg transition-all duration-300 bg-transparent"
+              asChild
             >
-              {t('hero.cta.learnMore')}
+              <Link href="#about">{t('hero.cta.learnMore')}</Link>
             </Button>
           </div>
         </div>
       </section>
 
       {/* Application Categories */}
-      <section id="applications" className="py-20 px-4 md:px-6 lg:px-8 bg-white">
+      <section id="applications" className="py-20 px-4 md:px-6 lg:px-8 bg-white scroll-mt-20">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
@@ -146,110 +156,142 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-blue-500 cursor-pointer">
-              <CardHeader>
-                <Database className="w-12 h-12 text-blue-600 mb-4" />
-                <CardTitle>{t('applications.categories.openData.title')}</CardTitle>
-                <CardDescription>
-                  {t('applications.categories.openData.description')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">
-                  {t('applications.categories.openData.content')}
-                </p>
-              </CardContent>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <Card
+              className="hover:shadow-lg transition-shadow border-l-4 border-l-blue-500 cursor-pointer"
+              asChild
+            >
+              <Link href={`/${locale}/applications?category=openData`}>
+                <CardHeader>
+                  <Database className="w-12 h-12 text-blue-600 mb-4" />
+                  <CardTitle>{t('applications.categories.openData.title')}</CardTitle>
+                  <CardDescription>
+                    {t('applications.categories.openData.description')}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600">
+                    {t('applications.categories.openData.content')}
+                  </p>
+                </CardContent>
+              </Link>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-green-500 cursor-pointer">
-              <CardHeader>
-                <Building2 className="w-12 h-12 text-green-600 mb-4" />
-                <CardTitle>{t('applications.categories.developmentInfo.title')}</CardTitle>
-                <CardDescription>
-                  {t('applications.categories.developmentInfo.description')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">
-                  {t('applications.categories.developmentInfo.content')}
-                </p>
-              </CardContent>
+            <Card
+              className="hover:shadow-lg transition-shadow border-l-4 border-l-green-500 cursor-pointer"
+              asChild
+            >
+              <Link href={`/${locale}/applications?category=developmentInfo`}>
+                <CardHeader>
+                  <Building2 className="w-12 h-12 text-green-600 mb-4" />
+                  <CardTitle>{t('applications.categories.developmentInfo.title')}</CardTitle>
+                  <CardDescription>
+                    {t('applications.categories.developmentInfo.description')}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600">
+                    {t('applications.categories.developmentInfo.content')}
+                  </p>
+                </CardContent>
+              </Link>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-purple-500 cursor-pointer">
-              <CardHeader>
-                <Users className="w-12 h-12 text-purple-600 mb-4" />
-                <CardTitle>{t('applications.categories.publicServices.title')}</CardTitle>
-                <CardDescription>
-                  {t('applications.categories.publicServices.description')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">
-                  {t('applications.categories.publicServices.content')}
-                </p>
-              </CardContent>
+            <Card
+              className="hover:shadow-lg transition-shadow border-l-4 border-l-purple-500 cursor-pointer"
+              asChild
+            >
+              <Link href={`/${locale}/applications?category=publicServices`}>
+                <CardHeader>
+                  <Users className="w-12 h-12 text-purple-600 mb-4" />
+                  <CardTitle>{t('applications.categories.publicServices.title')}</CardTitle>
+                  <CardDescription>
+                    {t('applications.categories.publicServices.description')}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600">
+                    {t('applications.categories.publicServices.content')}
+                  </p>
+                </CardContent>
+              </Link>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-orange-500 cursor-pointer">
-              <CardHeader>
-                <GraduationCap className="w-12 h-12 text-orange-600 mb-4" />
-                <CardTitle>{t('applications.categories.education.title')}</CardTitle>
-                <CardDescription>
-                  {t('applications.categories.education.description')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">
-                  {t('applications.categories.education.content')}
-                </p>
-              </CardContent>
+            <Card
+              className="hover:shadow-lg transition-shadow border-l-4 border-l-orange-500 cursor-pointer"
+              asChild
+            >
+              <Link href={`/${locale}/applications?category=education`}>
+                <CardHeader>
+                  <GraduationCap className="w-12 h-12 text-orange-600 mb-4" />
+                  <CardTitle>{t('applications.categories.education.title')}</CardTitle>
+                  <CardDescription>
+                    {t('applications.categories.education.description')}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600">
+                    {t('applications.categories.education.content')}
+                  </p>
+                </CardContent>
+              </Link>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-red-500 cursor-pointer">
-              <CardHeader>
-                <Heart className="w-12 h-12 text-red-600 mb-4" />
-                <CardTitle>{t('applications.categories.health.title')}</CardTitle>
-                <CardDescription>{t('applications.categories.health.description')}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">
-                  {t('applications.categories.health.content')}
-                </p>
-              </CardContent>
+            <Card
+              className="hover:shadow-lg transition-shadow border-l-4 border-l-red-500 cursor-pointer"
+              asChild
+            >
+              <Link href={`/${locale}/applications?category=health`}>
+                <CardHeader>
+                  <Heart className="w-12 h-12 text-red-600 mb-4" />
+                  <CardTitle>{t('applications.categories.health.title')}</CardTitle>
+                  <CardDescription>
+                    {t('applications.categories.health.description')}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600">
+                    {t('applications.categories.health.content')}
+                  </p>
+                </CardContent>
+              </Link>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-teal-500 cursor-pointer">
-              <CardHeader>
-                <TrendingUp className="w-12 h-12 text-teal-600 mb-4" />
-                <CardTitle>{t('applications.categories.economy.title')}</CardTitle>
-                <CardDescription>
-                  {t('applications.categories.economy.description')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">
-                  {t('applications.categories.economy.content')}
-                </p>
-              </CardContent>
+            <Card
+              className="hover:shadow-lg transition-shadow border-l-4 border-l-teal-500 cursor-pointer"
+              asChild
+            >
+              <Link href={`/${locale}/applications?category=economy`}>
+                <CardHeader>
+                  <TrendingUp className="w-12 h-12 text-teal-600 mb-4" />
+                  <CardTitle>{t('applications.categories.economy.title')}</CardTitle>
+                  <CardDescription>
+                    {t('applications.categories.economy.description')}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600">
+                    {t('applications.categories.economy.content')}
+                  </p>
+                </CardContent>
+              </Link>
             </Card>
           </div>
         </div>
       </section>
 
       {/* Key Features */}
-      <section id="features" className="py-20 px-4 md:px-6 lg:px-8 bg-gray-50">
+      <section id="features" className="py-20 px-4 md:px-6 lg:px-8 bg-gray-50 scroll-mt-20">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
               {locale === 'id' ? (
                 <>
-                  Mengapa Memilih ForPublic<span className="text-red-600">.id</span>
+                  Keunggulan ForPublic<span className="text-red-600">.id</span>
                 </>
               ) : (
                 <>
-                  Why Choose ForPublic<span className="text-red-600">.id</span>
+                  ForPublic<span className="text-red-600">.id</span> Advantages
                 </>
               )}
             </h2>
@@ -320,6 +362,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
+      {/* About Section */}
+      <About locale={locale} translations={t.raw('about')} />
+
+      {/* FAQ Section */}
+      <FAQ title={t('faq.title')} subtitle={t('faq.subtitle')} items={faqItems} locale={locale} />
+
       {/* Coming Soon Section */}
       <section className="py-20 px-4 md:px-6 lg:px-8 bg-white">
         <div className="container mx-auto max-w-6xl">
@@ -331,7 +379,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            <Card className="relative overflow-hidden border-l-4 border-l-blue-300 cursor-pointer hover:shadow-lg transition-shadow">
+            <Card className="relative overflow-hidden border-l-4 border-l-blue-300 hover:shadow-lg transition-shadow">
               <div className="absolute top-4 right-4">
                 <Badge variant="secondary" className="bg-blue-50 text-blue-700">
                   {t('comingSoon.apps.smartCity.status')}
@@ -346,7 +394,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </CardContent>
             </Card>
 
-            <Card className="relative overflow-hidden border-l-4 border-l-green-300 cursor-pointer hover:shadow-lg transition-shadow">
+            <Card className="relative overflow-hidden border-l-4 border-l-green-300 hover:shadow-lg transition-shadow">
               <div className="absolute top-4 right-4">
                 <Badge variant="secondary" className="bg-green-50 text-green-700">
                   {t('comingSoon.apps.communityForum.status')}
@@ -363,7 +411,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </CardContent>
             </Card>
 
-            <Card className="relative overflow-hidden border-l-4 border-l-orange-300 cursor-pointer hover:shadow-lg transition-shadow">
+            <Card className="relative overflow-hidden border-l-4 border-l-orange-300 hover:shadow-lg transition-shadow">
               <div className="absolute top-4 right-4">
                 <Badge variant="secondary" className="bg-orange-50 text-orange-700">
                   {t('comingSoon.apps.emergencyAlerts.status')}
@@ -382,61 +430,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </CardContent>
             </Card>
           </div>
-
-          {/* Newsletter Subscription */}
-          <div className="max-w-md mx-auto">
-            <Card className="border-gray-200">
-              <CardHeader className="text-center">
-                <CardTitle className="text-gray-900">{t('comingSoon.newsletter.title')}</CardTitle>
-                <CardDescription>{t('comingSoon.newsletter.description')}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex gap-2">
-                  <Input
-                    placeholder={t('comingSoon.newsletter.placeholder')}
-                    type="email"
-                    className="border-gray-200 focus:border-red-500"
-                  />
-                  <Button className="bg-red-600 hover:bg-red-700">
-                    <Mail className="w-4 h-4" />
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
         </div>
       </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20 px-4 md:px-6 lg:px-8 bg-gray-50">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900">
-            {locale === 'id' ? (
-              <>
-                Tentang ForPublic<span className="text-red-600">.id</span>
-              </>
-            ) : (
-              <>
-                About ForPublic<span className="text-red-600">.id</span>
-              </>
-            )}
-          </h2>
-          <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
-            <p>
-              <strong className="text-red-600">{t('about.vision')}</strong> {t('about.visionText')}
-            </p>
-            <p>{t('about.content1')}</p>
-            <p>{t('about.content2')}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <FAQ 
-        title={t('faq.title')}
-        subtitle={t('faq.subtitle')}
-        items={faqItems}
-      />
 
       <Footer locale={locale} />
     </div>

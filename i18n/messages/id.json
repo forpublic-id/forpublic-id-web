@@ -115,10 +115,76 @@
   },
   "about": {
     "title": "Tentang ForPublic.id",
-    "vision": "Visi Kami:",
-    "visionText": "Memberdayakan masyarakat melalui teknologi yang mudah diakses dan bermanfaat yang menjembatani kesenjangan antara warga dan layanan publik.",
-    "content1": "Kami berkomitmen pada transparansi, pelayanan publik, dan menciptakan solusi digital yang benar-benar melayani kepentingan publik. Setiap aplikasi yang kami kembangkan dirancang dengan kebutuhan masyarakat sebagai prioritas utama, memastikan bahwa teknologi menjadi alat untuk pemberdayaan, bukan pengucilan.",
-    "content2": "Tim kami percaya bahwa akses ke informasi dan layanan publik harus menjadi hak, bukan hak istimewa. Melalui ForPublic.id, kami bekerja untuk mewujudkan visi ini bagi masyarakat di seluruh Indonesia dan sekitarnya."
+    "subtitle": "Kami membangun jembatan digital antara masyarakat dan layanan publik melalui teknologi yang mudah diakses, transparan, dan bermanfaat untuk semua.",
+    "vision": {
+      "title": "Visi Kami",
+      "description": "Menciptakan ekosistem digital yang memberdayakan setiap warga negara untuk mengakses informasi dan layanan publik dengan mudah, transparan, dan setara."
+    },
+    "mission": {
+      "title": "Misi Kami",
+      "description": "Mengembangkan platform dan aplikasi digital yang menjembatani kesenjangan antara pemerintah dan masyarakat, mendorong transparansi, dan meningkatkan kualitas pelayanan publik."
+    },
+    "values": {
+      "title": "Nilai-Nilai Kami",
+      "items": [
+        {
+          "title": "Transparansi",
+          "description": "Kami berkomitmen pada keterbukaan informasi dan akuntabilitas dalam setiap layanan yang kami sediakan.",
+          "icon": "transparency"
+        },
+        {
+          "title": "Inklusivitas",
+          "description": "Teknologi yang kami bangun dapat diakses oleh semua lapisan masyarakat tanpa diskriminasi.",
+          "icon": "community"
+        },
+        {
+          "title": "Inovasi",
+          "description": "Kami terus berinovasi untuk memberikan solusi terbaik sesuai kebutuhan masyarakat yang berkembang.",
+          "icon": "innovation"
+        },
+        {
+          "title": "Kepedulian",
+          "description": "Setiap fitur yang kami kembangkan didasari oleh empati dan kepedulian terhadap kebutuhan pengguna.",
+          "icon": "accessibility"
+        },
+        {
+          "title": "Dampak Positif",
+          "description": "Kami mengukur kesuksesan dari dampak positif yang dirasakan langsung oleh masyarakat.",
+          "icon": "impact"
+        },
+        {
+          "title": "Kepercayaan",
+          "description": "Membangun kepercayaan melalui keandalan, keamanan, dan konsistensi dalam setiap layanan.",
+          "icon": "trust"
+        }
+      ]
+    },
+    "stats": {
+      "title": "Dampak Kami",
+      "items": [
+        {
+          "value": "100%",
+          "label": "Gratis",
+          "description": "Semua aplikasi dapat diakses tanpa biaya apapun"
+        },
+        {
+          "value": "7+",
+          "label": "Kategori",
+          "description": "Bidang layanan publik yang kami layani"
+        },
+        {
+          "value": "24/7",
+          "label": "Tersedia",
+          "description": "Akses kapan saja, di mana saja untuk semua pengguna"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Mari Berkolaborasi untuk Kemajuan Bersama",
+      "description": "Bergabunglah dengan kami dalam misi menciptakan akses yang lebih baik terhadap layanan publik. Hubungi kami atau kunjungi studio kolaborasi kami.",
+      "primary": "Mulai Kolaborasi",
+      "secondary": "Hubungi Kami"
+    }
   },
   "faq": {
     "title": "Pertanyaan yang Sering Diajukan",
@@ -163,7 +229,7 @@
       "termsOfService": "Syarat Layanan"
     },
     "connect": "Terhubung",
-    "email": "Email: hello@forpublic.id",
+    "email": "Email: forpublic.indonesia@gmail.com",
     "copyright": "© 2024 ForPublic.id. Semua hak dilindungi. Dibuat dengan ❤️ untuk kepentingan publik."
   },
   "applications": {
@@ -198,9 +264,10 @@
         "soon": "Segera"
       },
       "cta": {
-        "title": "Ada ide untuk aplikasi baru?",
-        "description": "Kami selalu terbuka untuk saran dan masukan dari masyarakat untuk mengembangkan aplikasi yang lebih bermanfaat",
-        "button": "Kirim Saran"
+        "title": "Mari Berkolaborasi untuk Kemajuan Bersama",
+        "description": "Bergabunglah dengan kami dalam misi menciptakan akses yang lebih baik terhadap layanan publik. Hubungi kami atau kunjungi studio kolaborasi kami.",
+        "contact": "Hubungi Kami",
+        "collaborate": "Mulai Kolaborasi"
       }
     },
     "title": "Kategori Aplikasi",

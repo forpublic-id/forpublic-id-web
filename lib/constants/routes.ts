@@ -10,9 +10,8 @@ export const routes = {
   // External links
   external: {
     github: 'https://github.com/forpublic-id',
-    instagram: 'https://instagram.com/forpublic.id',
-    linkedin: 'https://linkedin.com/company/forpublic-id',
-    email: 'mailto:hello@forpublic.id',
+    x: 'https://x.com/forpublicid',
+    email: 'mailto:forpublic.indonesia@gmail.com',
   },
   // Page sections (hash links)
   sections: {

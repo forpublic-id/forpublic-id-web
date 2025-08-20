@@ -14,7 +14,7 @@ interface SearchInputProps {
 
 // Debounce utility function
 function debounce<T extends unknown[]>(
-  func: (...args: T) => void, 
+  func: (...args: T) => void,
   wait: number
 ): (...args: T) => void {
   let timeout: NodeJS.Timeout
@@ -24,26 +24,24 @@ function debounce<T extends unknown[]>(
   }
 }
 
-export function SearchInput({ 
-  placeholder, 
-  locale, 
-  category, 
-  defaultValue 
-}: SearchInputProps) {
+export function SearchInput({ placeholder, locale, category, defaultValue }: SearchInputProps) {
   const [searchTerm, setSearchTerm] = useState(defaultValue || '')
   const router = useRouter()
-  
-  const handleSearch = useCallback((value: string) => {
-    const params = new URLSearchParams()
-    if (value) params.set('search', value)
-    if (category) params.set('category', category)
-    
-    const queryString = params.toString()
-    const newUrl = `/${locale}/applications${queryString ? `?${queryString}` : ''}`
-    
-    router.push(newUrl)
-  }, [category, locale, router])
-  
+
+  const handleSearch = useCallback(
+    (value: string) => {
+      const params = new URLSearchParams()
+      if (value) params.set('search', value)
+      if (category) params.set('category', category)
+
+      const queryString = params.toString()
+      const newUrl = `/${locale}/applications${queryString ? `?${queryString}` : ''}`
+
+      router.push(newUrl)
+    },
+    [category, locale, router]
+  )
+
   const debouncedSearch = useCallback(
     (value: string) => {
       const debounced = debounce<[string]>((val: string) => handleSearch(val), 300)
@@ -51,13 +49,13 @@ export function SearchInput({
     },
     [handleSearch]
   )
-  
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setSearchTerm(value)
     debouncedSearch(value)
   }
-  
+
   return (
     <div className="relative">
       <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />

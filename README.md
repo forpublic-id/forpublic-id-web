@@ -43,17 +43,20 @@ ForPublic.id Web is the main platform that showcases our digital solutions ecosy
 ### Installation
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/forpublic-id/forpublic-id-web.git
    cd forpublic-id-web
    ```
 
 2. **Install dependencies**:
+
    ```bash
    bun install
    ```
 
 3. **Start development server**:
+
    ```bash
    bun run dev
    ```
@@ -62,12 +65,12 @@ ForPublic.id Web is the main platform that showcases our digital solutions ecosy
 
 ### Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `bun run dev` | Start development server |
-| `bun run build` | Build for production |
-| `bun run start` | Start production server |
-| `bun run lint` | Run code quality checks |
+| Command         | Description              |
+| --------------- | ------------------------ |
+| `bun run dev`   | Start development server |
+| `bun run build` | Build for production     |
+| `bun run start` | Start production server  |
+| `bun run lint`  | Run code quality checks  |
 
 ## 🤝 Contributing
 
@@ -90,6 +93,7 @@ We welcome contributions from the community! Here's how you can help:
 ### Reporting Issues
 
 Found a bug or have a suggestion? Please [create an issue](https://github.com/forpublic-id/forpublic-id-web/issues) with:
+
 - Clear description of the problem
 - Steps to reproduce
 - Expected vs actual behavior
