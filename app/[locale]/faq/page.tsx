@@ -114,7 +114,7 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
         badge={locale === 'id' ? 'Pusat Bantuan' : 'Help Center'}
         showBackButton={true}
         backUrl={`/${locale}`}
-        backText={locale === 'id' ? 'Kembali ke Beranda' : 'Back to Home'}
+        backText={t('notFound.backToHome')}
         locale={locale}
       />
 

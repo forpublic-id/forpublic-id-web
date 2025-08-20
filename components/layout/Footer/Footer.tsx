@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import { Github, Twitter } from 'lucide-react'
 
@@ -94,9 +95,9 @@ export default async function Footer({ locale, variant = 'full', className = '' 
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link href={`/${locale}/contact`} className="hover:text-white transition-colors">
                   {t('footer.links.contactUs')}
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#" className="hover:text-white transition-colors">

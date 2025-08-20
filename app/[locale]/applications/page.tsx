@@ -492,7 +492,7 @@ export default async function ApplicationsPage({ params, searchParams }: Applica
         badge={locale === 'id' ? 'Direktori Aplikasi' : 'Application Directory'}
         showBackButton={true}
         backUrl={`/${locale}`}
-        backText={t('applications.page.back')}
+        backText={t('notFound.backToHome')}
         locale={locale}
       >
         {/* Stats */}

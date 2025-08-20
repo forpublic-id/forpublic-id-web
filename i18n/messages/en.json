@@ -232,11 +232,90 @@
     "email": "Email: forpublic.indonesia@gmail.com",
     "copyright": "© 2024 ForPublic.id. All rights reserved. Made with ❤️ for public good."
   },
+  "contact": {
+    "page": {
+      "title": "Contact Us",
+      "description": "ForPublic.id team is ready to help you with questions, suggestions, or partnerships for mutual progress"
+    },
+    "hero": {
+      "title": "Contact Us",
+      "description": "ForPublic.id team is ready to help you with questions, suggestions, or partnerships for mutual progress"
+    },
+    "methods": {
+      "email": {
+        "title": "Email Us",
+        "description": "Send a message for general inquiries or technical support",
+        "response": "Response within 24 hours"
+      },
+      "response": {
+        "title": "Response Time",
+        "description": "We are committed to providing quick responses",
+        "time": "< 24 Hours",
+        "note": "Weekdays: faster response"
+      },
+      "community": {
+        "title": "Community",
+        "description": "Join our community for discussions and updates"
+      }
+    },
+    "form": {
+      "title": "Send Message",
+      "description": "Fill out the form below and we will respond promptly",
+      "fields": {
+        "name": {
+          "label": "Full Name",
+          "placeholder": "Enter your full name"
+        },
+        "email": {
+          "label": "Email Address",
+          "placeholder": "name@email.com"
+        },
+        "subject": {
+          "label": "Subject",
+          "placeholder": "Select message subject",
+          "options": {
+            "general": "General Inquiry",
+            "technical": "Technical Support",
+            "partnership": "Partnership",
+            "feedback": "Feedback & Suggestions"
+          }
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Write your message here..."
+        }
+      },
+      "submit": "Send Message"
+    },
+    "info": {
+      "office": {
+        "title": "Office Information",
+        "virtual": {
+          "title": "Virtual Team",
+          "description": "We operate virtually to serve all of Indonesia more efficiently"
+        },
+        "coverage": {
+          "title": "Service Coverage",
+          "description": "Serving all of Indonesia with a focus on digital solutions for public good"
+        }
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Find quick answers to commonly asked questions",
+      "button": "View FAQ"
+    },
+    "hours": {
+      "title": "Operating Hours",
+      "weekdays": "Monday - Friday",
+      "weekend": "Saturday - Sunday",
+      "emailOnly": "Email only"
+    }
+  },
   "applications": {
     "page": {
       "title": "Explore Applications",
       "subtitle": "Discover various digital applications designed to facilitate public access to services and information",
-      "back": "Back",
       "search": {
         "placeholder": "Search applications...",
         "noResults": "No applications found",

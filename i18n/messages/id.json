@@ -232,11 +232,90 @@
     "email": "Email: forpublic.indonesia@gmail.com",
     "copyright": "© 2024 ForPublic.id. Semua hak dilindungi. Dibuat dengan ❤️ untuk kepentingan publik."
   },
+  "contact": {
+    "page": {
+      "title": "Hubungi Kami",
+      "description": "Tim ForPublic.id siap membantu Anda dengan pertanyaan, saran, atau kerjasama untuk kemajuan bersama"
+    },
+    "hero": {
+      "title": "Hubungi Kami",
+      "description": "Tim ForPublic.id siap membantu Anda dengan pertanyaan, saran, atau kerjasama untuk kemajuan bersama"
+    },
+    "methods": {
+      "email": {
+        "title": "Email Kami",
+        "description": "Kirim pesan untuk pertanyaan umum atau bantuan teknis",
+        "response": "Respon dalam 24 jam"
+      },
+      "response": {
+        "title": "Waktu Respon",
+        "description": "Kami berkomitmen memberikan tanggapan yang cepat",
+        "time": "< 24 Jam",
+        "note": "Hari kerja: respon lebih cepat"
+      },
+      "community": {
+        "title": "Komunitas",
+        "description": "Bergabung dengan komunitas untuk diskusi dan update"
+      }
+    },
+    "form": {
+      "title": "Kirim Pesan",
+      "description": "Isi form di bawah ini dan kami akan segera merespons",
+      "fields": {
+        "name": {
+          "label": "Nama Lengkap",
+          "placeholder": "Masukkan nama lengkap Anda"
+        },
+        "email": {
+          "label": "Alamat Email",
+          "placeholder": "nama@email.com"
+        },
+        "subject": {
+          "label": "Subjek",
+          "placeholder": "Pilih subjek pesan",
+          "options": {
+            "general": "Pertanyaan Umum",
+            "technical": "Bantuan Teknis",
+            "partnership": "Kerjasama",
+            "feedback": "Saran & Masukan"
+          }
+        },
+        "message": {
+          "label": "Pesan",
+          "placeholder": "Tuliskan pesan Anda di sini..."
+        }
+      },
+      "submit": "Kirim Pesan"
+    },
+    "info": {
+      "office": {
+        "title": "Informasi Kantor",
+        "virtual": {
+          "title": "Tim Virtual",
+          "description": "Kami beroperasi secara virtual untuk melayani seluruh Indonesia dengan lebih efisien"
+        },
+        "coverage": {
+          "title": "Cakupan Layanan",
+          "description": "Melayani seluruh Indonesia dengan fokus pada solusi digital untuk kepentingan publik"
+        }
+      }
+    },
+    "faq": {
+      "title": "Pertanyaan Umum",
+      "description": "Temukan jawaban cepat untuk pertanyaan yang sering diajukan",
+      "button": "Lihat FAQ"
+    },
+    "hours": {
+      "title": "Jam Operasional",
+      "weekdays": "Senin - Jumat",
+      "weekend": "Sabtu - Minggu",
+      "emailOnly": "Email saja"
+    }
+  },
   "applications": {
     "page": {
       "title": "Jelajahi Aplikasi",
       "subtitle": "Temukan berbagai aplikasi digital yang dirancang untuk memudahkan akses masyarakat ke layanan dan informasi publik",
-      "back": "Kembali",
       "search": {
         "placeholder": "Cari aplikasi...",
         "noResults": "Tidak ada aplikasi ditemukan",
