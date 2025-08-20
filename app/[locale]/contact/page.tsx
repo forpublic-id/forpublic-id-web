@@ -64,14 +64,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   return (
     <div className="min-h-screen bg-background">
       <StructuredData
-        organization={{
-          contactPoint: {
-            email: 'hello@forpublic.id',
-            contactType: 'customer service',
-            areaServed: 'ID',
-            availableLanguage: ['id', 'en'],
-          },
-        }}
+        organization={{}}
         website={{
           description: t('contact.page.description'),
           inLanguage: locale === 'id' ? ['id-ID'] : ['en-US'],
@@ -82,7 +75,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       {/* Page Header */}
       <PageHeader
         title={t('contact.hero.title')}
-        description={t('contact.hero.description')}
+        subtitle={t('contact.hero.description')}
         showBackButton={true}
         backUrl={`/${locale}`}
         backText={t('notFound.backToHome')}
