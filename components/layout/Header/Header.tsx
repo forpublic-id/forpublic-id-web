@@ -42,8 +42,9 @@ export default async function Header({ locale }: { locale: string }) {
             variant="outline"
             size="sm"
             className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white bg-transparent"
+            asChild
           >
-            {t('header.nav.contact')}
+            <a href="#contact">{t('header.nav.contact')}</a>
           </Button>
         </nav>
       </div>

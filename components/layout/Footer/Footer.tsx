@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
-import { Github, Twitter, Linkedin } from 'lucide-react'
+import { Github, Twitter } from 'lucide-react'
 
 interface FooterProps {
   locale: string
@@ -114,14 +114,23 @@ export default async function Footer({ locale, variant = 'full', className = '' 
           <div>
             <h4 className="font-semibold mb-4">{t('footer.connect')}</h4>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+              <a
+                href="https://github.com/forpublic-id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors"
+                aria-label="GitHub"
+              >
                 <Github className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+              <a
+                href="https://x.com/forpublicid"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors"
+                aria-label="X (Twitter)"
+              >
                 <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Linkedin className="w-5 h-5" />
               </a>
             </div>
             <div className="mt-4 text-sm text-gray-300">

@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui'
 import { Header } from '@/components/layout'
 import { Footer } from '@/components/layout'
-import { StructuredData } from '@/components/common'
+import { StructuredData, PageHeader } from '@/components/common'
 import {
   Database,
   Building2,
@@ -17,7 +17,6 @@ import {
   Star,
   Grid3X3,
   List,
-  ArrowLeft,
   Calendar,
 } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
@@ -26,24 +25,31 @@ import { Suspense } from 'react'
 import { SearchInput } from '@/components/application'
 import type { Metadata } from 'next'
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
   const resolvedParams = await params
   const locale = resolvedParams?.locale || 'id'
   const t = await getTranslations({ locale })
 
   return {
     title: `${t('applications.page.title')} - ForPublic.id`,
-    description: locale === 'id'
-      ? '📱 Direktori lengkap aplikasi digital GRATIS untuk masyarakat Indonesia. 7+ kategori, tools transparansi, layanan publik. Akses mudah, mobile-friendly.'
-      : '📱 Complete directory of FREE digital applications for Indonesian communities. 7+ categories, transparency tools, public services. Easy access, mobile-friendly.',
-    keywords: locale === 'id'
-      ? 'direktori aplikasi, layanan publik, aplikasi digital Indonesia, tools gratis, aplikasi masyarakat'
-      : 'application directory, public services, digital applications Indonesia, free tools, community applications',
-    openGraph: {
-      title: `${t('applications.page.title')} - ForPublic.id`,
-      description: locale === 'id'
+    description:
+      locale === 'id'
         ? '📱 Direktori lengkap aplikasi digital GRATIS untuk masyarakat Indonesia. 7+ kategori, tools transparansi, layanan publik. Akses mudah, mobile-friendly.'
         : '📱 Complete directory of FREE digital applications for Indonesian communities. 7+ categories, transparency tools, public services. Easy access, mobile-friendly.',
+    keywords:
+      locale === 'id'
+        ? 'direktori aplikasi, layanan publik, aplikasi digital Indonesia, tools gratis, aplikasi masyarakat'
+        : 'application directory, public services, digital applications Indonesia, free tools, community applications',
+    openGraph: {
+      title: `${t('applications.page.title')} - ForPublic.id`,
+      description:
+        locale === 'id'
+          ? '📱 Direktori lengkap aplikasi digital GRATIS untuk masyarakat Indonesia. 7+ kategori, tools transparansi, layanan publik. Akses mudah, mobile-friendly.'
+          : '📱 Complete directory of FREE digital applications for Indonesian communities. 7+ categories, transparency tools, public services. Easy access, mobile-friendly.',
       locale: locale === 'id' ? 'id_ID' : 'en_US',
       type: 'website',
       images: [
@@ -57,9 +63,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
       title: `${t('applications.page.title')} - ForPublic.id`,
-      description: locale === 'id'
-        ? '📱 Direktori lengkap aplikasi digital GRATIS untuk masyarakat Indonesia. 7+ kategori, tools transparansi, layanan publik. Akses mudah, mobile-friendly.'
-        : '📱 Complete directory of FREE digital applications for Indonesian communities. 7+ categories, transparency tools, public services. Easy access, mobile-friendly.',
+      description:
+        locale === 'id'
+          ? '📱 Direktori lengkap aplikasi digital GRATIS untuk masyarakat Indonesia. 7+ kategori, tools transparansi, layanan publik. Akses mudah, mobile-friendly.'
+          : '📱 Complete directory of FREE digital applications for Indonesian communities. 7+ categories, transparency tools, public services. Easy access, mobile-friendly.',
       images: ['/og-image-applications.png'],
     },
     alternates: {
@@ -109,7 +116,10 @@ const getApplications = (locale: string) => [
     icon: Calendar,
     color: 'red',
     link: 'https://holiday.forpublic.id',
-    tags: locale === 'id' ? ['Gratis', 'Web', 'Mobile', 'Dwi Bahasa'] : ['Free', 'Web', 'Mobile', 'Bilingual'],
+    tags:
+      locale === 'id'
+        ? ['Gratis', 'Web', 'Mobile', 'Dwi Bahasa']
+        : ['Free', 'Web', 'Mobile', 'Bilingual'],
   },
   {
     id: 'data-transparency',
@@ -199,7 +209,10 @@ const getApplications = (locale: string) => [
     icon: TrendingUp,
     color: 'teal',
     link: '#',
-    tags: locale === 'id' ? ['Segera Hadir', 'Real-time', 'Analisis'] : ['Coming Soon', 'Real-time', 'Analysis'],
+    tags:
+      locale === 'id'
+        ? ['Segera Hadir', 'Real-time', 'Analisis']
+        : ['Coming Soon', 'Real-time', 'Analysis'],
   },
 ]
 
@@ -299,10 +312,7 @@ function ApplicationCard({ app, t }: { app: Application; t: TranslationFunction 
           )}
         </div>
         <div className="mb-2">
-          <Badge 
-            variant="outline" 
-            className={`text-xs ${colorClasses.text} border-current`}
-          >
+          <Badge variant="outline" className={`text-xs ${colorClasses.text} border-current`}>
             {t(`applications.categories.${app.category}.title`)}
           </Badge>
         </div>
@@ -320,11 +330,7 @@ function ApplicationCard({ app, t }: { app: Application; t: TranslationFunction 
         </div>
 
         {app.status === 'available' ? (
-          <Button
-            variant="default"
-            className={`w-full ${colorClasses.button} text-white`}
-            asChild
-          >
+          <Button variant="default" className={`w-full ${colorClasses.button} text-white`} asChild>
             <a href={app.link} target="_blank" rel="noopener noreferrer">
               {t('applications.page.app.openApp')}
               <ExternalLink className="w-4 h-4 ml-2" />
@@ -351,7 +357,7 @@ function ApplicationsList({
     <div className="space-y-6">
       {applications.map(app => {
         const colorClasses = getColorClasses(app.color)
-        
+
         return (
           <Card
             key={app.id}
@@ -365,45 +371,45 @@ function ApplicationsList({
                   <app.icon className={`w-8 h-8 ${colorClasses.text}`} />
                 </div>
 
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center space-x-2 mb-2">
-                  <h3 className="text-xl font-semibold text-gray-900">{app.title}</h3>
-                  {app.featured && (
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <h3 className="text-xl font-semibold text-gray-900">{app.title}</h3>
+                    {app.featured && (
+                      <Badge
+                        variant="secondary"
+                        className="bg-yellow-50 text-yellow-700 border-yellow-200"
+                      >
+                        <Star className="w-3 h-3 mr-1" />
+                        {t('applications.page.app.featured')}
+                      </Badge>
+                    )}
+                    {app.status === 'coming-soon' && (
+                      <Badge variant="outline" className="text-gray-500">
+                        <Clock className="w-3 h-3 mr-1" />
+                        {t('applications.page.app.comingSoon')}
+                      </Badge>
+                    )}
+                  </div>
+
+                  <div className="mb-2">
                     <Badge
-                      variant="secondary"
-                      className="bg-yellow-50 text-yellow-700 border-yellow-200"
+                      variant="outline"
+                      className={`text-xs ${colorClasses.text} border-current`}
                     >
-                      <Star className="w-3 h-3 mr-1" />
-                      {t('applications.page.app.featured')}
+                      {t(`applications.categories.${app.category}.title`)}
                     </Badge>
-                  )}
-                  {app.status === 'coming-soon' && (
-                    <Badge variant="outline" className="text-gray-500">
-                      <Clock className="w-3 h-3 mr-1" />
-                      {t('applications.page.app.comingSoon')}
-                    </Badge>
-                  )}
-                </div>
+                  </div>
 
-                <div className="mb-2">
-                  <Badge 
-                    variant="outline" 
-                    className={`text-xs ${colorClasses.text} border-current`}
-                  >
-                    {t(`applications.categories.${app.category}.title`)}
-                  </Badge>
-                </div>
+                  <p className="text-gray-600 mb-3 leading-relaxed">{app.description}</p>
 
-                <p className="text-gray-600 mb-3 leading-relaxed">{app.description}</p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {app.tags.map((tag: string) => (
-                    <Badge key={tag} variant="secondary" className="text-xs">
-                      {tag}
-                    </Badge>
-                  ))}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {app.tags.map((tag: string) => (
+                      <Badge key={tag} variant="secondary" className="text-xs">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
                 <div className="flex-shrink-0">
                   {app.status === 'available' ? (
@@ -463,68 +469,48 @@ export default async function ApplicationsPage({ params, searchParams }: Applica
         '@type': 'ListItem' as const,
         position: 1,
         name: t('header.brand'),
-        item: `https://forpublic.id/${locale}`
+        item: `https://forpublic.id/${locale}`,
       },
       {
         '@type': 'ListItem' as const,
         position: 2,
         name: t('applications.page.title'),
-        item: `https://forpublic.id/${locale}/applications`
-      }
-    ]
+        item: `https://forpublic.id/${locale}/applications`,
+      },
+    ],
   }
 
   return (
     <div className="min-h-screen bg-background">
-      <StructuredData 
-        breadcrumb={breadcrumbSchema}
-      />
+      <StructuredData breadcrumb={breadcrumbSchema} />
       <Header locale={locale} />
 
       {/* Page Header */}
-      <section className="py-16 px-4 md:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
-        <div className="container mx-auto max-w-7xl">
-          <div className="flex items-center space-x-4 mb-6">
-            <Button variant="ghost" size="sm" asChild className="text-gray-600">
-              <Link href={`/${locale}`}>
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                {t('applications.page.back')}
-              </Link>
-            </Button>
+      <PageHeader
+        title={t('applications.page.title')}
+        subtitle={t('applications.page.subtitle')}
+        badge={locale === 'id' ? 'Direktori Aplikasi' : 'Application Directory'}
+        showBackButton={true}
+        backUrl={`/${locale}`}
+        backText={t('applications.page.back')}
+        locale={locale}
+      >
+        {/* Stats */}
+        <div className="flex flex-wrap justify-center gap-8">
+          <div className="text-center">
+            <div className="text-3xl font-bold text-green-600">{availableCount}</div>
+            <div className="text-sm text-gray-600">{t('applications.page.stats.available')}</div>
           </div>
-
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-              {t('applications.page.title')}
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              {t('applications.page.subtitle')}
-            </p>
-
-            {/* Stats */}
-            <div className="flex flex-wrap justify-center gap-8 mb-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-600">{availableCount}</div>
-                <div className="text-sm text-gray-600">
-                  {t('applications.page.stats.available')}
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">{comingSoonCount}</div>
-                <div className="text-sm text-gray-600">
-                  {t('applications.page.stats.comingSoon')}
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-red-600">6</div>
-                <div className="text-sm text-gray-600">
-                  {t('applications.page.stats.categories')}
-                </div>
-              </div>
-            </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-blue-600">{comingSoonCount}</div>
+            <div className="text-sm text-gray-600">{t('applications.page.stats.comingSoon')}</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-red-600">6</div>
+            <div className="text-sm text-gray-600">{t('applications.page.stats.categories')}</div>
           </div>
         </div>
-      </section>
+      </PageHeader>
 
       {/* Filters and Search */}
       <section className="py-8 px-4 md:px-6 lg:px-8 bg-white border-b">
@@ -693,9 +679,27 @@ export default async function ApplicationsPage({ params, searchParams }: Applica
             {t('applications.page.cta.title')}
           </h2>
           <p className="text-xl text-gray-600 mb-8">{t('applications.page.cta.description')}</p>
-          <Button size="lg" className="text-lg px-8 bg-red-600 hover:bg-red-700 text-white">
-            {t('applications.page.cta.button')}
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              className="text-lg px-8 bg-red-600 hover:bg-red-700 text-white"
+              asChild
+            >
+              <a href="https://studio.forpublic.id" target="_blank" rel="noopener noreferrer">
+                {t('applications.page.cta.collaborate')}
+              </a>
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="text-lg px-8 border-red-200 text-red-700 hover:bg-red-50 hover:border-red-300"
+              asChild
+            >
+              <a href="mailto:forpublic.indonesia@gmail.com">
+                {t('applications.page.cta.contact')}
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 

@@ -91,25 +91,23 @@ export function StructuredData({ organization, website, breadcrumb, faq }: Struc
         name: 'ForPublic.id',
         url: 'https://forpublic.id',
         logo: 'https://forpublic.id/logo.svg',
-        description: 'Platform digital yang menyediakan berbagai aplikasi gratis untuk membantu masyarakat mengakses informasi dan layanan publik dengan mudah',
+        description:
+          'Platform digital yang menyediakan berbagai aplikasi gratis untuk membantu masyarakat mengakses informasi dan layanan publik dengan mudah',
         foundingDate: '2024',
         contactPoint: [
           {
             '@type': 'ContactPoint',
             contactType: 'customer service',
-            url: 'https://forpublic.id/#contact'
-          }
+            url: 'https://forpublic.id/#contact',
+          },
         ],
-        sameAs: [
-          'https://twitter.com/forpublic_id',
-          'https://github.com/forpublic-id'
-        ],
+        sameAs: ['https://x.com/forpublicid', 'https://github.com/forpublic-id'],
         address: {
           '@type': 'PostalAddress',
           addressCountry: 'ID',
-          addressRegion: 'Indonesia'
+          addressRegion: 'Indonesia',
         },
-        ...organization
+        ...organization,
       }
 
       const orgScript = document.createElement('script')
@@ -127,17 +125,18 @@ export function StructuredData({ organization, website, breadcrumb, faq }: Struc
         '@type': 'WebSite',
         name: 'ForPublic.id',
         url: 'https://forpublic.id',
-        description: 'Platform digital yang menyediakan berbagai aplikasi gratis untuk membantu masyarakat mengakses informasi dan layanan publik dengan mudah',
+        description:
+          'Platform digital yang menyediakan berbagai aplikasi gratis untuk membantu masyarakat mengakses informasi dan layanan publik dengan mudah',
         inLanguage: ['id-ID', 'en-US'],
         potentialAction: {
           '@type': 'SearchAction',
           target: {
             '@type': 'EntryPoint',
-            urlTemplate: 'https://forpublic.id/applications?search={search_term_string}'
+            urlTemplate: 'https://forpublic.id/applications?search={search_term_string}',
           },
-          'query-input': 'required name=search_term_string'
+          'query-input': 'required name=search_term_string',
         },
-        ...website
+        ...website,
       }
 
       const websiteScript = document.createElement('script')
@@ -153,7 +152,7 @@ export function StructuredData({ organization, website, breadcrumb, faq }: Struc
       const breadcrumbSchema: BreadcrumbSchema = {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
-        ...breadcrumb
+        ...breadcrumb,
       }
 
       const breadcrumbScript = document.createElement('script')
@@ -169,7 +168,7 @@ export function StructuredData({ organization, website, breadcrumb, faq }: Struc
       const faqSchema: FAQSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
-        ...faq
+        ...faq,
       }
 
       const faqScript = document.createElement('script')
@@ -202,8 +201,8 @@ export function generateBreadcrumbSchema(
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: item.url
-    }))
+      item: item.url,
+    })),
   }
 }
 
@@ -217,8 +216,8 @@ export function generateFAQSchema(
       name: faq.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: faq.answer
-      }
-    }))
+        text: faq.answer,
+      },
+    })),
   }
 }

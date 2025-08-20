@@ -3,15 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "bun --bun next dev --turbopack",
+    "dev": "bun --bun next dev",
+    "dev:turbo": "bun --bun next dev --turbopack",
+    "dev:stable": "node scripts/dev-stable.js",
     "build": "bun --bun next build",
     "start": "bun --bun next start",
     "lint": "bun --bun next lint",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "clean": "rm -rf .next && rm -rf node_modules/.cache",
+    "dev:clean": "bun run clean && bun run dev"
   },
   "dependencies": {
-    "@next/third-parties": "^15.4.7",
+    "@next/third-parties": "^15.5.0",
     "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

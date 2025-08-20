@@ -115,10 +115,76 @@
   },
   "about": {
     "title": "About ForPublic.id",
-    "vision": "Our Vision:",
-    "visionText": "Empowering communities through accessible and beneficial technology that bridges the gap between citizens and public services.",
-    "content1": "We are committed to transparency, public service, and creating digital solutions that truly serve the public interest. Every application we develop is designed with community needs as the top priority, ensuring that technology becomes a tool for empowerment, not exclusion.",
-    "content2": "Our team believes that access to public information and services should be a right, not a privilege. Through ForPublic.id, we work to realize this vision for communities throughout Indonesia and beyond."
+    "subtitle": "We build digital bridges between communities and public services through accessible, transparent, and beneficial technology for everyone.",
+    "vision": {
+      "title": "Our Vision",
+      "description": "Creating a digital ecosystem that empowers every citizen to access public information and services easily, transparently, and equitably."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "Developing digital platforms and applications that bridge the gap between government and society, promote transparency, and improve the quality of public services."
+    },
+    "values": {
+      "title": "Our Values",
+      "items": [
+        {
+          "title": "Transparency",
+          "description": "We are committed to information openness and accountability in every service we provide.",
+          "icon": "transparency"
+        },
+        {
+          "title": "Inclusivity",
+          "description": "Technology we build can be accessed by all levels of society without discrimination.",
+          "icon": "community"
+        },
+        {
+          "title": "Innovation",
+          "description": "We continue to innovate to provide the best solutions according to evolving community needs.",
+          "icon": "innovation"
+        },
+        {
+          "title": "Care",
+          "description": "Every feature we develop is based on empathy and care for user needs.",
+          "icon": "accessibility"
+        },
+        {
+          "title": "Positive Impact",
+          "description": "We measure success from the positive impact directly felt by the community.",
+          "icon": "impact"
+        },
+        {
+          "title": "Trust",
+          "description": "Building trust through reliability, security, and consistency in every service.",
+          "icon": "trust"
+        }
+      ]
+    },
+    "stats": {
+      "title": "Our Impact",
+      "items": [
+        {
+          "value": "100%",
+          "label": "Free",
+          "description": "All applications can be accessed at no cost"
+        },
+        {
+          "value": "7+",
+          "label": "Categories",
+          "description": "Public service sectors we serve"
+        },
+        {
+          "value": "24/7",
+          "label": "Available",
+          "description": "Access anytime, anywhere for all users"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Let's Collaborate for Collective Progress",
+      "description": "Join us in our mission to create better access to public services. Contact us or visit our collaboration studio.",
+      "primary": "Let's Collaborate",
+      "secondary": "Contact Us"
+    }
   },
   "faq": {
     "title": "Frequently Asked Questions",
@@ -163,7 +229,7 @@
       "termsOfService": "Terms of Service"
     },
     "connect": "Connect",
-    "email": "Email: hello@forpublic.id",
+    "email": "Email: forpublic.indonesia@gmail.com",
     "copyright": "© 2024 ForPublic.id. All rights reserved. Made with ❤️ for public good."
   },
   "applications": {
@@ -198,9 +264,10 @@
         "soon": "Soon"
       },
       "cta": {
-        "title": "Have an idea for a new application?",
-        "description": "We are always open to suggestions and feedback from the community to develop more useful applications",
-        "button": "Send Suggestion"
+        "title": "Let's Collaborate for Collective Progress",
+        "description": "Join us in our mission to create better access to public services. Contact us or visit our collaboration studio.",
+        "contact": "Contact Us",
+        "collaborate": "Let's Collaborate"
       }
     },
     "title": "Application Categories",
