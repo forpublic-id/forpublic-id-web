@@ -23,22 +23,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.9,
       },
       {
-        url: `${baseUrl}/${locale}#applications`,
+        url: `${baseUrl}/${locale}/contact`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
         priority: 0.8,
       },
       {
-        url: `${baseUrl}/${locale}#features`,
+        url: `${baseUrl}/${locale}/faq`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
       },
       {
-        url: `${baseUrl}/${locale}#about`,
+        url: `${baseUrl}/${locale}#applications`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
         priority: 0.6,
+      },
+      {
+        url: `${baseUrl}/${locale}#features`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.5,
+      },
+      {
+        url: `${baseUrl}/${locale}#about`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.4,
       },
     ]
 
