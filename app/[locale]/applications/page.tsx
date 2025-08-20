@@ -18,6 +18,9 @@ import {
   Grid3X3,
   List,
   Calendar,
+  ChartNoAxesCombined,
+  DollarSign,
+  MapPin,
 } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
@@ -213,6 +216,57 @@ const getApplications = (locale: string) => [
       locale === 'id'
         ? ['Segera Hadir', 'Real-time', 'Analisis']
         : ['Coming Soon', 'Real-time', 'Analysis'],
+  },
+  {
+    id: 'budget-transparency',
+    category: 'openData',
+    title: locale === 'id' ? 'Transparansi Anggaran Pemerintah' : 'Government Budget Transparency',
+    description:
+      locale === 'id'
+        ? 'Akses mudah ke data APBN dan APBD dengan visualisasi interaktif dan tracking realisasi anggaran.'
+        : 'Easy access to national and regional budget data with interactive visualizations and realization tracking.',
+    status: 'coming-soon' as const,
+    featured: true,
+    icon: ChartNoAxesCombined,
+    color: 'blue',
+    link: '#',
+    tags: locale === 'id' ? ['Segera Hadir', 'Web', 'Mobile'] : ['Coming Soon', 'Web', 'Mobile'],
+  },
+  {
+    id: 'salary-database',
+    category: 'openData',
+    title:
+      locale === 'id'
+        ? 'Database Gaji & Tunjangan Pejabat Publik'
+        : 'Public Official Salary & Benefits Database',
+    description:
+      locale === 'id'
+        ? 'Database lengkap gaji PNS, tunjangan kinerja, dan kompensasi pejabat publik dengan kalkulator interaktif.'
+        : 'Complete database of civil servant salaries, performance allowances, and public official compensation with interactive calculators.',
+    status: 'coming-soon' as const,
+    featured: true,
+    icon: DollarSign,
+    color: 'green',
+    link: '#',
+    tags: locale === 'id' ? ['Segera Hadir', 'Web', 'Mobile'] : ['Coming Soon', 'Web', 'Mobile'],
+  },
+  {
+    id: 'development-planning',
+    category: 'developmentInfo',
+    title:
+      locale === 'id'
+        ? 'Rencana Pembangunan & Tata Ruang'
+        : 'Development Planning & Spatial Planning',
+    description:
+      locale === 'id'
+        ? 'Akses mudah ke RTRW, master plan pembangunan, dan peta zonasi dengan fitur partisipasi publik.'
+        : 'Easy access to spatial planning, development master plans, and zoning maps with public participation features.',
+    status: 'coming-soon' as const,
+    featured: true,
+    icon: MapPin,
+    color: 'orange',
+    link: '#',
+    tags: locale === 'id' ? ['Segera Hadir', 'Web', 'Mobile'] : ['Coming Soon', 'Web', 'Mobile'],
   },
 ]
 

@@ -64,6 +64,24 @@ export default async function Footer({ locale, variant = 'full', className = '' 
             <h4 className="font-semibold mb-4">{t('footer.sections.applications')}</h4>
             <ul className="space-y-2 text-sm text-gray-300">
               <li>
+                <a
+                  href="https://holiday.forpublic.id"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  {t('footer.links.holidayCalendar')}
+                </a>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/applications`}
+                  className="hover:text-white transition-colors"
+                >
+                  {t('footer.links.allApplications')}
+                </Link>
+              </li>
+              <li>
                 <a href="#" className="hover:text-white transition-colors">
                   {t('footer.links.openData')}
                 </a>
@@ -76,11 +94,6 @@ export default async function Footer({ locale, variant = 'full', className = '' 
               <li>
                 <a href="#" className="hover:text-white transition-colors">
                   {t('footer.links.publicServices')}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  {t('footer.links.education')}
                 </a>
               </li>
             </ul>

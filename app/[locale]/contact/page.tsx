@@ -4,16 +4,7 @@ import { Input } from '@/components/ui'
 import { Header } from '@/components/layout'
 import { Footer } from '@/components/layout'
 import { StructuredData, PageHeader } from '@/components/common'
-import {
-  Mail,
-  MapPin,
-  Clock,
-  Send,
-  Github,
-  Twitter,
-  MessageSquare,
-  Users,
-} from 'lucide-react'
+import { Mail, MapPin, Clock, Send, Github, Twitter, MessageSquare, Users } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -172,7 +163,10 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                 <form className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         {t('contact.form.fields.name.label')}
                       </label>
                       <Input
@@ -185,7 +179,10 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         {t('contact.form.fields.email.label')}
                       </label>
                       <Input
@@ -200,7 +197,10 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label
+                      htmlFor="subject"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
                       {t('contact.form.fields.subject.label')}
                     </label>
                     <select
@@ -210,15 +210,26 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                       className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
                     >
                       <option value="">{t('contact.form.fields.subject.placeholder')}</option>
-                      <option value="general">{t('contact.form.fields.subject.options.general')}</option>
-                      <option value="technical">{t('contact.form.fields.subject.options.technical')}</option>
-                      <option value="partnership">{t('contact.form.fields.subject.options.partnership')}</option>
-                      <option value="feedback">{t('contact.form.fields.subject.options.feedback')}</option>
+                      <option value="general">
+                        {t('contact.form.fields.subject.options.general')}
+                      </option>
+                      <option value="technical">
+                        {t('contact.form.fields.subject.options.technical')}
+                      </option>
+                      <option value="partnership">
+                        {t('contact.form.fields.subject.options.partnership')}
+                      </option>
+                      <option value="feedback">
+                        {t('contact.form.fields.subject.options.feedback')}
+                      </option>
                     </select>
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
                       {t('contact.form.fields.message.label')}
                     </label>
                     <textarea
@@ -255,11 +266,15 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
-                    <h4 className="font-medium text-gray-900">{t('contact.info.office.virtual.title')}</h4>
+                    <h4 className="font-medium text-gray-900">
+                      {t('contact.info.office.virtual.title')}
+                    </h4>
                     <p className="text-gray-600">{t('contact.info.office.virtual.description')}</p>
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">{t('contact.info.office.coverage.title')}</h4>
+                    <h4 className="font-medium text-gray-900">
+                      {t('contact.info.office.coverage.title')}
+                    </h4>
                     <p className="text-gray-600">{t('contact.info.office.coverage.description')}</p>
                   </div>
                 </CardContent>
@@ -274,7 +289,11 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button variant="outline" className="border-red-300 text-red-700 hover:bg-red-100" asChild>
+                  <Button
+                    variant="outline"
+                    className="border-red-300 text-red-700 hover:bg-red-100"
+                    asChild
+                  >
                     <Link href={`/${locale}/faq`}>{t('contact.faq.button')}</Link>
                   </Button>
                 </CardContent>
