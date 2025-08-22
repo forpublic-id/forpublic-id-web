@@ -225,12 +225,12 @@ const getApplications = (locale: string) => [
       locale === 'id'
         ? 'Akses mudah ke data APBN dan APBD dengan visualisasi interaktif dan tracking realisasi anggaran.'
         : 'Easy access to national and regional budget data with interactive visualizations and realization tracking.',
-    status: 'coming-soon' as const,
+    status: 'available' as const,
     featured: true,
     icon: ChartNoAxesCombined,
     color: 'blue',
-    link: '#',
-    tags: locale === 'id' ? ['Segera Hadir', 'Web', 'Mobile'] : ['Coming Soon', 'Web', 'Mobile'],
+    link: 'https://budget.forpublic.id',
+    tags: locale === 'id' ? ['Tersedia', 'Web', 'Mobile'] : ['Available', 'Web', 'Mobile'],
   },
   {
     id: 'salary-database',
@@ -243,12 +243,12 @@ const getApplications = (locale: string) => [
       locale === 'id'
         ? 'Database lengkap gaji PNS, tunjangan kinerja, dan kompensasi pejabat publik dengan kalkulator interaktif.'
         : 'Complete database of civil servant salaries, performance allowances, and public official compensation with interactive calculators.',
-    status: 'coming-soon' as const,
+    status: 'available' as const,
     featured: true,
     icon: DollarSign,
     color: 'green',
-    link: '#',
-    tags: locale === 'id' ? ['Segera Hadir', 'Web', 'Mobile'] : ['Coming Soon', 'Web', 'Mobile'],
+    link: 'https://salary.forpublic.id',
+    tags: locale === 'id' ? ['Tersedia', 'Web', 'Mobile'] : ['Available', 'Web', 'Mobile'],
   },
   {
     id: 'development-planning',
@@ -261,12 +261,12 @@ const getApplications = (locale: string) => [
       locale === 'id'
         ? 'Akses mudah ke RTRW, master plan pembangunan, dan peta zonasi dengan fitur partisipasi publik.'
         : 'Easy access to spatial planning, development master plans, and zoning maps with public participation features.',
-    status: 'coming-soon' as const,
+    status: 'available' as const,
     featured: true,
     icon: MapPin,
     color: 'orange',
-    link: '#',
-    tags: locale === 'id' ? ['Segera Hadir', 'Web', 'Mobile'] : ['Coming Soon', 'Web', 'Mobile'],
+    link: 'https://plan.forpublic.id',
+    tags: locale === 'id' ? ['Tersedia', 'Web', 'Mobile'] : ['Available', 'Web', 'Mobile'],
   },
 ]
 
@@ -340,7 +340,7 @@ function ApplicationCard({ app, t }: { app: Application; t: TranslationFunction 
 
   return (
     <Card
-      className={`hover:shadow-lg transition-all duration-300 border-l-4 ${colorClasses.border} ${app.status === 'available' ? 'cursor-pointer' : 'opacity-75'}`}
+      className={`hover:shadow-lg transition-all duration-300 border-l-4 ${colorClasses.border} ${app.status === 'available' ? 'cursor-pointer' : 'opacity-75'} relative flex flex-col h-full`}
     >
       {app.featured && (
         <div className="absolute top-4 right-4">
@@ -374,24 +374,27 @@ function ApplicationCard({ app, t }: { app: Application; t: TranslationFunction 
         <CardDescription className="text-sm leading-relaxed">{app.description}</CardDescription>
       </CardHeader>
 
-      <CardContent>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {app.tags.map((tag: string) => (
-            <Badge key={tag} variant="secondary" className="text-xs">
-              {tag}
-            </Badge>
-          ))}
+      <CardContent className="flex flex-col h-full">
+        <div className="flex-grow">
+          <div className="flex flex-wrap gap-2 mb-6">
+            {app.tags.map((tag: string) => (
+              <Badge key={tag} variant="secondary" className="text-xs">
+                {tag}
+              </Badge>
+            ))}
+          </div>
         </div>
 
         {app.status === 'available' ? (
           <Button variant="default" className={`w-full ${colorClasses.button} text-white`} asChild>
             <a href={app.link} target="_blank" rel="noopener noreferrer">
+              <ExternalLink className="w-4 h-4 mr-2" />
               {t('applications.page.app.openApp')}
-              <ExternalLink className="w-4 h-4 ml-2" />
             </a>
           </Button>
         ) : (
           <Button variant="secondary" className="w-full" disabled>
+            <Clock className="w-4 h-4 mr-2" />
             {t('applications.page.app.comingSoon')}
           </Button>
         )}
