@@ -36,7 +36,7 @@ export default function ApplicationCard({ app, t }: ApplicationCardProps) {
 
   return (
     <Card
-      className={`hover:shadow-lg transition-all duration-300 border-l-4 border-l-${app.color}-500 ${app.status === 'available' ? 'cursor-pointer' : 'opacity-75'} relative`}
+      className={`hover:shadow-lg transition-all duration-300 border-l-4 border-l-${app.color}-500 ${app.status === 'available' ? 'cursor-pointer' : 'opacity-75'} relative flex flex-col h-full`}
     >
       {app.featured && (
         <div className="absolute top-4 right-4">
@@ -65,29 +65,34 @@ export default function ApplicationCard({ app, t }: ApplicationCardProps) {
         <CardDescription className="text-sm leading-relaxed">{app.description}</CardDescription>
       </CardHeader>
 
-      <CardContent>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {app.tags.map((tag: string) => (
-            <Badge key={tag} variant="secondary" className="text-xs">
-              {tag}
-            </Badge>
-          ))}
+      <CardContent className="flex flex-col h-full">
+        <div className="flex-grow">
+          <div className="flex flex-wrap gap-2 mb-6">
+            {app.tags.map((tag: string) => (
+              <Badge key={tag} variant="secondary" className="text-xs">
+                {tag}
+              </Badge>
+            ))}
+          </div>
         </div>
 
-        <Button
-          variant={app.status === 'available' ? 'default' : 'secondary'}
-          className={`w-full ${app.status === 'available' ? `bg-${app.color}-600 hover:bg-${app.color}-700` : ''}`}
-          disabled={app.status !== 'available'}
-        >
-          {app.status === 'available' ? (
-            <>
+        {app.status === 'available' && app.link ? (
+          <Button
+            variant="default"
+            className={`w-full bg-${app.color}-600 hover:bg-${app.color}-700 text-white`}
+            asChild
+          >
+            <a href={app.link} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4 mr-2" />
               {t('applications.page.app.launch')}
-            </>
-          ) : (
-            t('applications.page.app.comingSoon')
-          )}
-        </Button>
+            </a>
+          </Button>
+        ) : (
+          <Button variant="secondary" className="w-full" disabled>
+            <Clock className="w-4 h-4 mr-2" />
+            {t('applications.page.app.comingSoon')}
+          </Button>
+        )}
       </CardContent>
     </Card>
   )
