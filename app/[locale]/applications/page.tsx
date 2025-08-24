@@ -546,32 +546,32 @@ export default async function ApplicationsPage({ params, searchParams }: Applica
       <PageHeader
         title={t('applications.page.title')}
         subtitle={t('applications.page.subtitle')}
-        badge={locale === 'id' ? 'Direktori Aplikasi' : 'Application Directory'}
         showBackButton={true}
         backUrl={`/${locale}`}
         backText={t('notFound.backToHome')}
         locale={locale}
-      >
-        {/* Stats */}
-        <div className="flex flex-wrap justify-center gap-8">
-          <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{availableCount}</div>
-            <div className="text-sm text-gray-600">{t('applications.page.stats.available')}</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{comingSoonCount}</div>
-            <div className="text-sm text-gray-600">{t('applications.page.stats.comingSoon')}</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-red-600">6</div>
-            <div className="text-sm text-gray-600">{t('applications.page.stats.categories')}</div>
-          </div>
-        </div>
-      </PageHeader>
+      />
 
-      {/* Filters and Search */}
+      {/* Stats and Filters */}
       <section className="py-8 px-4 md:px-6 lg:px-8 bg-white border-b">
         <div className="container mx-auto max-w-7xl">
+          {/* Stats */}
+          <div className="flex flex-wrap justify-center gap-8 mb-8 pb-8 border-b">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-green-600">{availableCount}</div>
+              <div className="text-sm text-gray-600">{t('applications.page.stats.available')}</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600">{comingSoonCount}</div>
+              <div className="text-sm text-gray-600">{t('applications.page.stats.comingSoon')}</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-red-600">6</div>
+              <div className="text-sm text-gray-600">{t('applications.page.stats.categories')}</div>
+            </div>
+          </div>
+
+          {/* Filters */}
           <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
             {/* Search */}
             <div className="flex-1 max-w-md">

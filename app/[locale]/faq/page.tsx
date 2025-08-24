@@ -166,8 +166,8 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
                   ? 'Bergabung dengan komunitas pengguna'
                   : 'Join our user community'}
               </p>
-              <span className="text-gray-500 text-sm">
-                {locale === 'id' ? 'Segera Hadir' : 'Coming Soon'}
+              <span className="text-green-600 text-sm font-medium">
+                {locale === 'id' ? 'Tersedia' : 'Available'}
               </span>
             </div>
 
@@ -183,8 +183,8 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
                   ? 'Chat langsung dengan tim support'
                   : 'Chat directly with support team'}
               </p>
-              <span className="text-gray-500 text-sm">
-                {locale === 'id' ? 'Segera Hadir' : 'Coming Soon'}
+              <span className="text-green-600 text-sm font-medium">
+                {locale === 'id' ? 'Tersedia' : 'Available'}
               </span>
             </div>
           </div>
