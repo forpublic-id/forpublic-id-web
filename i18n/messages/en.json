@@ -84,27 +84,27 @@
       }
     }
   },
-  "comingSoon": {
-    "title": "Coming Soon",
-    "description": "Exciting new applications are in development to serve the community better",
+  "newApplications": {
+    "title": "Latest Applications",
+    "description": "New digital solutions now available to serve the community better",
     "apps": {
       "budget": {
         "title": "Government Budget Transparency",
         "description": "Government Budget Transparency",
         "content": "Easy access to national and regional budget data with interactive visualizations and realization tracking.",
-        "status": "Coming Soon"
+        "status": "Available"
       },
       "salary": {
         "title": "Public Official Salary & Benefits Database",
         "description": "Public Official Salary & Benefits Database",
         "content": "Complete database of civil servant salaries, performance allowances, and public official compensation with interactive calculators.",
-        "status": "Coming Soon"
+        "status": "Available"
       },
       "plan": {
         "title": "Development Planning & Spatial Planning",
         "description": "Development Planning & Spatial Planning",
         "content": "Easy access to spatial planning, development master plans, and zoning maps with public participation features.",
-        "status": "Coming Soon"
+        "status": "Available"
       }
     },
     "newsletter": {
@@ -384,6 +384,26 @@
         "description": "Accessible economic data and analysis",
         "content": "Market data, economic indicators, and financial literacy resources for the community."
       }
+    }
+  },
+  "featuresPage": {
+    "page": {
+      "title": "Key Features",
+      "description": "Discover ForPublic.id key features: free applications, trusted data, mobile-friendly, guaranteed security, and 24/7 access for public transparency."
+    },
+    "hero": {
+      "title": "Platform Features for Public Transparency",
+      "description": "Discover why thousands of users trust ForPublic.id as a reliable, easily accessible, and always up-to-date source of public information."
+    }
+  },
+  "aboutPage": {
+    "page": {
+      "title": "About Us",
+      "description": "Learn about ForPublic.id vision, mission, and values in supporting Indonesian public transparency. Our team, history, and commitment to society."
+    },
+    "hero": {
+      "title": "Building the Future of Public Transparency",
+      "description": "ForPublic.id serves as a bridge between government and society, providing easy access to transparent and accurate public information for everyone."
     }
   },
   "notFound": {

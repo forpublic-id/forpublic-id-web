@@ -35,22 +35,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
       },
       {
-        url: `${baseUrl}/${locale}#applications`,
+        url: `${baseUrl}/${locale}/features`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
         priority: 0.6,
       },
       {
-        url: `${baseUrl}/${locale}#features`,
+        url: `${baseUrl}/${locale}/about`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
         priority: 0.5,
-      },
-      {
-        url: `${baseUrl}/${locale}#about`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.4,
       },
     ]
 
