@@ -46,8 +46,9 @@ export default function Hero({
             variant="outline"
             size="lg"
             className="border-gray-300 text-gray-700 hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-200"
+            asChild
           >
-            {ctaSecondary}
+            <a href={`/${locale}#about`}>{ctaSecondary}</a>
           </Button>
         </div>
       </div>

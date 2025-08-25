@@ -70,7 +70,29 @@ export default async function Footer({ locale, variant = 'full', className = '' 
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
-                  {t('footer.links.holidayCalendar')}
+                  {locale === 'id' ? 'Kalender Hari Libur' : 'Holiday Calendar'}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://budget.forpublic.id"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  {locale === 'id' ? 'Transparansi Anggaran' : 'Budget Transparency'}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://salary.forpublic.id"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  {locale === 'id'
+                    ? 'Transparansi Gaji & Upah Indonesia'
+                    : 'Indonesia Salary & Wage Transparency'}
                 </a>
               </li>
               <li>
@@ -80,21 +102,6 @@ export default async function Footer({ locale, variant = 'full', className = '' 
                 >
                   {t('footer.links.allApplications')}
                 </Link>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  {t('footer.links.openData')}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  {t('footer.links.developmentInfo')}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  {t('footer.links.publicServices')}
-                </a>
               </li>
             </ul>
           </div>
