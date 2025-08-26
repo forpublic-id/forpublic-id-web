@@ -136,20 +136,24 @@ developments/               # Architecture documentation
 
 ### Brand Identity & Design System
 
-- **Primary brand color**: Red (#dc2626, #b91c1c for hover states)
+- **Primary brand color**: Red (#dc2626, #b91c1c for hover states), Neutral for muted elements
 - **Logo**: "FP" in white text on red background with SVG support
 - **Typography**: Geist Sans for headings, system fonts for body
-- **Spacing**: Consistent scale using design tokens
-- **Accessibility**: WCAG compliant with proper semantic HTML
-- **Professional design**: Focused on public service and transparency
+- **Header**: Glassmorphism effect with backdrop-blur for modern appearance
+- **Card Design**: Microsoft-style layout with proper icon-title alignment
+- **Spacing**: Consistent scale using design tokens with compact layouts
+- **Accessibility**: WCAG compliant with proper semantic HTML and line-clamp utilities
+- **Status Indicators**: Visual distinction for available vs coming-soon applications
 
 ### Data & Content Management
 
-- **Static Content**: Homepage showcases six main application categories
-- **Internationalization**: Complete Indonesian/English support
-- **SEO Optimized**: Dynamic sitemap, robots.txt, proper meta tags
-- **Applications Directory**: Dedicated page for browsing public tools
-- **Search & Filter**: Advanced filtering by category and search terms
+- **Live Applications**: 4 available apps (Budget, Salary, Holiday, Planning) + 6 coming soon
+- **Smart Sorting**: Available applications displayed first, then coming soon
+- **Internationalization**: Complete Indonesian/English support with server-side translations
+- **SEO Optimized**: Dynamic sitemap, robots.txt, proper meta tags (includes plan.forpublic.id)
+- **Applications Directory**: Modern card-based interface with Microsoft-style layout
+- **Advanced Filtering**: Search and category filtering with responsive grid (1-4 columns)
+- **Card Interface**: Glassmorphism header, compact cards, clickable interface
 
 ### Development Workflow & Quality
 
@@ -203,6 +207,25 @@ developments/               # Architecture documentation
 ### ✅ RESTRUCTURED ARCHITECTURE COMPLETED
 
 The restructured architecture proposal has been **FULLY IMPLEMENTED** (January 2025). All 3 phases completed successfully:
+
+### ✅ LATEST UI/UX IMPROVEMENTS (January 2025)
+
+#### Enhanced Applications Directory
+- ✅ **Microsoft-style Cards**: Clean horizontal layout with icon-title alignment
+- ✅ **Smart Sorting**: Available apps first, then coming soon with visual distinction
+- ✅ **Compact Design**: Optimized card density (60-100% more apps per viewport)
+- ✅ **Responsive Grid**: 1-4 columns based on screen size for optimal viewing
+- ✅ **Glassmorphism Header**: Modern backdrop-blur effect for professional appearance
+- ✅ **Clickable Cards**: Entire card area clickable, removed separate buttons
+- ✅ **Status Indicators**: Clear distinction between available and coming-soon apps
+
+#### Application Portfolio Expansion
+- ✅ **Budget Transparency**: Full APBN/APBD data with interactive visualizations
+- ✅ **Salary Database**: Complete PNS salary and benefits tracking
+- ✅ **Holiday Calendar**: Interactive Indonesian holiday calendar
+- ✅ **Development Planning**: RTRW and spatial planning tools
+- ✅ **Footer Integration**: All 4 applications properly listed in footer
+- ✅ **Sitemap Updates**: Complete sitemap including all application URLs
 
 #### Phase 1: Foundation ✅ COMPLETED
 
@@ -326,6 +349,30 @@ lib/                          # ✅ FULLY IMPLEMENTED
 - **Reusability**: Zero code duplication across the codebase
 - **Type Safety**: Comprehensive TypeScript interfaces for all props
 
+### Latest Architecture Improvements (January 2025)
+
+#### Application Card Architecture
+```tsx
+// Modern card layout structure
+<Card className="clickable-card">
+  {/* Row 1: Icon + Title (horizontal alignment) */}
+  <div className="flex items-center gap-4">
+    <Icon /> <Title />
+  </div>
+  {/* Row 2: Description (full width) */}
+  <Description />
+  {/* Row 3: Badges (category + status only) */}
+  <Badges />
+</Card>
+```
+
+#### Key Technical Implementations
+- **Line-clamp utilities**: CSS utilities for consistent text truncation
+- **Flex layouts**: Improved alignment with `items-center` for perfect icon positioning
+- **Smart grid**: `grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4`
+- **Status-based styling**: Different card appearance for available vs coming-soon
+- **Simplified badges**: Only essential information (category + status)
+
 ### Known Development Issues
 
 #### Next.js Development Build Manifest Error
@@ -337,3 +384,12 @@ lib/                          # ✅ FULLY IMPLEMENTED
 - Clear `.next` directory: `rm -rf .next`
 - Restart development server: `bun run dev`
 - Use `bun run build` to verify production builds work correctly
+
+#### Application Card Layout Guidelines
+
+**Current Optimized Structure**:
+- Row 1: Icon and title in same horizontal line (`flex items-center`)
+- Row 2: Description with full width for readability
+- Row 3: Essential badges only (category + featured/coming-soon status)
+- No separate buttons: entire card is clickable for better UX
+- Consistent spacing with `mb-3`, `mb-4` for visual hierarchy

@@ -96,6 +96,18 @@ export default async function Footer({ locale, variant = 'full', className = '' 
                 </a>
               </li>
               <li>
+                <a
+                  href="https://plan.forpublic.id"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  {locale === 'id'
+                    ? 'Rencana Pembangunan & Tata Ruang'
+                    : 'Development Planning & Spatial Planning'}
+                </a>
+              </li>
+              <li>
                 <Link
                   href={`/${locale}/applications`}
                   className="hover:text-white transition-colors"

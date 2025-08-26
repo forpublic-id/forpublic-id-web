@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui'
+import { Card, CardContent } from '@/components/ui'
 import { Badge } from '@/components/ui'
 import { Header } from '@/components/layout'
 import { Footer } from '@/components/layout'
@@ -305,10 +305,10 @@ const getColorClasses = (color: string) => {
       }
     case 'orange':
       return {
-        border: 'border-l-orange-500',
-        bg: 'bg-orange-100',
-        text: 'text-orange-600',
-        button: 'bg-orange-600 hover:bg-orange-700',
+        border: 'border-l-neutral-500',
+        bg: 'bg-neutral-100',
+        text: 'text-neutral-600',
+        button: 'bg-neutral-600 hover:bg-neutral-700',
       }
     case 'red':
       return {
@@ -337,69 +337,66 @@ const getColorClasses = (color: string) => {
 function ApplicationCard({ app, t }: { app: Application; t: TranslationFunction }) {
   const Icon = app.icon
   const colorClasses = getColorClasses(app.color)
+  const isAvailable = app.status === 'available'
+
+  const CardWrapper = isAvailable ? 'a' : 'div'
+  const cardProps = isAvailable 
+    ? { href: app.link, target: '_blank', rel: 'noopener noreferrer' }
+    : {}
 
   return (
-    <Card
-      className={`hover:shadow-lg transition-all duration-300 border-l-4 ${colorClasses.border} ${app.status === 'available' ? 'cursor-pointer' : 'opacity-75'} relative flex flex-col h-full`}
-    >
-      {app.featured && (
-        <div className="absolute top-4 right-4">
-          <Badge variant="secondary" className="bg-yellow-50 text-yellow-700 border-yellow-200">
-            <Star className="w-3 h-3 mr-1" />
-            {t('applications.page.app.featured')}
-          </Badge>
-        </div>
-      )}
-
-      <CardHeader>
-        <div className="flex items-start justify-between">
-          <div
-            className={`w-12 h-12 ${colorClasses.bg} rounded-lg flex items-center justify-center mb-4`}
-          >
-            <Icon className={`w-6 h-6 ${colorClasses.text}`} />
+    <CardWrapper {...cardProps} className="block">
+      <Card className={`transition-all duration-300 h-full 
+                       ${isAvailable 
+                         ? 'hover:shadow-lg hover:scale-[1.02] border border-gray-200 hover:border-gray-300 cursor-pointer bg-white' 
+                         : 'border border-dashed border-gray-300 bg-gray-50/50 hover:bg-gray-100/50'
+                       } rounded-lg`}>
+        
+        <CardContent className="p-6">
+          {/* Row 1: Icon and Title in same horizontal line */}
+          <div className="flex items-center gap-4 mb-3">
+            {/* Icon */}
+            <div className={`w-12 h-12 ${isAvailable ? colorClasses.bg : 'bg-gray-200'} rounded-lg flex items-center justify-center flex-shrink-0`}>
+              <Icon className={`w-6 h-6 ${isAvailable ? colorClasses.text : 'text-gray-500'}`} />
+            </div>
+            
+            {/* Title */}
+            <h3 className={`text-lg font-semibold ${isAvailable ? 'text-gray-900' : 'text-gray-600'} flex-1`}>
+              {app.title}
+            </h3>
           </div>
-          {app.status === 'coming-soon' && (
-            <Badge variant="outline" className="text-gray-500">
-              <Clock className="w-3 h-3 mr-1" />
-              {t('applications.page.app.comingSoon')}
+          
+          {/* Row 2: Description (full width) */}
+          <p className={`text-sm leading-relaxed mb-4 ${isAvailable ? 'text-gray-600' : 'text-gray-500'}`}>
+            {app.description}
+          </p>
+
+          {/* Row 3: Badges (full width) */}
+          <div className="flex items-center gap-2 flex-wrap">
+            {/* Category Badge */}
+            <Badge variant="outline" className={`text-xs ${isAvailable ? colorClasses.text : 'text-gray-500 border-gray-400'} ${isAvailable ? 'border-current' : ''}`}>
+              {t(`applications.categories.${app.category}.title`)}
             </Badge>
-          )}
-        </div>
-        <div className="mb-2">
-          <Badge variant="outline" className={`text-xs ${colorClasses.text} border-current`}>
-            {t(`applications.categories.${app.category}.title`)}
-          </Badge>
-        </div>
-        <CardTitle className="text-lg">{app.title}</CardTitle>
-        <CardDescription className="text-sm leading-relaxed">{app.description}</CardDescription>
-      </CardHeader>
-
-      <CardContent className="flex flex-col h-full">
-        <div className="flex-grow">
-          <div className="flex flex-wrap gap-2 mb-6">
-            {app.tags.map((tag: string) => (
-              <Badge key={tag} variant="secondary" className="text-xs">
-                {tag}
+            
+            {/* Featured Badge */}
+            {app.featured && (
+              <Badge variant="secondary" className="text-xs px-2 py-0.5 bg-yellow-50 text-yellow-700 border-yellow-200">
+                <Star className="w-3 h-3 mr-1" />
+                Unggulan
               </Badge>
-            ))}
+            )}
+            
+            {/* Coming Soon Badge */}
+            {app.status === 'coming-soon' && (
+              <Badge variant="outline" className="text-xs px-2 py-0.5 text-gray-500 border-gray-400">
+                <Clock className="w-3 h-3 mr-1" />
+                Segera Hadir
+              </Badge>
+            )}
           </div>
-        </div>
-
-        {app.status === 'available' ? (
-          <Button variant="default" className={`w-full ${colorClasses.button} text-white`} asChild>
-            <a href={app.link} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="w-4 h-4 mr-2" />
-              {t('applications.page.app.openApp')}
-            </a>
-          </Button>
-        ) : (
-          <Button variant="secondary" className="w-full" disabled>
-            <Clock className="w-4 h-4 mr-2" />
-            {t('applications.page.app.comingSoon')}
-          </Button>
-        )}
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </CardWrapper>
   )
 }
 
@@ -411,80 +408,77 @@ function ApplicationsList({
   t: TranslationFunction
 }) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-3">
       {applications.map(app => {
         const colorClasses = getColorClasses(app.color)
-
         return (
           <Card
             key={app.id}
-            className={`hover:shadow-md transition-all duration-300 ${app.status === 'available' ? 'cursor-pointer' : 'opacity-75'}`}
+            className={`hover:shadow-sm transition-all duration-200 
+                       ${app.status === 'available' ? 'cursor-pointer' : 'opacity-75'}`}
           >
-            <CardContent className="p-6">
-              <div className="flex items-start space-x-4">
-                <div
-                  className={`w-16 h-16 ${colorClasses.bg} rounded-lg flex items-center justify-center flex-shrink-0`}
-                >
-                  <app.icon className={`w-8 h-8 ${colorClasses.text}`} />
+            <CardContent className="p-4">
+              <div className="flex items-start space-x-3">
+                
+                {/* Smaller icon */}
+                <div className={`w-10 h-10 ${colorClasses.bg} rounded-md flex items-center justify-center flex-shrink-0`}>
+                  <app.icon className={`w-5 h-5 ${colorClasses.text}`} />
                 </div>
 
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <h3 className="text-xl font-semibold text-gray-900">{app.title}</h3>
-                    {app.featured && (
-                      <Badge
-                        variant="secondary"
-                        className="bg-yellow-50 text-yellow-700 border-yellow-200"
-                      >
-                        <Star className="w-3 h-3 mr-1" />
-                        {t('applications.page.app.featured')}
-                      </Badge>
-                    )}
-                    {app.status === 'coming-soon' && (
-                      <Badge variant="outline" className="text-gray-500">
-                        <Clock className="w-3 h-3 mr-1" />
-                        {t('applications.page.app.comingSoon')}
+                  {/* Compact header */}
+                  <div className="flex items-start justify-between mb-1">
+                    <div className="flex items-center space-x-2">
+                      <h3 className="text-base font-semibold text-gray-900 line-clamp-1">
+                        {app.title}
+                      </h3>
+                      {app.featured && (
+                        <Badge variant="secondary" className="text-xs px-1.5 py-0.5 bg-yellow-50 text-yellow-600">
+                          <Star className="w-2.5 h-2.5 mr-0.5" />
+                        </Badge>
+                      )}
+                    </div>
+                    
+                    {/* Compact action button */}
+                    {app.status === 'available' ? (
+                      <Button size="sm" className={`${colorClasses.button} text-white h-7 text-xs px-3`} asChild>
+                        <a href={app.link} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="w-3 h-3 mr-1" />
+                          {t('applications.page.app.open')}
+                        </a>
+                      </Button>
+                    ) : (
+                      <Badge variant="outline" className="text-xs text-gray-500 px-2">
+                        <Clock className="w-2.5 h-2.5 mr-1" />
+                        {t('applications.page.app.soon')}
                       </Badge>
                     )}
                   </div>
 
+                  {/* Category and description */}
                   <div className="mb-2">
-                    <Badge
-                      variant="outline"
-                      className={`text-xs ${colorClasses.text} border-current`}
-                    >
+                    <Badge variant="outline" className={`text-xs ${colorClasses.text} border-current mr-2`}>
                       {t(`applications.categories.${app.category}.title`)}
                     </Badge>
                   </div>
 
-                  <p className="text-gray-600 mb-3 leading-relaxed">{app.description}</p>
+                  <p className="text-sm text-gray-600 mb-2 line-clamp-2 leading-normal">
+                    {app.description}
+                  </p>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {app.tags.map((tag: string) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
+                  {/* Compact tags */}
+                  <div className="flex flex-wrap gap-1">
+                    {app.tags.slice(0, 4).map((tag: string) => (
+                      <Badge key={tag} variant="secondary" className="text-xs px-1.5 py-0.5">
                         {tag}
                       </Badge>
                     ))}
+                    {app.tags.length > 4 && (
+                      <Badge variant="secondary" className="text-xs px-1.5 py-0.5 text-gray-500">
+                        +{app.tags.length - 4}
+                      </Badge>
+                    )}
                   </div>
-                </div>
-
-                <div className="flex-shrink-0">
-                  {app.status === 'available' ? (
-                    <Button
-                      variant="default"
-                      className={`${colorClasses.button} text-white`}
-                      asChild
-                    >
-                      <a href={app.link} target="_blank" rel="noopener noreferrer">
-                        {t('applications.page.app.open')}
-                        <ExternalLink className="w-4 h-4 ml-2" />
-                      </a>
-                    </Button>
-                  ) : (
-                    <Button variant="secondary" disabled>
-                      {t('applications.page.app.soon')}
-                    </Button>
-                  )}
                 </div>
               </div>
             </CardContent>
@@ -505,17 +499,33 @@ export default async function ApplicationsPage({ params, searchParams }: Applica
   const t = await getTranslations({ locale })
 
   const applications = getApplications(locale)
-  const filteredApplications = applications.filter(app => {
-    const matchesCategory = !category || app.category === category
-    const matchesSearch =
-      !search ||
-      app.title.toLowerCase().includes(search.toLowerCase()) ||
-      app.description.toLowerCase().includes(search.toLowerCase())
+  const filteredApplications = applications
+    .filter(app => {
+      const matchesCategory = !category || app.category === category
+      const matchesSearch =
+        !search ||
+        app.title.toLowerCase().includes(search.toLowerCase()) ||
+        app.description.toLowerCase().includes(search.toLowerCase())
 
-    return matchesCategory && matchesSearch
-  })
+      return matchesCategory && matchesSearch
+    })
+    .sort((a, b) => {
+      // Sort by status: available first, then coming-soon
+      if (a.status === 'available' && b.status === 'coming-soon') return -1
+      if (a.status === 'coming-soon' && b.status === 'available') return 1
+      
+      // Within same status, sort featured first
+      if (a.status === b.status) {
+        if (a.featured && !b.featured) return -1
+        if (!a.featured && b.featured) return 1
+        
+        // Finally sort alphabetically
+        return a.title.localeCompare(b.title)
+      }
+      
+      return 0
+    })
 
-  const featuredApplications = filteredApplications.filter(app => app.featured)
   const availableCount = applications.filter(app => app.status === 'available').length
   const comingSoonCount = applications.filter(app => app.status === 'coming-soon').length
 
@@ -604,7 +614,7 @@ export default async function ApplicationsPage({ params, searchParams }: Applica
                     case 'purple':
                       return 'bg-purple-600 hover:bg-purple-700 text-white'
                     case 'orange':
-                      return 'bg-orange-600 hover:bg-orange-700 text-white'
+                      return 'bg-neutral-600 hover:bg-neutral-700 text-white'
                     case 'red':
                       return 'bg-red-600 hover:bg-red-700 text-white'
                     case 'teal':
@@ -662,25 +672,6 @@ export default async function ApplicationsPage({ params, searchParams }: Applica
         </div>
       </section>
 
-      {/* Featured Applications */}
-      {featuredApplications.length > 0 && !category && !search && (
-        <section className="py-12 px-4 md:px-6 lg:px-8 bg-gray-50">
-          <div className="container mx-auto max-w-7xl">
-            <div className="flex items-center space-x-2 mb-8">
-              <Star className="w-6 h-6 text-yellow-500" />
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                {t('applications.page.featured')}
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredApplications.map(app => (
-                <ApplicationCard key={app.id} app={app} t={t} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Applications Grid/List */}
       <section className="py-12 px-4 md:px-6 lg:px-8">
@@ -698,7 +689,7 @@ export default async function ApplicationsPage({ params, searchParams }: Applica
 
           <Suspense fallback={<div>Loading...</div>}>
             {view === 'grid' ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
                 {filteredApplications.map(app => (
                   <ApplicationCard key={app.id} app={app} t={t} />
                 ))}
