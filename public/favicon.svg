@@ -1,37 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" id="favicon-forpublic">
-  <defs>
-    <linearGradient id="favicon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#b91c1c;stop-opacity:1"/>
-    </linearGradient>
-  </defs>
-  
-  <!-- Background -->
-  <rect width="32" height="32" rx="6" fill="url(#favicon-grad)"/>
-  
-  <!-- ForPublic.id Icon - Simplified for favicon -->
-  <g transform="translate(16,16)">
-    <!-- Central hub - larger and more visible -->
-    <circle cx="0" cy="0" r="3" fill="white"/>
-    
-    <!-- Connection lines - thicker for better visibility -->
-    <line x1="0" y1="-12" x2="0" y2="-6" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-    <line x1="8.5" y1="-8.5" x2="4.2" y2="-4.2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-    <line x1="12" y1="0" x2="6" y2="0" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-    <line x1="8.5" y1="8.5" x2="4.2" y2="4.2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-    <line x1="0" y1="12" x2="0" y2="6" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-    <line x1="-8.5" y1="8.5" x2="-4.2" y2="4.2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-    <line x1="-12" y1="0" x2="-6" y2="0" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-    <line x1="-8.5" y1="-8.5" x2="-4.2" y2="-4.2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-    
-    <!-- People/nodes - simplified as dots -->
-    <circle cx="0" cy="-12" r="2.5" fill="white"/>
-    <circle cx="8.5" cy="-8.5" r="2.5" fill="white"/>
-    <circle cx="12" cy="0" r="2.5" fill="white"/>
-    <circle cx="8.5" cy="8.5" r="2.5" fill="white"/>
-    <circle cx="0" cy="12" r="2.5" fill="white"/>
-    <circle cx="-8.5" cy="8.5" r="2.5" fill="white"/>
-    <circle cx="-12" cy="0" r="2.5" fill="white"/>
-    <circle cx="-8.5" cy="-8.5" r="2.5" fill="white"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" id="icon-only">
+                        <defs>
+                            <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1"/>
+                                <stop offset="100%" style="stop-color:#c0392b;stop-opacity:1"/>
+                            </linearGradient>
+                        </defs>
+                        
+                        <g transform="translate(40,40)">
+                            <!-- Central hub -->
+                            <circle cx="0" cy="0" r="6" fill="url(#iconGrad)"/>
+                            <rect x="-3" y="6" width="6" height="12" rx="1.5" fill="url(#iconGrad)"/>
+                            
+                            <!-- 8 people -->
+                            <circle cx="0" cy="-28" r="4.5" fill="url(#iconGrad)" opacity="0.9"/>
+                            <circle cx="20" cy="-20" r="4.5" fill="url(#iconGrad)" opacity="0.9"/>
+                            <circle cx="28" cy="0" r="4.5" fill="url(#iconGrad)" opacity="0.9"/>
+                            <circle cx="20" cy="20" r="4.5" fill="url(#iconGrad)" opacity="0.9"/>
+                            <circle cx="0" cy="28" r="4.5" fill="url(#iconGrad)" opacity="0.9"/>
+                            <circle cx="-20" cy="20" r="4.5" fill="url(#iconGrad)" opacity="0.9"/>
+                            <circle cx="-28" cy="0" r="4.5" fill="url(#iconGrad)" opacity="0.9"/>
+                            <circle cx="-20" cy="-20" r="4.5" fill="url(#iconGrad)" opacity="0.9"/>
+                            
+                            <!-- Connections -->
+                            <line x1="0" y1="0" x2="0" y2="-22" stroke="url(#iconGrad)" stroke-width="2.5" opacity="0.7"/>
+                            <line x1="0" y1="0" x2="22" y2="0" stroke="url(#iconGrad)" stroke-width="2.5" opacity="0.7"/>
+                            <line x1="0" y1="0" x2="0" y2="22" stroke="url(#iconGrad)" stroke-width="2.5" opacity="0.7"/>
+                            <line x1="0" y1="0" x2="-22" y2="0" stroke="url(#iconGrad)" stroke-width="2.5" opacity="0.7"/>
+                            
+                            <line x1="0" y1="0" x2="17" y2="-17" stroke="url(#iconGrad)" stroke-width="2" opacity="0.5"/>
+                            <line x1="0" y1="0" x2="17" y2="17" stroke="url(#iconGrad)" stroke-width="2" opacity="0.5"/>
+                            <line x1="0" y1="0" x2="-17" y2="17" stroke="url(#iconGrad)" stroke-width="2" opacity="0.5"/>
+                            <line x1="0" y1="0" x2="-17" y2="-17" stroke="url(#iconGrad)" stroke-width="2" opacity="0.5"/>
+                        </g>
+                    </svg>

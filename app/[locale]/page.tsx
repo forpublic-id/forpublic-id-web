@@ -142,11 +142,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-all duration-300 border-l-4 border-l-orange-500 flex flex-col h-full">
+            <Card className="hover:shadow-lg transition-all duration-300 border-l-4 border-l-neutral-500 flex flex-col h-full">
               <CardHeader>
                 <div className="flex items-start justify-between">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                    <MapPin className="w-6 h-6 text-orange-600" />
+                  <div className="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center mb-4">
+                    <MapPin className="w-6 h-6 text-neutral-600" />
                   </div>
                   <Badge variant="outline" className="text-green-600">
                     <Check className="w-3 h-3 mr-1" />
@@ -154,7 +154,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   </Badge>
                 </div>
                 <div className="mb-2">
-                  <Badge variant="outline" className="text-xs text-orange-600 border-current">
+                  <Badge variant="outline" className="text-xs text-neutral-600 border-current">
                     {t('applications.categories.developmentInfo.title')}
                   </Badge>
                 </div>
@@ -169,7 +169,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </p>
                 <Button
                   variant="default"
-                  className="w-full bg-orange-600 hover:bg-orange-700 text-white"
+                  className="w-full bg-neutral-600 hover:bg-neutral-700 text-white"
                   asChild
                 >
                   <a href="https://plan.forpublic.id" target="_blank" rel="noopener noreferrer">
