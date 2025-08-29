@@ -3,6 +3,26 @@
 import { useRouter, usePathname } from 'next/navigation'
 import { Button } from './Button'
 import { useTransition } from 'react'
+import Image from 'next/image'
+
+// Flag Components using external SVG files
+const IndonesianFlag = () => (
+  <Image
+    src="/flags/indonesia.svg"
+    alt="Indonesian flag"
+    width={16}
+    height={12}
+  />
+)
+
+const BritishFlag = () => (
+  <Image
+    src="/flags/united-kingdom.svg"
+    alt="British flag"
+    width={16}
+    height={12}
+  />
+)
 
 export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
   const router = useRouter()
@@ -39,7 +59,7 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
         disabled={isPending}
         onClick={() => handleLanguageSwitch('id')}
       >
-        <span className="text-sm">🇮🇩</span>
+        <IndonesianFlag />
         <span className="font-medium">ID</span>
       </Button>
       <Button
@@ -49,7 +69,7 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
         disabled={isPending}
         onClick={() => handleLanguageSwitch('en')}
       >
-        <span className="text-sm">🇬🇧</span>
+        <BritishFlag />
         <span className="font-medium">EN</span>
       </Button>
     </div>

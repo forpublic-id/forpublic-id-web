@@ -70,14 +70,14 @@ ForPublic.id Web is the main platform that showcases our digital solutions ecosy
 
 ### Available Scripts
 
-| Command              | Description                           |
-| -------------------- | ------------------------------------- |
-| `bun run dev`        | Start development server (localhost:3000) |
-| `bun run build`      | Build for production                  |
-| `bun run start`      | Start production server               |
-| `bun run lint`       | Run ESLint for code quality checks    |
-| `bun run format`     | Format code using Prettier            |
-| `bun run format:check` | Check code formatting without changes |
+| Command                | Description                               |
+| ---------------------- | ----------------------------------------- |
+| `bun run dev`          | Start development server (localhost:3000) |
+| `bun run build`        | Build for production                      |
+| `bun run start`        | Start production server                   |
+| `bun run lint`         | Run ESLint for code quality checks        |
+| `bun run format`       | Format code using Prettier                |
+| `bun run format:check` | Check code formatting without changes     |
 
 ## 🤝 Contributing
 

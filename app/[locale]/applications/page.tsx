@@ -340,55 +340,72 @@ function ApplicationCard({ app, t }: { app: Application; t: TranslationFunction 
   const isAvailable = app.status === 'available'
 
   const CardWrapper = isAvailable ? 'a' : 'div'
-  const cardProps = isAvailable 
+  const cardProps = isAvailable
     ? { href: app.link, target: '_blank', rel: 'noopener noreferrer' }
     : {}
 
   return (
     <CardWrapper {...cardProps} className="block">
-      <Card className={`transition-all duration-300 h-full 
-                       ${isAvailable 
-                         ? 'hover:shadow-lg hover:scale-[1.02] border border-gray-200 hover:border-gray-300 cursor-pointer bg-white' 
-                         : 'border border-dashed border-gray-300 bg-gray-50/50 hover:bg-gray-100/50'
-                       } rounded-lg`}>
-        
+      <Card
+        className={`transition-all duration-300 h-full 
+                       ${
+                         isAvailable
+                           ? 'hover:shadow-lg hover:scale-[1.02] border border-gray-200 hover:border-gray-300 cursor-pointer bg-white'
+                           : 'border border-dashed border-gray-300 bg-gray-50/50 hover:bg-gray-100/50'
+                       } rounded-lg`}
+      >
         <CardContent className="p-6">
           {/* Row 1: Icon and Title in same horizontal line */}
           <div className="flex items-center gap-4 mb-3">
             {/* Icon */}
-            <div className={`w-12 h-12 ${isAvailable ? colorClasses.bg : 'bg-gray-200'} rounded-lg flex items-center justify-center flex-shrink-0`}>
+            <div
+              className={`w-12 h-12 ${isAvailable ? colorClasses.bg : 'bg-gray-200'} rounded-lg flex items-center justify-center flex-shrink-0`}
+            >
               <Icon className={`w-6 h-6 ${isAvailable ? colorClasses.text : 'text-gray-500'}`} />
             </div>
-            
+
             {/* Title */}
-            <h3 className={`text-lg font-semibold ${isAvailable ? 'text-gray-900' : 'text-gray-600'} flex-1`}>
+            <h3
+              className={`text-lg font-semibold ${isAvailable ? 'text-gray-900' : 'text-gray-600'} flex-1`}
+            >
               {app.title}
             </h3>
           </div>
-          
+
           {/* Row 2: Description (full width) */}
-          <p className={`text-sm leading-relaxed mb-4 ${isAvailable ? 'text-gray-600' : 'text-gray-500'}`}>
+          <p
+            className={`text-sm leading-relaxed mb-4 ${isAvailable ? 'text-gray-600' : 'text-gray-500'}`}
+          >
             {app.description}
           </p>
 
           {/* Row 3: Badges (full width) */}
           <div className="flex items-center gap-2 flex-wrap">
             {/* Category Badge */}
-            <Badge variant="outline" className={`text-xs ${isAvailable ? colorClasses.text : 'text-gray-500 border-gray-400'} ${isAvailable ? 'border-current' : ''}`}>
+            <Badge
+              variant="outline"
+              className={`text-xs ${isAvailable ? colorClasses.text : 'text-gray-500 border-gray-400'} ${isAvailable ? 'border-current' : ''}`}
+            >
               {t(`applications.categories.${app.category}.title`)}
             </Badge>
-            
+
             {/* Featured Badge */}
             {app.featured && (
-              <Badge variant="secondary" className="text-xs px-2 py-0.5 bg-yellow-50 text-yellow-700 border-yellow-200">
+              <Badge
+                variant="secondary"
+                className="text-xs px-2 py-0.5 bg-yellow-50 text-yellow-700 border-yellow-200"
+              >
                 <Star className="w-3 h-3 mr-1" />
                 Unggulan
               </Badge>
             )}
-            
+
             {/* Coming Soon Badge */}
             {app.status === 'coming-soon' && (
-              <Badge variant="outline" className="text-xs px-2 py-0.5 text-gray-500 border-gray-400">
+              <Badge
+                variant="outline"
+                className="text-xs px-2 py-0.5 text-gray-500 border-gray-400"
+              >
                 <Clock className="w-3 h-3 mr-1" />
                 Segera Hadir
               </Badge>
@@ -419,9 +436,10 @@ function ApplicationsList({
           >
             <CardContent className="p-4">
               <div className="flex items-start space-x-3">
-                
                 {/* Smaller icon */}
-                <div className={`w-10 h-10 ${colorClasses.bg} rounded-md flex items-center justify-center flex-shrink-0`}>
+                <div
+                  className={`w-10 h-10 ${colorClasses.bg} rounded-md flex items-center justify-center flex-shrink-0`}
+                >
                   <app.icon className={`w-5 h-5 ${colorClasses.text}`} />
                 </div>
 
@@ -433,15 +451,22 @@ function ApplicationsList({
                         {app.title}
                       </h3>
                       {app.featured && (
-                        <Badge variant="secondary" className="text-xs px-1.5 py-0.5 bg-yellow-50 text-yellow-600">
+                        <Badge
+                          variant="secondary"
+                          className="text-xs px-1.5 py-0.5 bg-yellow-50 text-yellow-600"
+                        >
                           <Star className="w-2.5 h-2.5 mr-0.5" />
                         </Badge>
                       )}
                     </div>
-                    
+
                     {/* Compact action button */}
                     {app.status === 'available' ? (
-                      <Button size="sm" className={`${colorClasses.button} text-white h-7 text-xs px-3`} asChild>
+                      <Button
+                        size="sm"
+                        className={`${colorClasses.button} text-white h-7 text-xs px-3`}
+                        asChild
+                      >
                         <a href={app.link} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="w-3 h-3 mr-1" />
                           {t('applications.page.app.open')}
@@ -457,7 +482,10 @@ function ApplicationsList({
 
                   {/* Category and description */}
                   <div className="mb-2">
-                    <Badge variant="outline" className={`text-xs ${colorClasses.text} border-current mr-2`}>
+                    <Badge
+                      variant="outline"
+                      className={`text-xs ${colorClasses.text} border-current mr-2`}
+                    >
                       {t(`applications.categories.${app.category}.title`)}
                     </Badge>
                   </div>
@@ -513,16 +541,16 @@ export default async function ApplicationsPage({ params, searchParams }: Applica
       // Sort by status: available first, then coming-soon
       if (a.status === 'available' && b.status === 'coming-soon') return -1
       if (a.status === 'coming-soon' && b.status === 'available') return 1
-      
+
       // Within same status, sort featured first
       if (a.status === b.status) {
         if (a.featured && !b.featured) return -1
         if (!a.featured && b.featured) return 1
-        
+
         // Finally sort alphabetically
         return a.title.localeCompare(b.title)
       }
-      
+
       return 0
     })
 
@@ -671,7 +699,6 @@ export default async function ApplicationsPage({ params, searchParams }: Applica
           </div>
         </div>
       </section>
-
 
       {/* Applications Grid/List */}
       <section className="py-12 px-4 md:px-6 lg:px-8">
