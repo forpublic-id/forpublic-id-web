@@ -428,5 +428,12 @@
         "action": "Contact"
       }
     }
+  },
+  "errorBoundary": {
+    "title": "Something went wrong",
+    "message": "We encountered an unexpected error. Please try refreshing the page or go back to the homepage.",
+    "details": "Error Details",
+    "tryAgain": "Try Again",
+    "goHome": "Go Home"
   }
 }

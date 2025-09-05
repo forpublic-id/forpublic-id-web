@@ -428,5 +428,12 @@
         "action": "Kontak"
       }
     }
+  },
+  "errorBoundary": {
+    "title": "Terjadi Kesalahan",
+    "message": "Terjadi kesalahan tak terduga. Silakan coba muat ulang halaman atau kembali ke beranda.",
+    "details": "Detail Kesalahan",
+    "tryAgain": "Coba Lagi",
+    "goHome": "Kembali ke Beranda"
   }
 }

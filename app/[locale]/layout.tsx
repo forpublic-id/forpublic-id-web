@@ -4,6 +4,8 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { NextIntlClientProvider } from 'next-intl'
+import { I18nErrorBoundary } from '@/components/common'
+import AnalyticsBeacon from '@/components/common/AnalyticsBeacon'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 
@@ -113,7 +115,10 @@ html {
         `}</style>
       </head>
       <body suppressHydrationWarning={true}>
-        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>
+          <I18nErrorBoundary>{children}</I18nErrorBoundary>
+        </NextIntlClientProvider>
+        <AnalyticsBeacon locale={locale} />
       </body>
       {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
     </html>

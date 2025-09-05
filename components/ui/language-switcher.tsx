@@ -7,21 +7,11 @@ import Image from 'next/image'
 
 // Flag Components using external SVG files
 const IndonesianFlag = () => (
-  <Image
-    src="/flags/indonesia.svg"
-    alt="Indonesian flag"
-    width={16}
-    height={12}
-  />
+  <Image src="/flags/indonesia.svg" alt="Indonesian flag" width={16} height={12} />
 )
 
 const BritishFlag = () => (
-  <Image
-    src="/flags/united-kingdom.svg"
-    alt="British flag"
-    width={16}
-    height={12}
-  />
+  <Image src="/flags/united-kingdom.svg" alt="British flag" width={16} height={12} />
 )
 
 export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {

@@ -4,10 +4,19 @@ import React, { Component, ErrorInfo, ReactNode } from 'react'
 import { Button } from '@/components/ui'
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react'
 
+interface Labels {
+  title?: string
+  message?: string
+  detailsLabel?: string
+  tryAgain?: string
+  goHome?: string
+}
+
 interface Props {
   children: ReactNode
   fallback?: ReactNode
   onError?: (error: Error, errorInfo: ErrorInfo) => void
+  labels?: Labels
 }
 
 interface State {
@@ -47,17 +56,19 @@ export default class ErrorBoundary extends Component<Props, State> {
               <AlertTriangle className="w-8 h-8 text-red-600" />
             </div>
 
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Oops! Something went wrong</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              {this.props.labels?.title || 'Oops! Something went wrong'}
+            </h2>
 
             <p className="text-gray-600 mb-6">
-              We encountered an unexpected error. Please try refreshing the page or go back to the
-              homepage.
+              {this.props.labels?.message ||
+                'We encountered an unexpected error. Please try refreshing the page or go back to the homepage.'}
             </p>
 
             {process.env.NODE_ENV === 'development' && this.state.error && (
               <details className="text-left bg-gray-100 p-4 rounded-lg mb-6 text-sm">
                 <summary className="cursor-pointer font-medium text-gray-700 mb-2">
-                  Error Details
+                  {this.props.labels?.detailsLabel || 'Error Details'}
                 </summary>
                 <pre className="whitespace-pre-wrap text-red-600">
                   {this.state.error.message}
@@ -70,12 +81,12 @@ export default class ErrorBoundary extends Component<Props, State> {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button onClick={this.handleReset} className="bg-red-600 hover:bg-red-700">
                 <RefreshCw className="w-4 h-4 mr-2" />
-                Try Again
+                {this.props.labels?.tryAgain || 'Try Again'}
               </Button>
 
               <Button variant="outline" onClick={() => (window.location.href = '/')}>
                 <Home className="w-4 h-4 mr-2" />
-                Go Home
+                {this.props.labels?.goHome || 'Go Home'}
               </Button>
             </div>
           </div>

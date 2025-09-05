@@ -2,6 +2,7 @@ import { Button } from '@/components/ui'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui'
 import { Home, Search, ArrowLeft, AlertTriangle } from 'lucide-react'
 import Link from 'next/link'
+import BackButton from '@/components/common/BackButton'
 import { getTranslations } from 'next-intl/server'
 import { Header } from '@/components/layout'
 import { Footer } from '@/components/layout'
@@ -52,17 +53,7 @@ export default async function LocaleNotFound({ params }: NotFoundProps) {
                 {t('notFound.backToHome')}
               </Link>
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className="text-lg px-8 border-gray-300 text-gray-700 hover:bg-gray-50 bg-transparent"
-            >
-              <Link href="javascript:history.back()">
-                <ArrowLeft className="w-5 h-5 mr-2" />
-                {t('notFound.previousPage')}
-              </Link>
-            </Button>
+            <BackButton label={t('notFound.previousPage')} />
           </div>
 
           {/* Quick Links */}

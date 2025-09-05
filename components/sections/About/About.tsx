@@ -73,7 +73,7 @@ export function About({ locale, translations: t }: AboutProps) {
             variant="secondary"
             className="mb-6 px-4 py-2 text-base bg-gray-100 text-gray-700 border-gray-200"
           >
-            {locale === 'id' ? 'Tentang Kami' : 'About Us'}
+            {t.title}
           </Badge>
           <div className="flex justify-center mb-8">
             <Logo locale={locale} size="lg" clickable={false} className="scale-[1.8]" />
