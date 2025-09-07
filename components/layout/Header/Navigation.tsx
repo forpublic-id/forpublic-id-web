@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/ui'
+// import { Button } from '@/components/ui' // Not used after hiding FAQ button
 import { LanguageSwitcherWrapper } from '@/components/ui/language-switcher-wrapper'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -63,6 +63,7 @@ export default function Navigation({ locale, translations }: NavigationProps) {
         {translations.contact}
       </NavLink>
       <LanguageSwitcherWrapper locale={locale} />
+{/* FAQ Button disembunyikan
       <Button
         variant="outline"
         size="sm"
@@ -71,6 +72,7 @@ export default function Navigation({ locale, translations }: NavigationProps) {
       >
         <Link href={`/${locale}/faq`}>FAQ</Link>
       </Button>
+      */}
     </nav>
   )
 }

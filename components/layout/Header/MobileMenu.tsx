@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/ui'
+// import { Button } from '@/components/ui' // Not used after hiding FAQ button
 import { LanguageSwitcherWrapper } from '@/components/ui/language-switcher-wrapper'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
@@ -155,9 +155,8 @@ export default function MobileMenu({ locale, translations }: MobileMenuProps) {
             <LanguageSwitcherWrapper locale={locale} />
           </div>
 
+{/* FAQ Button disembunyikan
           <div className="border-t my-4" />
-
-          {/* FAQ Button */}
           <div className="px-4 py-2">
             <Button
               variant="outline"
@@ -169,6 +168,7 @@ export default function MobileMenu({ locale, translations }: MobileMenuProps) {
               <Link href={`/${locale}/faq`}>FAQ</Link>
             </Button>
           </div>
+          */}
         </nav>
       </div>
     </>
