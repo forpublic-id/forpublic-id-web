@@ -1,25 +1,25 @@
-'use client'
+'use client';
 
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 // import { Button } from '@/components/ui' // Not used after hiding FAQ button
-import { LanguageSwitcherWrapper } from '@/components/ui/language-switcher-wrapper'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { LanguageSwitcherWrapper } from '@/components/ui/language-switcher-wrapper';
 
 interface NavigationProps {
-  locale: string
+  locale: string;
   translations: {
-    applications: string
-    features: string
-    about: string
-    contact: string
-  }
+    applications: string;
+    features: string;
+    about: string;
+    contact: string;
+  };
 }
 
 interface NavLinkProps {
-  href: string
-  children: React.ReactNode
-  isActive?: boolean
-  onClick?: () => void
+  href: string;
+  children: React.ReactNode;
+  isActive?: boolean;
+  onClick?: () => void;
 }
 
 function NavLink({ href, children, isActive, onClick }: NavLinkProps) {
@@ -34,15 +34,15 @@ function NavLink({ href, children, isActive, onClick }: NavLinkProps) {
     >
       {children}
     </Link>
-  )
+  );
 }
 
 export default function Navigation({ locale, translations }: NavigationProps) {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const isActivePage = (path: string) => {
-    return pathname.includes(path)
-  }
+    return pathname.includes(path);
+  };
 
   return (
     <nav
@@ -50,7 +50,10 @@ export default function Navigation({ locale, translations }: NavigationProps) {
       role="navigation"
       aria-label="Main navigation"
     >
-      <NavLink href={`/${locale}/applications`} isActive={isActivePage('applications')}>
+      <NavLink
+        href={`/${locale}/applications`}
+        isActive={isActivePage('applications')}
+      >
         {translations.applications}
       </NavLink>
       <NavLink href={`/${locale}/features`} isActive={isActivePage('features')}>
@@ -63,7 +66,7 @@ export default function Navigation({ locale, translations }: NavigationProps) {
         {translations.contact}
       </NavLink>
       <LanguageSwitcherWrapper locale={locale} />
-{/* FAQ Button disembunyikan
+      {/* FAQ Button disembunyikan
       <Button
         variant="outline"
         size="sm"
@@ -74,5 +77,5 @@ export default function Navigation({ locale, translations }: NavigationProps) {
       </Button>
       */}
     </nav>
-  )
+  );
 }

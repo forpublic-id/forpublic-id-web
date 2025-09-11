@@ -1,34 +1,33 @@
-import { Button } from '@/components/ui'
-import { Header } from '@/components/layout'
-import { Footer } from '@/components/layout'
-import { StructuredData, PageHeader } from '@/components/common'
 import {
-  Target,
-  Globe,
-  Users,
-  Heart,
-  Shield,
-  Lightbulb,
-  TrendingUp,
-  Award,
-  Mail,
   ArrowRight,
+  Award,
   Calendar,
   Code,
+  Globe,
+  Heart,
+  Lightbulb,
+  Mail,
+  Shield,
+  Target,
+  TrendingUp,
+  Users,
   Zap,
-} from 'lucide-react'
-import { getTranslations } from 'next-intl/server'
-import Link from 'next/link'
-import type { Metadata } from 'next'
+} from 'lucide-react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
+import { PageHeader, StructuredData } from '@/components/common';
+import { Footer, Header } from '@/components/layout';
+import { Button } from '@/components/ui';
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const resolvedParams = await params
-  const locale = resolvedParams?.locale || 'id'
-  const t = await getTranslations({ locale })
+  const resolvedParams = await params;
+  const locale = resolvedParams?.locale || 'id';
+  const t = await getTranslations({ locale });
 
   return {
     title: `${t('aboutPage.page.title')} - ForPublic.id`,
@@ -56,13 +55,17 @@ export async function generateMetadata({
         'en-US': '/en/about',
       },
     },
-  }
+  };
 }
 
-export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
-  const resolvedParams = await params
-  const locale = resolvedParams?.locale || 'id'
-  const t = await getTranslations({ locale })
+export default async function AboutPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const resolvedParams = await params;
+  const locale = resolvedParams?.locale || 'id';
+  const t = await getTranslations({ locale });
 
   const values = [
     {
@@ -113,7 +116,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           ? 'Membangun dan memelihara kepercayaan publik melalui kualitas data, keamanan, dan konsistensi layanan.'
           : 'Building and maintaining public trust through data quality, security, and service consistency.',
     },
-  ]
+  ];
 
   const timeline = [
     {
@@ -132,7 +135,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           ? 'Fitur dan pengembangan lebih lanjut akan diumumkan seiring dengan pertumbuhan platform dan kebutuhan masyarakat.'
           : 'Further features and developments will be announced as the platform grows and community needs evolve.',
     },
-  ]
+  ];
 
   const team = [
     {
@@ -159,7 +162,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           : 'Responsible for maintaining service quality, system security, and user communication.',
       icon: Zap,
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -224,18 +227,22 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               {values.map((value, index) => {
-                const Icon = value.icon
+                const Icon = value.icon;
                 return (
                   <div key={index} className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Icon className="w-6 h-6 text-red-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">{value.title}</h3>
-                      <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                        {value.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        {value.description}
+                      </p>
                     </div>
                   </div>
-                )
+                );
               })}
             </div>
           </div>
@@ -252,18 +259,25 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {team.map((member, index) => {
-                const Icon = member.icon
+                const Icon = member.icon;
                 return (
-                  <div key={index} className="flex items-start space-x-3 text-left">
+                  <div
+                    key={index}
+                    className="flex items-start space-x-3 text-left"
+                  >
                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Icon className="w-5 h-5 text-blue-600" />
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-900">{member.role}</h4>
-                      <p className="text-sm text-gray-600">{member.description}</p>
+                      <h4 className="font-medium text-gray-900">
+                        {member.role}
+                      </h4>
+                      <p className="text-sm text-gray-600">
+                        {member.description}
+                      </p>
                     </div>
                   </div>
-                )
+                );
               })}
             </div>
           </div>
@@ -295,10 +309,14 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                         <span className="inline-block text-sm font-medium text-red-600 bg-red-100 px-3 py-1 rounded-full mb-2">
                           {item.year}
                         </span>
-                        <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
+                        <h3 className="text-xl font-bold text-gray-900">
+                          {item.title}
+                        </h3>
                       </div>
                     </div>
-                    <p className="text-gray-700 leading-relaxed">{item.description}</p>
+                    <p className="text-gray-700 leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -346,7 +364,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 {locale === 'id' ? 'Pengguna Aktif' : 'Active Users'}
               </h3>
               <p className="text-sm text-gray-600">
-                {locale === 'id' ? 'Masyarakat yang terbantu' : 'Community members helped'}
+                {locale === 'id'
+                  ? 'Masyarakat yang terbantu'
+                  : 'Community members helped'}
               </p>
             </div>
 
@@ -354,12 +374,16 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-green-600" />
               </div>
-              <div className="text-4xl font-bold text-green-600 mb-2">99.9%</div>
+              <div className="text-4xl font-bold text-green-600 mb-2">
+                99.9%
+              </div>
               <h3 className="font-semibold text-gray-900 mb-2">
                 {locale === 'id' ? 'Keandalan' : 'Reliability'}
               </h3>
               <p className="text-sm text-gray-600">
-                {locale === 'id' ? 'Server uptime terjamin' : 'Guaranteed server uptime'}
+                {locale === 'id'
+                  ? 'Server uptime terjamin'
+                  : 'Guaranteed server uptime'}
               </p>
             </div>
 
@@ -367,12 +391,16 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-8 h-8 text-purple-600" />
               </div>
-              <div className="text-4xl font-bold text-purple-600 mb-2">24/7</div>
+              <div className="text-4xl font-bold text-purple-600 mb-2">
+                24/7
+              </div>
               <h3 className="font-semibold text-gray-900 mb-2">
                 {locale === 'id' ? 'Dukungan' : 'Support'}
               </h3>
               <p className="text-sm text-gray-600">
-                {locale === 'id' ? 'Akses tanpa batas waktu' : 'Unlimited time access'}
+                {locale === 'id'
+                  ? 'Akses tanpa batas waktu'
+                  : 'Unlimited time access'}
               </p>
             </div>
           </div>
@@ -384,7 +412,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <div className="container mx-auto max-w-4xl text-center">
           <div className="mb-8">
             <h2 className="text-3xl font-bold text-white mb-6">
-              {locale === 'id' ? 'Bergabung dengan Misi Kami' : 'Join Our Mission'}
+              {locale === 'id'
+                ? 'Bergabung dengan Misi Kami'
+                : 'Join Our Mission'}
             </h2>
             <p className="text-xl text-red-100 max-w-3xl mx-auto leading-relaxed">
               {locale === 'id'
@@ -428,5 +458,5 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       <Footer locale={locale} />
     </div>
-  )
+  );
 }

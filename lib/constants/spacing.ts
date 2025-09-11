@@ -9,7 +9,7 @@ export const spacing = {
   '4xl': '5rem', // 80px
   '5xl': '6rem', // 96px
   '6xl': '8rem', // 128px
-} as const
+} as const;
 
 export const containerSizes = {
   sm: '640px',
@@ -18,7 +18,7 @@ export const containerSizes = {
   xl: '1280px',
   '2xl': '1536px',
   max: '1400px', // Custom max width for ForPublic.id
-} as const
+} as const;
 
 export const borderRadius = {
   none: '0',
@@ -30,8 +30,8 @@ export const borderRadius = {
   '2xl': '1rem', // 16px
   '3xl': '1.5rem', // 24px
   full: '9999px',
-} as const
+} as const;
 
-export type SpacingKey = keyof typeof spacing
-export type ContainerSize = keyof typeof containerSizes
-export type BorderRadiusKey = keyof typeof borderRadius
+export type SpacingKey = keyof typeof spacing;
+export type ContainerSize = keyof typeof containerSizes;
+export type BorderRadiusKey = keyof typeof borderRadius;

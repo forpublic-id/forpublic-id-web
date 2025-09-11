@@ -1,87 +1,94 @@
-'use client'
+'use client';
 
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
 interface OrganizationSchema {
-  '@context': 'https://schema.org'
-  '@type': 'Organization'
-  name: string
-  url: string
-  logo: string
-  description: string
-  foundingDate?: string
+  '@context': 'https://schema.org';
+  '@type': 'Organization';
+  name: string;
+  url: string;
+  logo: string;
+  description: string;
+  foundingDate?: string;
   contactPoint?: {
-    '@type': 'ContactPoint'
-    contactType: string
-    url: string
-  }[]
-  sameAs?: string[]
+    '@type': 'ContactPoint';
+    contactType: string;
+    url: string;
+  }[];
+  sameAs?: string[];
   address?: {
-    '@type': 'PostalAddress'
-    addressCountry: string
-    addressRegion?: string
-  }
+    '@type': 'PostalAddress';
+    addressCountry: string;
+    addressRegion?: string;
+  };
 }
 
 interface WebSiteSchema {
-  '@context': 'https://schema.org'
-  '@type': 'WebSite'
-  name: string
-  url: string
-  description: string
-  inLanguage: string[]
+  '@context': 'https://schema.org';
+  '@type': 'WebSite';
+  name: string;
+  url: string;
+  description: string;
+  inLanguage: string[];
   potentialAction?: {
-    '@type': 'SearchAction'
+    '@type': 'SearchAction';
     target: {
-      '@type': 'EntryPoint'
-      urlTemplate: string
-    }
-    'query-input': string
-  }
+      '@type': 'EntryPoint';
+      urlTemplate: string;
+    };
+    'query-input': string;
+  };
 }
 
 interface BreadcrumbSchema {
-  '@context': 'https://schema.org'
-  '@type': 'BreadcrumbList'
+  '@context': 'https://schema.org';
+  '@type': 'BreadcrumbList';
   itemListElement: {
-    '@type': 'ListItem'
-    position: number
-    name: string
-    item: string
-  }[]
+    '@type': 'ListItem';
+    position: number;
+    name: string;
+    item: string;
+  }[];
 }
 
 interface FAQSchema {
-  '@context': 'https://schema.org'
-  '@type': 'FAQPage'
+  '@context': 'https://schema.org';
+  '@type': 'FAQPage';
   mainEntity: {
-    '@type': 'Question'
-    name: string
+    '@type': 'Question';
+    name: string;
     acceptedAnswer: {
-      '@type': 'Answer'
-      text: string
-    }
-  }[]
+      '@type': 'Answer';
+      text: string;
+    };
+  }[];
 }
 
 interface StructuredDataProps {
-  organization?: Partial<OrganizationSchema>
-  website?: Partial<WebSiteSchema>
-  breadcrumb?: Omit<BreadcrumbSchema, '@context' | '@type'>
-  faq?: Omit<FAQSchema, '@context' | '@type'>
+  organization?: Partial<OrganizationSchema>;
+  website?: Partial<WebSiteSchema>;
+  breadcrumb?: Omit<BreadcrumbSchema, '@context' | '@type'>;
+  faq?: Omit<FAQSchema, '@context' | '@type'>;
 }
 
-export function StructuredData({ organization, website, breadcrumb, faq }: StructuredDataProps) {
+export function StructuredData({
+  organization,
+  website,
+  breadcrumb,
+  faq,
+}: StructuredDataProps) {
   useEffect(() => {
     // Clean up any existing structured data scripts
-    const existingScripts = document.querySelectorAll('script[type="application/ld+json"]')
-    existingScripts.forEach(script => {
+    const existingScripts = document.querySelectorAll(
+      'script[type="application/ld+json"]'
+    );
+    existingScripts.forEach((script) => {
       if (script.getAttribute('data-component') === 'structured-data') {
-        script.remove()
+        script.remove();
       }
-    })
+    });
 
-    const scripts: HTMLScriptElement[] = []
+    const scripts: HTMLScriptElement[] = [];
 
     // Organization Schema
     if (organization) {
@@ -101,21 +108,24 @@ export function StructuredData({ organization, website, breadcrumb, faq }: Struc
             url: 'https://forpublic.id/#contact',
           },
         ],
-        sameAs: ['https://x.com/forpublicid', 'https://github.com/forpublic-id'],
+        sameAs: [
+          'https://x.com/forpublicid',
+          'https://github.com/forpublic-id',
+        ],
         address: {
           '@type': 'PostalAddress',
           addressCountry: 'ID',
           addressRegion: 'Indonesia',
         },
         ...organization,
-      }
+      };
 
-      const orgScript = document.createElement('script')
-      orgScript.type = 'application/ld+json'
-      orgScript.setAttribute('data-component', 'structured-data')
-      orgScript.textContent = JSON.stringify(orgSchema)
-      document.head.appendChild(orgScript)
-      scripts.push(orgScript)
+      const orgScript = document.createElement('script');
+      orgScript.type = 'application/ld+json';
+      orgScript.setAttribute('data-component', 'structured-data');
+      orgScript.textContent = JSON.stringify(orgSchema);
+      document.head.appendChild(orgScript);
+      scripts.push(orgScript);
     }
 
     // Website Schema
@@ -132,19 +142,20 @@ export function StructuredData({ organization, website, breadcrumb, faq }: Struc
           '@type': 'SearchAction',
           target: {
             '@type': 'EntryPoint',
-            urlTemplate: 'https://forpublic.id/applications?search={search_term_string}',
+            urlTemplate:
+              'https://forpublic.id/applications?search={search_term_string}',
           },
           'query-input': 'required name=search_term_string',
         },
         ...website,
-      }
+      };
 
-      const websiteScript = document.createElement('script')
-      websiteScript.type = 'application/ld+json'
-      websiteScript.setAttribute('data-component', 'structured-data')
-      websiteScript.textContent = JSON.stringify(websiteSchema)
-      document.head.appendChild(websiteScript)
-      scripts.push(websiteScript)
+      const websiteScript = document.createElement('script');
+      websiteScript.type = 'application/ld+json';
+      websiteScript.setAttribute('data-component', 'structured-data');
+      websiteScript.textContent = JSON.stringify(websiteSchema);
+      document.head.appendChild(websiteScript);
+      scripts.push(websiteScript);
     }
 
     // Breadcrumb Schema
@@ -153,14 +164,14 @@ export function StructuredData({ organization, website, breadcrumb, faq }: Struc
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         ...breadcrumb,
-      }
+      };
 
-      const breadcrumbScript = document.createElement('script')
-      breadcrumbScript.type = 'application/ld+json'
-      breadcrumbScript.setAttribute('data-component', 'structured-data')
-      breadcrumbScript.textContent = JSON.stringify(breadcrumbSchema)
-      document.head.appendChild(breadcrumbScript)
-      scripts.push(breadcrumbScript)
+      const breadcrumbScript = document.createElement('script');
+      breadcrumbScript.type = 'application/ld+json';
+      breadcrumbScript.setAttribute('data-component', 'structured-data');
+      breadcrumbScript.textContent = JSON.stringify(breadcrumbSchema);
+      document.head.appendChild(breadcrumbScript);
+      scripts.push(breadcrumbScript);
     }
 
     // FAQ Schema
@@ -169,27 +180,27 @@ export function StructuredData({ organization, website, breadcrumb, faq }: Struc
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         ...faq,
-      }
+      };
 
-      const faqScript = document.createElement('script')
-      faqScript.type = 'application/ld+json'
-      faqScript.setAttribute('data-component', 'structured-data')
-      faqScript.textContent = JSON.stringify(faqSchema)
-      document.head.appendChild(faqScript)
-      scripts.push(faqScript)
+      const faqScript = document.createElement('script');
+      faqScript.type = 'application/ld+json';
+      faqScript.setAttribute('data-component', 'structured-data');
+      faqScript.textContent = JSON.stringify(faqSchema);
+      document.head.appendChild(faqScript);
+      scripts.push(faqScript);
     }
 
     // Cleanup function
     return () => {
-      scripts.forEach(script => {
+      scripts.forEach((script) => {
         if (script.parentNode) {
-          script.parentNode.removeChild(script)
+          script.parentNode.removeChild(script);
         }
-      })
-    }
-  }, [organization, website, breadcrumb, faq])
+      });
+    };
+  }, [organization, website, breadcrumb, faq]);
 
-  return null // This component doesn't render anything visible
+  return null; // This component doesn't render anything visible
 }
 
 // Helper function to generate breadcrumb schema
@@ -203,7 +214,7 @@ export function generateBreadcrumbSchema(
       name: item.name,
       item: item.url,
     })),
-  }
+  };
 }
 
 // Helper function to generate FAQ schema
@@ -211,7 +222,7 @@ export function generateFAQSchema(
   faqs: { question: string; answer: string }[]
 ): Omit<FAQSchema, '@context' | '@type'> {
   return {
-    mainEntity: faqs.map(faq => ({
+    mainEntity: faqs.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
       acceptedAnswer: {
@@ -219,5 +230,5 @@ export function generateFAQSchema(
         text: faq.answer,
       },
     })),
-  }
+  };
 }

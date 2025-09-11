@@ -1,30 +1,35 @@
-'use client'
+'use client';
 
+import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 // import { Button } from '@/components/ui' // Not used after hiding FAQ button
-import { LanguageSwitcherWrapper } from '@/components/ui/language-switcher-wrapper'
-import { Menu, X } from 'lucide-react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { LanguageSwitcherWrapper } from '@/components/ui/language-switcher-wrapper';
 
 interface MobileMenuProps {
-  locale: string
+  locale: string;
   translations: {
-    applications: string
-    features: string
-    about: string
-    contact: string
-  }
+    applications: string;
+    features: string;
+    about: string;
+    contact: string;
+  };
 }
 
 interface MobileNavLinkProps {
-  href: string
-  children: React.ReactNode
-  isActive?: boolean
-  onClick: () => void
+  href: string;
+  children: React.ReactNode;
+  isActive?: boolean;
+  onClick: () => void;
 }
 
-function MobileNavLink({ href, children, isActive, onClick }: MobileNavLinkProps) {
+function MobileNavLink({
+  href,
+  children,
+  isActive,
+  onClick,
+}: MobileNavLinkProps) {
   return (
     <Link
       href={href}
@@ -36,37 +41,37 @@ function MobileNavLink({ href, children, isActive, onClick }: MobileNavLinkProps
     >
       {children}
     </Link>
-  )
+  );
 }
 
 export default function MobileMenu({ locale, translations }: MobileMenuProps) {
-  const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const isActivePage = (path: string) => {
-    return pathname.includes(path)
-  }
+    return pathname.includes(path);
+  };
 
-  const toggleMenu = () => setIsOpen(!isOpen)
-  const closeMenu = () => setIsOpen(false)
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
   // Close menu when pathname changes
   useEffect(() => {
-    setIsOpen(false)
-  }, [pathname])
+    setIsOpen(false);
+  }, [pathname]);
 
   // Prevent body scroll when menu is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = 'unset';
     }
 
     return () => {
-      document.body.style.overflow = 'unset'
-    }
-  }, [isOpen])
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   return (
     <>
@@ -151,11 +156,13 @@ export default function MobileMenu({ locale, translations }: MobileMenuProps) {
 
           {/* Language Switcher */}
           <div className="px-4 py-2">
-            <span className="block text-sm font-medium text-gray-500 mb-2">Language / Bahasa</span>
+            <span className="block text-sm font-medium text-gray-500 mb-2">
+              Language / Bahasa
+            </span>
             <LanguageSwitcherWrapper locale={locale} />
           </div>
 
-{/* FAQ Button disembunyikan
+          {/* FAQ Button disembunyikan
           <div className="border-t my-4" />
           <div className="px-4 py-2">
             <Button
@@ -172,5 +179,5 @@ export default function MobileMenu({ locale, translations }: MobileMenuProps) {
         </nav>
       </div>
     </>
-  )
+  );
 }

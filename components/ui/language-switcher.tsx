@@ -1,44 +1,54 @@
-'use client'
+'use client';
 
-import { useRouter, usePathname } from 'next/navigation'
-import { Button } from './Button'
-import { useTransition } from 'react'
-import Image from 'next/image'
+import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
+import { useTransition } from 'react';
+import { Button } from './Button';
 
 // Flag Components using external SVG files
 const IndonesianFlag = () => (
-  <Image src="/flags/indonesia.svg" alt="Indonesian flag" width={16} height={12} />
-)
+  <Image
+    src="/flags/indonesia.svg"
+    alt="Indonesian flag"
+    width={16}
+    height={12}
+  />
+);
 
 const BritishFlag = () => (
-  <Image src="/flags/united-kingdom.svg" alt="British flag" width={16} height={12} />
-)
+  <Image
+    src="/flags/united-kingdom.svg"
+    alt="British flag"
+    width={16}
+    height={12}
+  />
+);
 
 export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
-  const router = useRouter()
-  const pathname = usePathname()
-  const [isPending, startTransition] = useTransition()
+  const router = useRouter();
+  const pathname = usePathname();
+  const [isPending, startTransition] = useTransition();
 
   const handleLanguageSwitch = (newLocale: string) => {
-    if (isPending || currentLocale === newLocale) return
+    if (isPending || currentLocale === newLocale) return;
 
     startTransition(() => {
       // Replace the current locale in the pathname
-      const pathSegments = pathname.split('/')
+      const pathSegments = pathname.split('/');
 
       if (pathSegments[1] === currentLocale) {
         // Replace existing locale
-        pathSegments[1] = newLocale
+        pathSegments[1] = newLocale;
       } else {
         // If no locale in path, add it
-        pathSegments.splice(1, 0, newLocale)
+        pathSegments.splice(1, 0, newLocale);
       }
 
-      const newPath = pathSegments.join('/')
-      router.push(newPath)
-      router.refresh()
-    })
-  }
+      const newPath = pathSegments.join('/');
+      router.push(newPath);
+      router.refresh();
+    });
+  };
 
   return (
     <div className="flex gap-1">
@@ -63,5 +73,5 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
         <span className="font-medium">EN</span>
       </Button>
     </div>
-  )
+  );
 }

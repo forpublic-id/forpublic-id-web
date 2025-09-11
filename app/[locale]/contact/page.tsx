@@ -1,22 +1,36 @@
-import { Button } from '@/components/ui'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui'
-import { Input } from '@/components/ui'
-import { Header } from '@/components/layout'
-import { Footer } from '@/components/layout'
-import { StructuredData, PageHeader } from '@/components/common'
-import { Mail, MapPin, Clock, Send, Github, Twitter, MessageSquare, Users } from 'lucide-react'
-import { getTranslations } from 'next-intl/server'
-import Link from 'next/link'
-import type { Metadata } from 'next'
+import {
+  Clock,
+  Github,
+  Mail,
+  MapPin,
+  MessageSquare,
+  Send,
+  Twitter,
+  Users,
+} from 'lucide-react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
+import { PageHeader, StructuredData } from '@/components/common';
+import { Footer, Header } from '@/components/layout';
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  Input,
+} from '@/components/ui';
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const resolvedParams = await params
-  const locale = resolvedParams?.locale || 'id'
-  const t = await getTranslations({ locale })
+  const resolvedParams = await params;
+  const locale = resolvedParams?.locale || 'id';
+  const t = await getTranslations({ locale });
 
   return {
     title: `${t('contact.page.title')} - ForPublic.id`,
@@ -44,13 +58,17 @@ export async function generateMetadata({
         'en-US': '/en/contact',
       },
     },
-  }
+  };
 }
 
-export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
-  const resolvedParams = await params
-  const locale = resolvedParams?.locale || 'id'
-  const t = await getTranslations({ locale })
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const resolvedParams = await params;
+  const locale = resolvedParams?.locale || 'id';
+  const t = await getTranslations({ locale });
 
   return (
     <div className="min-h-screen bg-background">
@@ -84,7 +102,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                   <Mail className="w-8 h-8 text-blue-600" />
                 </div>
                 <CardTitle>{t('contact.methods.email.title')}</CardTitle>
-                <CardDescription>{t('contact.methods.email.description')}</CardDescription>
+                <CardDescription>
+                  {t('contact.methods.email.description')}
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <a
@@ -93,7 +113,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                 >
                   hello@forpublic.id
                 </a>
-                <p className="text-sm text-gray-500 mt-2">{t('contact.methods.email.response')}</p>
+                <p className="text-sm text-gray-500 mt-2">
+                  {t('contact.methods.email.response')}
+                </p>
               </CardContent>
             </Card>
 
@@ -104,13 +126,17 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                   <Clock className="w-8 h-8 text-green-600" />
                 </div>
                 <CardTitle>{t('contact.methods.response.title')}</CardTitle>
-                <CardDescription>{t('contact.methods.response.description')}</CardDescription>
+                <CardDescription>
+                  {t('contact.methods.response.description')}
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-green-600 font-semibold text-lg">
                   {t('contact.methods.response.time')}
                 </p>
-                <p className="text-sm text-gray-500 mt-2">{t('contact.methods.response.note')}</p>
+                <p className="text-sm text-gray-500 mt-2">
+                  {t('contact.methods.response.note')}
+                </p>
               </CardContent>
             </Card>
 
@@ -121,7 +147,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                   <Users className="w-8 h-8 text-purple-600" />
                 </div>
                 <CardTitle>{t('contact.methods.community.title')}</CardTitle>
-                <CardDescription>{t('contact.methods.community.description')}</CardDescription>
+                <CardDescription>
+                  {t('contact.methods.community.description')}
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex justify-center space-x-4">
@@ -157,7 +185,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                   <MessageSquare className="w-6 h-6 text-red-600" />
                   <span>{t('contact.form.title')}</span>
                 </CardTitle>
-                <CardDescription>{t('contact.form.description')}</CardDescription>
+                <CardDescription>
+                  {t('contact.form.description')}
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <form className="space-y-6">
@@ -209,7 +239,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
                     >
-                      <option value="">{t('contact.form.fields.subject.placeholder')}</option>
+                      <option value="">
+                        {t('contact.form.fields.subject.placeholder')}
+                      </option>
                       <option value="general">
                         {t('contact.form.fields.subject.options.general')}
                       </option>
@@ -269,13 +301,17 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                     <h4 className="font-medium text-gray-900">
                       {t('contact.info.office.virtual.title')}
                     </h4>
-                    <p className="text-gray-600">{t('contact.info.office.virtual.description')}</p>
+                    <p className="text-gray-600">
+                      {t('contact.info.office.virtual.description')}
+                    </p>
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-900">
                       {t('contact.info.office.coverage.title')}
                     </h4>
-                    <p className="text-gray-600">{t('contact.info.office.coverage.description')}</p>
+                    <p className="text-gray-600">
+                      {t('contact.info.office.coverage.description')}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -283,7 +319,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               {/* FAQ Link */}
               <Card className="border-red-200 bg-red-50">
                 <CardHeader>
-                  <CardTitle className="text-red-800">{t('contact.faq.title')}</CardTitle>
+                  <CardTitle className="text-red-800">
+                    {t('contact.faq.title')}
+                  </CardTitle>
                   <CardDescription className="text-red-700">
                     {t('contact.faq.description')}
                   </CardDescription>
@@ -294,7 +332,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                     className="border-red-300 text-red-700 hover:bg-red-100"
                     asChild
                   >
-                    <Link href={`/${locale}/faq`}>{t('contact.faq.button')}</Link>
+                    <Link href={`/${locale}/faq`}>
+                      {t('contact.faq.button')}
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -310,12 +350,18 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                 <CardContent>
                   <div className="space-y-2">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">{t('contact.hours.weekdays')}</span>
+                      <span className="text-gray-600">
+                        {t('contact.hours.weekdays')}
+                      </span>
                       <span className="font-medium">09:00 - 17:00 WIB</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">{t('contact.hours.weekend')}</span>
-                      <span className="font-medium">{t('contact.hours.emailOnly')}</span>
+                      <span className="text-gray-600">
+                        {t('contact.hours.weekend')}
+                      </span>
+                      <span className="font-medium">
+                        {t('contact.hours.emailOnly')}
+                      </span>
                     </div>
                   </div>
                 </CardContent>
@@ -327,5 +373,5 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
       <Footer locale={locale} />
     </div>
-  )
+  );
 }

@@ -1,13 +1,13 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { cn } from '@/lib/utils'
+import Image from 'next/image';
+import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 interface LogoProps {
-  locale: string
-  variant?: 'default' | 'text-only' | 'icon-only'
-  size?: 'sm' | 'md' | 'lg'
-  className?: string
-  clickable?: boolean
+  locale: string;
+  variant?: 'default' | 'text-only' | 'icon-only';
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+  clickable?: boolean;
 }
 
 const sizeClasses = {
@@ -23,7 +23,7 @@ const sizeClasses = {
     icon: 'w-12 h-12',
     text: 'text-2xl',
   },
-}
+};
 
 export default function Logo({
   locale,
@@ -32,7 +32,7 @@ export default function Logo({
   className = '',
   clickable = true,
 }: LogoProps) {
-  const sizeClass = sizeClasses[size]
+  const sizeClass = sizeClasses[size];
 
   const content = (
     <div className={cn('flex items-center space-x-2', className)}>
@@ -54,10 +54,10 @@ export default function Logo({
         </span>
       )}
     </div>
-  )
+  );
 
   if (!clickable) {
-    return content
+    return content;
   }
 
   return (
@@ -68,5 +68,5 @@ export default function Logo({
     >
       {content}
     </Link>
-  )
+  );
 }

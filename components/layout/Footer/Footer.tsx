@@ -1,20 +1,26 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { getTranslations } from 'next-intl/server'
-import { Github, Twitter } from 'lucide-react'
+import { Github, Twitter } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 
 interface FooterProps {
-  locale: string
-  variant?: 'full' | 'simple'
-  className?: string
+  locale: string;
+  variant?: 'full' | 'simple';
+  className?: string;
 }
 
-export default async function Footer({ locale, variant = 'full', className = '' }: FooterProps) {
-  const t = await getTranslations({ locale })
+export default async function Footer({
+  locale,
+  variant = 'full',
+  className = '',
+}: FooterProps) {
+  const t = await getTranslations({ locale });
 
   if (variant === 'simple') {
     return (
-      <footer className={`bg-gray-900 text-white py-8 px-4 md:px-6 lg:px-8 ${className}`}>
+      <footer
+        className={`bg-gray-900 text-white py-8 px-4 md:px-6 lg:px-8 ${className}`}
+      >
         <div className="container mx-auto max-w-6xl text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <div className="w-6 h-6">
@@ -31,15 +37,20 @@ export default async function Footer({ locale, variant = 'full', className = '' 
             </span>
           </div>
           <p className="text-sm text-gray-300">
-            {t('footer.copyright').replace('2024', new Date().getFullYear().toString())}
+            {t('footer.copyright').replace(
+              '2024',
+              new Date().getFullYear().toString()
+            )}
           </p>
         </div>
       </footer>
-    )
+    );
   }
 
   return (
-    <footer className={`bg-gray-900 text-white py-12 px-4 md:px-6 lg:px-8 ${className}`}>
+    <footer
+      className={`bg-gray-900 text-white py-12 px-4 md:px-6 lg:px-8 ${className}`}
+    >
       <div className="container mx-auto max-w-6xl">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
@@ -61,7 +72,9 @@ export default async function Footer({ locale, variant = 'full', className = '' 
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">{t('footer.sections.applications')}</h4>
+            <h4 className="font-semibold mb-4">
+              {t('footer.sections.applications')}
+            </h4>
             <ul className="space-y-2 text-sm text-gray-300">
               <li>
                 <a
@@ -80,7 +93,9 @@ export default async function Footer({ locale, variant = 'full', className = '' 
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
-                  {locale === 'id' ? 'Transparansi Anggaran' : 'Budget Transparency'}
+                  {locale === 'id'
+                    ? 'Transparansi Anggaran'
+                    : 'Budget Transparency'}
                 </a>
               </li>
               <li>
@@ -119,7 +134,9 @@ export default async function Footer({ locale, variant = 'full', className = '' 
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">{t('footer.sections.support')}</h4>
+            <h4 className="font-semibold mb-4">
+              {t('footer.sections.support')}
+            </h4>
             <ul className="space-y-2 text-sm text-gray-300">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
@@ -127,7 +144,10 @@ export default async function Footer({ locale, variant = 'full', className = '' 
                 </a>
               </li>
               <li>
-                <Link href={`/${locale}/contact`} className="hover:text-white transition-colors">
+                <Link
+                  href={`/${locale}/contact`}
+                  className="hover:text-white transition-colors"
+                >
                   {t('footer.links.contactUs')}
                 </Link>
               </li>
@@ -173,9 +193,14 @@ export default async function Footer({ locale, variant = 'full', className = '' 
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-300">
-          <p>{t('footer.copyright').replace('2024', new Date().getFullYear().toString())}</p>
+          <p>
+            {t('footer.copyright').replace(
+              '2024',
+              new Date().getFullYear().toString()
+            )}
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

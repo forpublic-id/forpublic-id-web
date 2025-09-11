@@ -1,13 +1,13 @@
-import { Badge, Button } from '@/components/ui'
+import { Badge, Button } from '@/components/ui';
 
 interface HeroProps {
-  locale: string
-  title: string
-  titleHighlight: string
-  description: string
-  badge: string
-  ctaPrimary: string
-  ctaSecondary: string
+  locale: string;
+  title: string;
+  titleHighlight: string;
+  description: string;
+  badge: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
 }
 
 export default function Hero({
@@ -22,7 +22,10 @@ export default function Hero({
   return (
     <section className="py-20 px-4 md:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto text-center max-w-4xl">
-        <Badge variant="secondary" className="mb-4 bg-red-50 text-red-700 border-red-200">
+        <Badge
+          variant="secondary"
+          className="mb-4 bg-red-50 text-red-700 border-red-200"
+        >
           {badge}
         </Badge>
         <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
@@ -53,5 +56,5 @@ export default function Hero({
         </div>
       </div>
     </section>
-  )
+  );
 }

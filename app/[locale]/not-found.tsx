@@ -1,20 +1,24 @@
-import { Button } from '@/components/ui'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui'
-import { Home, Search, ArrowLeft, AlertTriangle } from 'lucide-react'
-import Link from 'next/link'
-import BackButton from '@/components/common/BackButton'
-import { getTranslations } from 'next-intl/server'
-import { Header } from '@/components/layout'
-import { Footer } from '@/components/layout'
+import { AlertTriangle, ArrowLeft, Home, Search } from 'lucide-react';
+import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
+import BackButton from '@/components/common/BackButton';
+import { Footer, Header } from '@/components/layout';
+import {
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui';
 
 interface NotFoundProps {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: string }>;
 }
 
 export default async function LocaleNotFound({ params }: NotFoundProps) {
-  const resolvedParams = await params
-  const locale = resolvedParams?.locale || 'id'
-  const t = await getTranslations({ locale })
+  const resolvedParams = await params;
+  const locale = resolvedParams?.locale || 'id';
+  const t = await getTranslations({ locale });
 
   return (
     <div className="min-h-screen bg-background">
@@ -79,7 +83,9 @@ export default async function LocaleNotFound({ params }: NotFoundProps) {
 
             <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-green-500">
               <CardHeader className="text-center">
-                <CardTitle className="text-lg">{t('notFound.quickLinks.about.title')}</CardTitle>
+                <CardTitle className="text-lg">
+                  {t('notFound.quickLinks.about.title')}
+                </CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-sm text-gray-600 mb-4">
@@ -96,7 +102,9 @@ export default async function LocaleNotFound({ params }: NotFoundProps) {
 
             <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-purple-500">
               <CardHeader className="text-center">
-                <CardTitle className="text-lg">{t('notFound.quickLinks.contact.title')}</CardTitle>
+                <CardTitle className="text-lg">
+                  {t('notFound.quickLinks.contact.title')}
+                </CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-sm text-gray-600 mb-4">
@@ -116,5 +124,5 @@ export default async function LocaleNotFound({ params }: NotFoundProps) {
 
       <Footer locale={locale} variant="simple" className="mt-auto" />
     </div>
-  )
+  );
 }

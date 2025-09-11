@@ -1,52 +1,52 @@
-'use client'
+'use client';
 
-import React, { Component, ErrorInfo, ReactNode } from 'react'
-import { Button } from '@/components/ui'
-import { AlertTriangle, RefreshCw, Home } from 'lucide-react'
+import { AlertTriangle, Home, RefreshCw } from 'lucide-react';
+import React, { Component, type ErrorInfo, type ReactNode } from 'react';
+import { Button } from '@/components/ui';
 
 interface Labels {
-  title?: string
-  message?: string
-  detailsLabel?: string
-  tryAgain?: string
-  goHome?: string
+  title?: string;
+  message?: string;
+  detailsLabel?: string;
+  tryAgain?: string;
+  goHome?: string;
 }
 
 interface Props {
-  children: ReactNode
-  fallback?: ReactNode
-  onError?: (error: Error, errorInfo: ErrorInfo) => void
-  labels?: Labels
+  children: ReactNode;
+  fallback?: ReactNode;
+  onError?: (error: Error, errorInfo: ErrorInfo) => void;
+  labels?: Labels;
 }
 
 interface State {
-  hasError: boolean
-  error?: Error
+  hasError: boolean;
+  error?: Error;
 }
 
 export default class ErrorBoundary extends Component<Props, State> {
   constructor(props: Props) {
-    super(props)
-    this.state = { hasError: false }
+    super(props);
+    this.state = { hasError: false };
   }
 
   static getDerivedStateFromError(error: Error): State {
-    return { hasError: true, error }
+    return { hasError: true, error };
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('ErrorBoundary caught an error:', error, errorInfo)
-    this.props.onError?.(error, errorInfo)
+    console.error('ErrorBoundary caught an error:', error, errorInfo);
+    this.props.onError?.(error, errorInfo);
   }
 
   handleReset = () => {
-    this.setState({ hasError: false, error: undefined })
-  }
+    this.setState({ hasError: false, error: undefined });
+  };
 
   render() {
     if (this.state.hasError) {
       if (this.props.fallback) {
-        return this.props.fallback
+        return this.props.fallback;
       }
 
       return (
@@ -79,22 +79,28 @@ export default class ErrorBoundary extends Component<Props, State> {
             )}
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button onClick={this.handleReset} className="bg-red-600 hover:bg-red-700">
+              <Button
+                onClick={this.handleReset}
+                className="bg-red-600 hover:bg-red-700"
+              >
                 <RefreshCw className="w-4 h-4 mr-2" />
                 {this.props.labels?.tryAgain || 'Try Again'}
               </Button>
 
-              <Button variant="outline" onClick={() => (window.location.href = '/')}>
+              <Button
+                variant="outline"
+                onClick={() => (window.location.href = '/')}
+              >
                 <Home className="w-4 h-4 mr-2" />
                 {this.props.labels?.goHome || 'Go Home'}
               </Button>
             </div>
           </div>
         </div>
-      )
+      );
     }
 
-    return this.props.children
+    return this.props.children;
   }
 }
 
@@ -104,9 +110,9 @@ export const SimpleError = ({
   message = 'Please try again later',
   onRetry,
 }: {
-  title?: string
-  message?: string
-  onRetry?: () => void
+  title?: string;
+  message?: string;
+  onRetry?: () => void;
 }) => (
   <div className="text-center p-6">
     <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -121,4 +127,4 @@ export const SimpleError = ({
       </Button>
     )}
   </div>
-)
+);

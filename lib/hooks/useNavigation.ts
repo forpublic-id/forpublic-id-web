@@ -1,22 +1,22 @@
-'use client'
+'use client';
 
-import { useMemo } from 'react'
-import { routes } from '@/lib/constants'
+import { useMemo } from 'react';
+import { routes } from '@/lib/constants';
 
 interface NavigationItem {
-  href: string
-  label: string
-  section?: string
+  href: string;
+  label: string;
+  section?: string;
 }
 
 interface UseNavigationProps {
-  locale: string
+  locale: string;
   translations?: {
-    applications?: string
-    features?: string
-    about?: string
-    contact?: string
-  }
+    applications?: string;
+    features?: string;
+    about?: string;
+    contact?: string;
+  };
 }
 
 export function useNavigation({ locale, translations }: UseNavigationProps) {
@@ -37,23 +37,24 @@ export function useNavigation({ locale, translations }: UseNavigationProps) {
         label: translations?.about || 'About',
         section: 'about',
       },
-    ]
+    ];
 
-    return baseItems
-  }, [locale, translations])
+    return baseItems;
+  }, [locale, translations]);
 
   const getNavigationBySection = useMemo(() => {
-    return (section: string) => navigationItems.find(item => item.section === section)
-  }, [navigationItems])
+    return (section: string) =>
+      navigationItems.find((item) => item.section === section);
+  }, [navigationItems]);
 
   const getLocalizedRoute = useMemo(() => {
     return (routeName: keyof typeof routes) => {
       if (typeof routes[routeName] === 'function') {
-        return (routes[routeName] as (locale: string) => string)(locale)
+        return (routes[routeName] as (locale: string) => string)(locale);
       }
-      return routes[routeName]
-    }
-  }, [locale])
+      return routes[routeName];
+    };
+  }, [locale]);
 
   return {
     navigationItems,
@@ -64,5 +65,5 @@ export function useNavigation({ locale, translations }: UseNavigationProps) {
       applications: routes.applications(locale),
       notFound: routes.notFound(locale),
     },
-  }
+  };
 }

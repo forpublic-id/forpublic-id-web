@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import { useState, useCallback } from 'react'
-import { useRouter } from 'next/navigation'
-import { Input } from '@/components/ui'
-import { Search } from 'lucide-react'
+import { Search } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useCallback, useState } from 'react';
+import { Input } from '@/components/ui';
 
 interface SearchInputProps {
-  placeholder: string
-  locale: string
-  category?: string
-  defaultValue?: string
+  placeholder: string;
+  locale: string;
+  category?: string;
+  defaultValue?: string;
 }
 
 // Debounce utility function
@@ -17,44 +17,52 @@ function debounce<T extends unknown[]>(
   func: (...args: T) => void,
   wait: number
 ): (...args: T) => void {
-  let timeout: NodeJS.Timeout
+  let timeout: NodeJS.Timeout;
   return (...args: T) => {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => func(...args), wait)
-  }
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), wait);
+  };
 }
 
-export function SearchInput({ placeholder, locale, category, defaultValue }: SearchInputProps) {
-  const [searchTerm, setSearchTerm] = useState(defaultValue || '')
-  const router = useRouter()
+export function SearchInput({
+  placeholder,
+  locale,
+  category,
+  defaultValue,
+}: SearchInputProps) {
+  const [searchTerm, setSearchTerm] = useState(defaultValue || '');
+  const router = useRouter();
 
   const handleSearch = useCallback(
     (value: string) => {
-      const params = new URLSearchParams()
-      if (value) params.set('search', value)
-      if (category) params.set('category', category)
+      const params = new URLSearchParams();
+      if (value) params.set('search', value);
+      if (category) params.set('category', category);
 
-      const queryString = params.toString()
-      const newUrl = `/${locale}/applications${queryString ? `?${queryString}` : ''}`
+      const queryString = params.toString();
+      const newUrl = `/${locale}/applications${queryString ? `?${queryString}` : ''}`;
 
-      router.push(newUrl)
+      router.push(newUrl);
     },
     [category, locale, router]
-  )
+  );
 
   const debouncedSearch = useCallback(
     (value: string) => {
-      const debounced = debounce<[string]>((val: string) => handleSearch(val), 300)
-      debounced(value)
+      const debounced = debounce<[string]>(
+        (val: string) => handleSearch(val),
+        300
+      );
+      debounced(value);
     },
     [handleSearch]
-  )
+  );
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-    setSearchTerm(value)
-    debouncedSearch(value)
-  }
+    const value = e.target.value;
+    setSearchTerm(value);
+    debouncedSearch(value);
+  };
 
   return (
     <div className="relative">
@@ -66,5 +74,5 @@ export function SearchInput({ placeholder, locale, category, defaultValue }: Sea
         className="pl-10 border-gray-200 focus:border-red-500"
       />
     </div>
-  )
+  );
 }

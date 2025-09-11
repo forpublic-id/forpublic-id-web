@@ -1,19 +1,24 @@
-'use client'
+'use client';
 
-export async function trackEvent(event: string, payload?: Record<string, unknown>) {
+export async function trackEvent(
+  event: string,
+  payload?: Record<string, unknown>
+) {
   try {
     const data = {
       event,
       payload,
       ts: Date.now(),
-    }
+    };
 
-    const url = '/api/analytics'
+    const url = '/api/analytics';
 
     if ('sendBeacon' in navigator) {
-      const blob = new Blob([JSON.stringify(data)], { type: 'application/json' })
-      navigator.sendBeacon(url, blob)
-      return
+      const blob = new Blob([JSON.stringify(data)], {
+        type: 'application/json',
+      });
+      navigator.sendBeacon(url, blob);
+      return;
     }
 
     await fetch(url, {
@@ -23,7 +28,7 @@ export async function trackEvent(event: string, payload?: Record<string, unknown
       },
       body: JSON.stringify(data),
       keepalive: true,
-    })
+    });
   } catch (_) {
     // no-op
   }

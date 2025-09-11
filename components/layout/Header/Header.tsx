@@ -1,17 +1,17 @@
-import { getTranslations } from 'next-intl/server'
-import Logo from './Logo'
-import Navigation from './Navigation'
-import MobileMenu from './MobileMenu'
+import { getTranslations } from 'next-intl/server';
+import Logo from './Logo';
+import MobileMenu from './MobileMenu';
+import Navigation from './Navigation';
 
 export default async function Header({ locale }: { locale: string }) {
-  const t = await getTranslations({ locale })
+  const t = await getTranslations({ locale });
 
   const translations = {
     applications: t('header.nav.applications'),
     features: t('header.nav.features'),
     about: t('header.nav.about'),
     contact: t('header.nav.contact'),
-  }
+  };
 
   return (
     <header
@@ -26,5 +26,5 @@ export default async function Header({ locale }: { locale: string }) {
         </div>
       </div>
     </header>
-  )
+  );
 }

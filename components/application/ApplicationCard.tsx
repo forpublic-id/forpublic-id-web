@@ -1,33 +1,31 @@
+import { Clock, ExternalLink, Star } from 'lucide-react';
 import {
+  Badge,
+  Button,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-  Badge,
-  Button,
-} from '@/components/ui'
-import { Star, Clock, ExternalLink } from 'lucide-react'
-import type { Application, BrandColor } from '@/lib/types/application'
+} from '@/components/ui';
+import type { Application, BrandColor } from '@/lib/types/application';
 
-interface TranslationFunction {
-  (key: string): string
-}
+type TranslationFunction = (key: string) => string;
 
 interface ApplicationCardProps {
-  app: Application
-  t: TranslationFunction
+  app: Application;
+  t: TranslationFunction;
 }
 
 // Color mapping untuk menghindari dynamic Tailwind classes
 const colorClassMap: Record<
   BrandColor,
   {
-    border: string
-    bg: string
-    icon: string
-    button: string
-    buttonHover: string
+    border: string;
+    bg: string;
+    icon: string;
+    button: string;
+    buttonHover: string;
   }
 > = {
   blue: {
@@ -72,11 +70,11 @@ const colorClassMap: Record<
     button: 'bg-teal-600',
     buttonHover: 'hover:bg-teal-700',
   },
-}
+};
 
 export default function ApplicationCard({ app, t }: ApplicationCardProps) {
-  const Icon = app.icon
-  const colorClasses = colorClassMap[app.color]
+  const Icon = app.icon;
+  const colorClasses = colorClassMap[app.color];
 
   return (
     <Card
@@ -86,7 +84,10 @@ export default function ApplicationCard({ app, t }: ApplicationCardProps) {
     >
       {app.featured && (
         <div className="absolute top-4 right-4">
-          <Badge variant="secondary" className="bg-yellow-50 text-yellow-700 border-yellow-200">
+          <Badge
+            variant="secondary"
+            className="bg-yellow-50 text-yellow-700 border-yellow-200"
+          >
             <Star className="w-3 h-3 mr-1" />
             {t('applications.page.app.featured')}
           </Badge>
@@ -111,7 +112,9 @@ export default function ApplicationCard({ app, t }: ApplicationCardProps) {
           {typeof app.title === 'string' ? app.title : app.title.id}
         </CardTitle>
         <CardDescription className="text-sm leading-relaxed">
-          {typeof app.description === 'string' ? app.description : app.description.id}
+          {typeof app.description === 'string'
+            ? app.description
+            : app.description.id}
         </CardDescription>
       </CardHeader>
 
@@ -145,5 +148,5 @@ export default function ApplicationCard({ app, t }: ApplicationCardProps) {
         )}
       </CardContent>
     </Card>
-  )
+  );
 }

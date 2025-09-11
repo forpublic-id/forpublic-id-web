@@ -1,10 +1,10 @@
-import { LucideIcon } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react';
 
 interface FeatureCardProps {
-  icon: LucideIcon
-  title: string
-  description: string
-  color: 'green' | 'blue' | 'purple' | 'orange' | 'yellow' | 'red'
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  color: 'green' | 'blue' | 'purple' | 'orange' | 'yellow' | 'red';
 }
 
 const colorClasses = {
@@ -32,10 +32,15 @@ const colorClasses = {
     bg: 'bg-red-100',
     text: 'text-red-600',
   },
-}
+};
 
-export default function FeatureCard({ icon: Icon, title, description, color }: FeatureCardProps) {
-  const colorClass = colorClasses[color]
+export default function FeatureCard({
+  icon: Icon,
+  title,
+  description,
+  color,
+}: FeatureCardProps) {
+  const colorClass = colorClasses[color];
 
   return (
     <div className="text-center">
@@ -47,5 +52,5 @@ export default function FeatureCard({ icon: Icon, title, description, color }: F
       <h3 className="text-xl font-semibold mb-2 text-gray-900">{title}</h3>
       <p className="text-gray-600">{description}</p>
     </div>
-  )
+  );
 }

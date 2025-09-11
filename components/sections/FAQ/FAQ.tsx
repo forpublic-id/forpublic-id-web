@@ -1,51 +1,61 @@
-'use client'
+'use client';
 
-import { useState, useId } from 'react'
-import { ChevronDown } from 'lucide-react'
-import { Card, Button } from '@/components/ui'
-import Link from 'next/link'
+import { ChevronDown } from 'lucide-react';
+import Link from 'next/link';
+import { useId, useState } from 'react';
+import { Button, Card } from '@/components/ui';
 
 interface FAQItem {
-  question: string
-  answer: string
+  question: string;
+  answer: string;
 }
 
 interface FAQProps {
-  title: string
-  subtitle: string
-  items: FAQItem[]
-  locale?: string
-  showViewAllButton?: boolean
+  title: string;
+  subtitle: string;
+  items: FAQItem[];
+  locale?: string;
+  showViewAllButton?: boolean;
 }
 
-export function FAQ({ title, subtitle, items, locale = 'id', showViewAllButton = true }: FAQProps) {
-  const [openItems, setOpenItems] = useState<number[]>([])
-  const baseId = useId()
+export function FAQ({
+  title,
+  subtitle,
+  items,
+  locale = 'id',
+  showViewAllButton = true,
+}: FAQProps) {
+  const [openItems, setOpenItems] = useState<number[]>([]);
+  const baseId = useId();
 
   const toggleItem = (index: number) => {
-    setOpenItems(prev => (prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]))
-  }
+    setOpenItems((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
+  };
 
   const handleKeyDown = (event: React.KeyboardEvent, index: number) => {
     if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      toggleItem(index)
+      event.preventDefault();
+      toggleItem(index);
     }
-  }
+  };
 
   return (
     <section className="py-20 px-4 md:px-6 lg:px-8 bg-gray-50">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">{title}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+            {title}
+          </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
         </div>
 
         <div className="space-y-4">
           {items.map((item, index) => {
-            const isOpen = openItems.includes(index)
-            const headerId = `${baseId}-header-${index}`
-            const contentId = `${baseId}-content-${index}`
+            const isOpen = openItems.includes(index);
+            const headerId = `${baseId}-header-${index}`;
+            const contentId = `${baseId}-content-${index}`;
 
             return (
               <Card
@@ -59,7 +69,7 @@ export function FAQ({ title, subtitle, items, locale = 'id', showViewAllButton =
                 <div
                   className="px-4 py-3 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
                   onClick={() => toggleItem(index)}
-                  onKeyDown={e => handleKeyDown(e, index)}
+                  onKeyDown={(e) => handleKeyDown(e, index)}
                   tabIndex={0}
                   role="button"
                   aria-expanded={isOpen}
@@ -86,12 +96,14 @@ export function FAQ({ title, subtitle, items, locale = 'id', showViewAllButton =
                 >
                   <div className="px-4 pb-3">
                     <div className="border-t border-gray-100 pt-2">
-                      <p className="text-gray-600 leading-relaxed">{item.answer}</p>
+                      <p className="text-gray-600 leading-relaxed">
+                        {item.answer}
+                      </p>
                     </div>
                   </div>
                 </div>
               </Card>
-            )
+            );
           })}
         </div>
 
@@ -111,5 +123,5 @@ export function FAQ({ title, subtitle, items, locale = 'id', showViewAllButton =
         )}
       </div>
     </section>
-  )
+  );
 }

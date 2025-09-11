@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import { Suspense } from 'react'
-import Loading, { ComponentLoading, CardSkeleton } from './Loading'
-import ErrorBoundary from './ErrorBoundary'
+import { Suspense } from 'react';
+import ErrorBoundary from './ErrorBoundary';
+import Loading, { CardSkeleton, ComponentLoading } from './Loading';
 
 interface AsyncComponentWrapperProps {
-  children: React.ReactNode
-  fallback?: React.ReactNode
-  errorFallback?: React.ReactNode
+  children: React.ReactNode;
+  fallback?: React.ReactNode;
+  errorFallback?: React.ReactNode;
 }
 
 // Wrapper untuk async components dengan loading dan error handling
@@ -20,7 +20,7 @@ export function AsyncComponentWrapper({
     <ErrorBoundary fallback={errorFallback}>
       <Suspense fallback={fallback}>{children}</Suspense>
     </ErrorBoundary>
-  )
+  );
 }
 
 // Loading untuk halaman penuh
@@ -29,16 +29,24 @@ export function FullPageLoader({ text = 'Loading...' }: { text?: string }) {
     <div className="min-h-screen flex items-center justify-center">
       <Loading variant="spinner" size="lg" text={text} />
     </div>
-  )
+  );
 }
 
 // Loading untuk section
-export function SectionLoader({ text, className }: { text?: string; className?: string }) {
+export function SectionLoader({
+  text,
+  className,
+}: {
+  text?: string;
+  className?: string;
+}) {
   return (
-    <div className={`py-12 flex flex-col items-center justify-center ${className || ''}`}>
+    <div
+      className={`py-12 flex flex-col items-center justify-center ${className || ''}`}
+    >
       <Loading variant="spinner" size="md" text={text} />
     </div>
-  )
+  );
 }
 
 // Grid skeleton untuk aplikasi cards
@@ -49,7 +57,7 @@ export function ApplicationsGridSkeleton({ count = 6 }: { count?: number }) {
         <CardSkeleton key={i} />
       ))}
     </div>
-  )
+  );
 }
 
 // List skeleton untuk aplikasi list
@@ -74,7 +82,7 @@ export function ApplicationsListSkeleton({ count = 4 }: { count?: number }) {
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-export default AsyncComponentWrapper
+export default AsyncComponentWrapper;

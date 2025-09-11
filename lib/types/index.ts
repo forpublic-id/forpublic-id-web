@@ -1,2 +1,2 @@
-export * from './locale'
-export * from './application'
+export * from './application';
+export * from './locale';

@@ -1,24 +1,23 @@
-import { Button, Input } from '@/components/ui'
-import { Search, Grid3X3, List } from 'lucide-react'
-import Link from 'next/link'
-import { LucideIcon } from 'lucide-react'
+import { Grid3X3, List, type LucideIcon, Search } from 'lucide-react';
+import Link from 'next/link';
+import { Button, Input } from '@/components/ui';
 
 interface Category {
-  key: string
-  icon: LucideIcon
+  key: string;
+  icon: LucideIcon;
 }
 
 interface FilterBarProps {
-  locale: string
-  search: string
-  category: string | null
-  view: 'grid' | 'list'
-  categories: Category[]
+  locale: string;
+  search: string;
+  category: string | null;
+  view: 'grid' | 'list';
+  categories: Category[];
   translations: {
-    search: string
-    allCategories: string
-    categoriesLabel: (key: string) => string
-  }
+    search: string;
+    allCategories: string;
+    categoriesLabel: (key: string) => string;
+  };
 }
 
 export default function FilterBar({
@@ -60,9 +59,11 @@ export default function FilterBar({
                 }
                 asChild
               >
-                <Link href={`/${locale}/applications`}>{translations.allCategories}</Link>
+                <Link href={`/${locale}/applications`}>
+                  {translations.allCategories}
+                </Link>
               </Button>
-              {categories.map(cat => (
+              {categories.map((cat) => (
                 <Button
                   key={cat.key}
                   variant={category === cat.key ? 'default' : 'outline'}
@@ -113,5 +114,5 @@ export default function FilterBar({
         </div>
       </div>
     </section>
-  )
+  );
 }

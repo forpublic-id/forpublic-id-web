@@ -25,8 +25,8 @@ export const colors = {
     gray900: 'rgb(17 24 39)',
     black: 'rgb(0 0 0)',
   },
-} as const
+} as const;
 
-export type BrandColorKey = keyof typeof colors.brand
-export type SemanticColor = keyof typeof colors.semantic
-export type NeutralColor = keyof typeof colors.neutral
+export type BrandColorKey = keyof typeof colors.brand;
+export type SemanticColor = keyof typeof colors.semantic;
+export type NeutralColor = keyof typeof colors.neutral;

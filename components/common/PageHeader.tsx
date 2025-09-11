@@ -1,16 +1,16 @@
-import { Button, Badge } from '@/components/ui'
-import { ArrowLeft } from 'lucide-react'
-import Link from 'next/link'
+import { ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
+import { Badge, Button } from '@/components/ui';
 
 interface PageHeaderProps {
-  title: string
-  subtitle?: string
-  badge?: string
-  showBackButton?: boolean
-  backUrl?: string
-  backText?: string
-  locale?: string
-  children?: React.ReactNode
+  title: string;
+  subtitle?: string;
+  badge?: string;
+  showBackButton?: boolean;
+  backUrl?: string;
+  backText?: string;
+  locale?: string;
+  children?: React.ReactNode;
 }
 
 export function PageHeader({
@@ -23,7 +23,7 @@ export function PageHeader({
   locale = 'id',
   children,
 }: PageHeaderProps) {
-  const finalBackUrl = backUrl === '/' ? `/${locale}` : backUrl
+  const finalBackUrl = backUrl === '/' ? `/${locale}` : backUrl;
 
   return (
     <section className="py-16 px-4 md:px-6 lg:px-8 bg-gradient-to-br from-red-50 to-white">
@@ -53,15 +53,19 @@ export function PageHeader({
             </Badge>
           )}
 
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">{title}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+            {title}
+          </h1>
 
           {subtitle && (
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">{subtitle}</p>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              {subtitle}
+            </p>
           )}
 
           {children && <div className="mt-8">{children}</div>}
         </div>
       </div>
     </section>
-  )
+  );
 }

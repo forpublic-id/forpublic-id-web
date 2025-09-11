@@ -1,57 +1,55 @@
-import { Button } from '@/components/ui'
-import { Badge } from '@/components/ui'
-import { Card, CardContent } from '@/components/ui'
-import Logo from '@/components/common/Logo'
 import {
-  Target,
-  Users,
-  Shield,
-  Heart,
-  Globe,
-  Lightbulb,
   ArrowRight,
-  CheckCircle,
-  TrendingUp,
   Award,
+  CheckCircle,
+  Globe,
+  Heart,
+  Lightbulb,
   Mail,
-} from 'lucide-react'
+  Shield,
+  Target,
+  TrendingUp,
+  Users,
+} from 'lucide-react';
+import Logo from '@/components/common/Logo';
+import { Badge, Button, Card, CardContent } from '@/components/ui';
 
 interface AboutProps {
-  locale: string
+  locale: string;
   translations: {
-    title: string
-    subtitle: string
+    title: string;
+    subtitle: string;
     vision: {
-      title: string
-      description: string
-    }
+      title: string;
+      description: string;
+    };
     mission: {
-      title: string
-      description: string
-    }
+      title: string;
+      description: string;
+    };
     values: {
-      title: string
+      title: string;
       items: Array<{
-        title: string
-        description: string
-        icon: string
-      }>
-    }
+        title: string;
+        description: string;
+        icon: string;
+      }>;
+    };
     stats: {
-      title: string
+      title: string;
       items: Array<{
-        value: string
-        label: string
-        description: string
-      }>
-    }
+        value: string;
+        label: string;
+        description: string;
+      }>;
+    };
     cta: {
-      title: string
-      description: string
-      primary: string
-      secondary: string
-    }
-  }
+      title: string;
+      description: string;
+      primary: string;
+      secondary: string;
+    };
+  };
 }
 
 const iconMap = {
@@ -61,11 +59,14 @@ const iconMap = {
   accessibility: Heart,
   impact: TrendingUp,
   trust: Award,
-}
+};
 
 export function About({ locale, translations: t }: AboutProps) {
   return (
-    <section id="about" className="py-20 px-4 md:px-6 lg:px-8 bg-gray-50 scroll-mt-20">
+    <section
+      id="about"
+      className="py-20 px-4 md:px-6 lg:px-8 bg-gray-50 scroll-mt-20"
+    >
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <div className="text-center mb-16">
@@ -76,9 +77,16 @@ export function About({ locale, translations: t }: AboutProps) {
             {t.title}
           </Badge>
           <div className="flex justify-center mb-8">
-            <Logo locale={locale} size="lg" clickable={false} className="scale-[1.8]" />
+            <Logo
+              locale={locale}
+              size="lg"
+              clickable={false}
+              className="scale-[1.8]"
+            />
           </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{t.subtitle}</p>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            {t.subtitle}
+          </p>
         </div>
 
         {/* Combined Section: Vision + Stats */}
@@ -90,29 +98,43 @@ export function About({ locale, translations: t }: AboutProps) {
                 <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                   <Target className="w-6 h-6 text-red-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">{t.vision.title}</h3>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  {t.vision.title}
+                </h3>
               </div>
-              <p className="text-gray-600 leading-relaxed">{t.vision.description}</p>
+              <p className="text-gray-600 leading-relaxed">
+                {t.vision.description}
+              </p>
             </div>
             <div>
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                   <Globe className="w-6 h-6 text-blue-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">{t.mission.title}</h3>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  {t.mission.title}
+                </h3>
               </div>
-              <p className="text-gray-600 leading-relaxed">{t.mission.description}</p>
+              <p className="text-gray-600 leading-relaxed">
+                {t.mission.description}
+              </p>
             </div>
           </div>
 
           {/* Stats Section */}
           <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">{t.stats.title}</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+              {t.stats.title}
+            </h3>
             <div className="grid grid-cols-1 gap-6">
               {t.stats.items.map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-3xl font-bold text-red-600 mb-1">{stat.value}</div>
-                  <div className="text-lg font-semibold text-gray-900 mb-1">{stat.label}</div>
+                  <div className="text-3xl font-bold text-red-600 mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-lg font-semibold text-gray-900 mb-1">
+                    {stat.label}
+                  </div>
                   <p className="text-gray-600 text-sm">{stat.description}</p>
                 </div>
               ))}
@@ -123,11 +145,14 @@ export function About({ locale, translations: t }: AboutProps) {
         {/* Compact Values Section */}
         <div className="mb-16">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">{t.values.title}</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              {t.values.title}
+            </h3>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.values.items.slice(0, 3).map((value, index) => {
-              const IconComponent = iconMap[value.icon as keyof typeof iconMap] || CheckCircle
+              const IconComponent =
+                iconMap[value.icon as keyof typeof iconMap] || CheckCircle;
               return (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
@@ -136,13 +161,17 @@ export function About({ locale, translations: t }: AboutProps) {
                         <IconComponent className="w-6 h-6 text-gray-600" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-2">{value.title}</h4>
-                        <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
+                        <h4 className="font-semibold text-gray-900 mb-2">
+                          {value.title}
+                        </h4>
+                        <p className="text-gray-600 text-sm leading-relaxed">
+                          {value.description}
+                        </p>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
-              )
+              );
             })}
           </div>
         </div>
@@ -152,7 +181,9 @@ export function About({ locale, translations: t }: AboutProps) {
           id="contact"
           className="text-center bg-white rounded-2xl p-8 md:p-12 shadow-lg scroll-mt-32"
         >
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{t.cta.title}</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            {t.cta.title}
+          </h3>
           <p className="text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
             {t.cta.description}
           </p>
@@ -162,7 +193,11 @@ export function About({ locale, translations: t }: AboutProps) {
               className="text-lg px-8 bg-red-600 hover:bg-red-700 text-white group"
               asChild
             >
-              <a href="https://studio.forpublic.id" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://studio.forpublic.id"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {t.cta.primary}
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
@@ -182,5 +217,5 @@ export function About({ locale, translations: t }: AboutProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,7 +1,17 @@
 export const typography = {
   fontFamily: {
-    sans: ['var(--font-geist-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-    mono: ['var(--font-geist-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+    sans: [
+      'var(--font-geist-sans)',
+      'ui-sans-serif',
+      'system-ui',
+      'sans-serif',
+    ],
+    mono: [
+      'var(--font-geist-mono)',
+      'ui-monospace',
+      'SFMono-Regular',
+      'monospace',
+    ],
   },
   fontSize: {
     xs: ['0.75rem', { lineHeight: '1rem' }], // 12px
@@ -45,10 +55,10 @@ export const typography = {
     relaxed: '1.625',
     loose: '2',
   },
-} as const
+} as const;
 
-export type FontFamily = keyof typeof typography.fontFamily
-export type FontSize = keyof typeof typography.fontSize
-export type FontWeight = keyof typeof typography.fontWeight
-export type LetterSpacing = keyof typeof typography.letterSpacing
-export type LineHeight = keyof typeof typography.lineHeight
+export type FontFamily = keyof typeof typography.fontFamily;
+export type FontSize = keyof typeof typography.fontSize;
+export type FontWeight = keyof typeof typography.fontWeight;
+export type LetterSpacing = keyof typeof typography.letterSpacing;
+export type LineHeight = keyof typeof typography.lineHeight;

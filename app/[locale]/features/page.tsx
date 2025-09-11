@@ -1,35 +1,40 @@
-import { Button } from '@/components/ui'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui'
-import { Header } from '@/components/layout'
-import { Footer } from '@/components/layout'
-import { StructuredData, PageHeader } from '@/components/common'
 import {
-  CheckCircle,
-  Smartphone,
-  Shield,
-  Zap,
-  Globe,
-  Lock,
-  Users,
-  TrendingUp,
-  Heart,
   ArrowRight,
-} from 'lucide-react'
-import { getTranslations } from 'next-intl/server'
-import Link from 'next/link'
-import type { Metadata } from 'next'
+  CheckCircle,
+  Globe,
+  Heart,
+  Lock,
+  Shield,
+  Smartphone,
+  TrendingUp,
+  Users,
+  Zap,
+} from 'lucide-react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
+import { PageHeader, StructuredData } from '@/components/common';
+import { Footer, Header } from '@/components/layout';
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui';
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const resolvedParams = await params
-  const locale = resolvedParams?.locale || 'id'
-  const t = await getTranslations({ locale })
+  const resolvedParams = await params;
+  const locale = resolvedParams?.locale || 'id';
+  const t = await getTranslations({ locale });
 
   return {
-    title: `${t('featuresPage.page.title')} - ForPublic.id`,
+    title: `${locale === 'id' ? 'Fitur Unggulan' : 'Key Features'} - ForPublic.id`,
     description:
       locale === 'id'
         ? '🚀 Temukan fitur-fitur unggulan ForPublic.id: aplikasi gratis, data terpercaya, mobile-friendly, keamanan terjamin, dan akses 24/7 untuk transparansi publik.'
@@ -39,7 +44,7 @@ export async function generateMetadata({
         ? 'fitur unggulan, aplikasi gratis, data terpercaya, mobile friendly, keamanan data, transparansi publik'
         : 'key features, free applications, trusted data, mobile friendly, data security, public transparency',
     openGraph: {
-      title: `${t('featuresPage.page.title')} - ForPublic.id`,
+      title: `${locale === 'id' ? 'Fitur Unggulan' : 'Key Features'} - ForPublic.id`,
       description:
         locale === 'id'
           ? '🚀 Temukan fitur-fitur unggulan ForPublic.id: aplikasi gratis, data terpercaya, mobile-friendly, keamanan terjamin, dan akses 24/7 untuk transparansi publik.'
@@ -54,13 +59,17 @@ export async function generateMetadata({
         'en-US': '/en/features',
       },
     },
-  }
+  };
 }
 
-export default async function FeaturesPage({ params }: { params: Promise<{ locale: string }> }) {
-  const resolvedParams = await params
-  const locale = resolvedParams?.locale || 'id'
-  const t = await getTranslations({ locale })
+export default async function FeaturesPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const resolvedParams = await params;
+  const locale = resolvedParams?.locale || 'id';
+  const t = await getTranslations({ locale });
 
   const coreFeatures = [
     {
@@ -117,7 +126,7 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
           ? 'Enkripsi end-to-end, privacy-first approach, dan perlindungan data pengguna.'
           : 'End-to-end encryption, privacy-first approach, and user data protection.',
     },
-  ]
+  ];
 
   const benefits = [
     {
@@ -144,7 +153,7 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
           ? 'Dijalankan dengan semangat gotong royong untuk kepentingan bersama, bukan keuntungan komersial.'
           : 'Run with the spirit of mutual cooperation for common interests, not commercial profit.',
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -159,8 +168,13 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
 
       {/* Page Header */}
       <PageHeader
-        title={t('featuresPage.hero.title')}
-        subtitle={t('featuresPage.hero.description')}
+        title={locale === 'id' ? 'Fitur Unggulan' : 'Key Features'}
+        subtitle={
+          locale === 'id'
+            ? 'Temukan keunggulan dan fitur-fitur terbaik yang membuat ForPublic.id menjadi pilihan utama untuk mengakses informasi publik.'
+            : 'Discover the advantages and best features that make ForPublic.id the top choice for accessing public information.'
+        }
+        badge={locale === 'id' ? 'Keunggulan Platform' : 'Platform Advantages'}
         showBackButton={true}
         backUrl={`/${locale}`}
         backText={t('notFound.backToHome')}
@@ -172,7 +186,9 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {locale === 'id' ? 'Fitur Inti Platform' : 'Core Platform Features'}
+              {locale === 'id'
+                ? 'Fitur Inti Platform'
+                : 'Core Platform Features'}
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               {locale === 'id'
@@ -183,7 +199,7 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {coreFeatures.map((feature, index) => {
-              const Icon = feature.icon
+              const Icon = feature.icon;
               const colorClasses = {
                 green: 'bg-green-100 text-green-600 border-l-green-500',
                 blue: 'bg-blue-100 text-blue-600 border-l-blue-500',
@@ -191,7 +207,7 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
                 yellow: 'bg-yellow-100 text-yellow-600 border-l-yellow-500',
                 indigo: 'bg-indigo-100 text-indigo-600 border-l-indigo-500',
                 purple: 'bg-purple-100 text-purple-600 border-l-purple-500',
-              }
+              };
 
               return (
                 <Card
@@ -204,7 +220,9 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
                     >
                       <Icon className="w-8 h-8" />
                     </div>
-                    <CardTitle className="text-center">{feature.title}</CardTitle>
+                    <CardTitle className="text-center">
+                      {feature.title}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription className="text-center text-gray-600 leading-relaxed">
@@ -212,7 +230,7 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
                     </CardDescription>
                   </CardContent>
                 </Card>
-              )
+              );
             })}
           </div>
 
@@ -224,7 +242,7 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
               </h3>
               <div className="space-y-6">
                 {benefits.map((benefit, index) => {
-                  const Icon = benefit.icon
+                  const Icon = benefit.icon;
                   return (
                     <div key={index} className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -234,10 +252,12 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
                         <h4 className="text-lg font-semibold text-gray-900 mb-2">
                           {benefit.title}
                         </h4>
-                        <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+                        <p className="text-gray-600 leading-relaxed">
+                          {benefit.description}
+                        </p>
                       </div>
                     </div>
-                  )
+                  );
                 })}
               </div>
             </div>
@@ -247,16 +267,22 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
               <Card className="p-6 bg-gradient-to-r from-red-500 to-blue-600 text-white">
                 <CardContent className="text-center">
                   <h4 className="text-xl font-bold mb-6">
-                    {locale === 'id' ? 'Platform Statistics' : 'Platform Statistics'}
+                    {locale === 'id'
+                      ? 'Platform Statistics'
+                      : 'Platform Statistics'}
                   </h4>
                   <div className="grid grid-cols-3 gap-4">
                     <div>
                       <div className="text-2xl font-bold mb-1">10+</div>
-                      <p className="text-sm opacity-90">{locale === 'id' ? 'Apps' : 'Apps'}</p>
+                      <p className="text-sm opacity-90">
+                        {locale === 'id' ? 'Apps' : 'Apps'}
+                      </p>
                     </div>
                     <div>
                       <div className="text-2xl font-bold mb-1">99.9%</div>
-                      <p className="text-sm opacity-90">{locale === 'id' ? 'Uptime' : 'Uptime'}</p>
+                      <p className="text-sm opacity-90">
+                        {locale === 'id' ? 'Uptime' : 'Uptime'}
+                      </p>
                     </div>
                     <div>
                       <div className="text-2xl font-bold mb-1">24/7</div>
@@ -286,7 +312,9 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
                     asChild
                   >
                     <Link href={`/${locale}/applications`}>
-                      {locale === 'id' ? 'Jelajahi Aplikasi' : 'Explore Applications'}
+                      {locale === 'id'
+                        ? 'Jelajahi Aplikasi'
+                        : 'Explore Applications'}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
                   </Button>
@@ -309,5 +337,5 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
 
       <Footer locale={locale} />
     </div>
-  )
+  );
 }

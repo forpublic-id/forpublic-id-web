@@ -1,13 +1,19 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui'
-import { LucideIcon } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui';
 
 interface CategoryCardProps {
-  icon: LucideIcon
-  title: string
-  description: string
-  content: string
-  color: 'blue' | 'green' | 'purple' | 'orange' | 'red' | 'teal'
-  className?: string
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  content: string;
+  color: 'blue' | 'green' | 'purple' | 'orange' | 'red' | 'teal';
+  className?: string;
 }
 
 const colorClasses = {
@@ -35,7 +41,7 @@ const colorClasses = {
     border: 'border-l-teal-500',
     icon: 'text-teal-600',
   },
-}
+};
 
 export default function CategoryCard({
   icon: Icon,
@@ -45,7 +51,7 @@ export default function CategoryCard({
   color,
   className = '',
 }: CategoryCardProps) {
-  const colorClass = colorClasses[color]
+  const colorClass = colorClasses[color];
 
   return (
     <Card
@@ -60,5 +66,5 @@ export default function CategoryCard({
         <p className="text-sm text-gray-600">{content}</p>
       </CardContent>
     </Card>
-  )
+  );
 }

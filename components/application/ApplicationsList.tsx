@@ -1,17 +1,17 @@
-import { Card, CardContent, Badge, Button } from '@/components/ui'
-import { Star, Clock, ExternalLink } from 'lucide-react'
-import ErrorBoundary, { SimpleError } from '@/components/common/ErrorBoundary'
-import { CardSkeleton } from '@/components/common/Loading'
-import type { Application, BrandColor } from '@/lib/types/application'
+import { Clock, ExternalLink, Star } from 'lucide-react';
+import ErrorBoundary, { SimpleError } from '@/components/common/ErrorBoundary';
+import { CardSkeleton } from '@/components/common/Loading';
+import { Badge, Button, Card, CardContent } from '@/components/ui';
+import type { Application, BrandColor } from '@/lib/types/application';
 
 // Color mapping untuk menghindari dynamic Tailwind classes
 const colorClassMap: Record<
   BrandColor,
   {
-    bg: string
-    icon: string
-    button: string
-    buttonHover: string
+    bg: string;
+    icon: string;
+    button: string;
+    buttonHover: string;
   }
 > = {
   blue: {
@@ -50,18 +50,16 @@ const colorClassMap: Record<
     button: 'bg-teal-600',
     buttonHover: 'hover:bg-teal-700',
   },
-}
+};
 
-interface TranslationFunction {
-  (key: string): string
-}
+type TranslationFunction = (key: string) => string;
 
 interface ApplicationsListProps {
-  applications: Application[]
-  t: TranslationFunction
-  isLoading?: boolean
-  error?: string
-  onRetry?: () => void
+  applications: Application[];
+  t: TranslationFunction;
+  isLoading?: boolean;
+  error?: string;
+  onRetry?: () => void;
 }
 
 export default function ApplicationsList({
@@ -78,11 +76,17 @@ export default function ApplicationsList({
           <CardSkeleton key={i} />
         ))}
       </div>
-    )
+    );
   }
 
   if (error) {
-    return <SimpleError title={t('errors.loadApplications')} message={error} onRetry={onRetry} />
+    return (
+      <SimpleError
+        title={t('errors.loadApplications')}
+        message={error}
+        onRetry={onRetry}
+      />
+    );
   }
 
   if (applications.length === 0) {
@@ -90,14 +94,14 @@ export default function ApplicationsList({
       <div className="text-center py-12">
         <p className="text-gray-500">{t('applications.page.noResults')}</p>
       </div>
-    )
+    );
   }
 
   return (
     <ErrorBoundary fallback={<SimpleError title={t('errors.displayError')} />}>
       <div className="space-y-6">
-        {applications.map(app => {
-          const colorClasses = colorClassMap[app.color]
+        {applications.map((app) => {
+          const colorClasses = colorClassMap[app.color];
           return (
             <Card
               key={app.id}
@@ -114,7 +118,9 @@ export default function ApplicationsList({
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center space-x-2 mb-2">
                       <h3 className="text-xl font-semibold text-gray-900">
-                        {typeof app.title === 'string' ? app.title : app.title.id}
+                        {typeof app.title === 'string'
+                          ? app.title
+                          : app.title.id}
                       </h3>
                       {app.featured && (
                         <Badge
@@ -134,12 +140,18 @@ export default function ApplicationsList({
                     </div>
 
                     <p className="text-gray-600 mb-3 leading-relaxed">
-                      {typeof app.description === 'string' ? app.description : app.description.id}
+                      {typeof app.description === 'string'
+                        ? app.description
+                        : app.description.id}
                     </p>
 
                     <div className="flex flex-wrap gap-2 mb-4">
                       {app.tags.map((tag: string) => (
-                        <Badge key={tag} variant="secondary" className="text-xs">
+                        <Badge
+                          key={tag}
+                          variant="secondary"
+                          className="text-xs"
+                        >
                           {tag}
                         </Badge>
                       ))}
@@ -148,7 +160,9 @@ export default function ApplicationsList({
 
                   <div className="flex-shrink-0">
                     <Button
-                      variant={app.status === 'available' ? 'default' : 'secondary'}
+                      variant={
+                        app.status === 'available' ? 'default' : 'secondary'
+                      }
                       className={
                         app.status === 'available'
                           ? `${colorClasses.button} ${colorClasses.buttonHover}`
@@ -169,9 +183,9 @@ export default function ApplicationsList({
                 </div>
               </CardContent>
             </Card>
-          )
+          );
         })}
       </div>
     </ErrorBoundary>
-  )
+  );
 }

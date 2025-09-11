@@ -21,11 +21,11 @@ export const routes = {
     about: '#about',
     contact: '#contact',
   },
-} as const
+} as const;
 
-export const supportedLocales = ['id', 'en'] as const
-export const defaultLocale = 'id' as const
+export const supportedLocales = ['id', 'en'] as const;
+export const defaultLocale = 'id' as const;
 
-export type Locale = (typeof supportedLocales)[number]
-export type RouteKey = keyof typeof routes
-export type SectionKey = keyof typeof routes.sections
+export type Locale = (typeof supportedLocales)[number];
+export type RouteKey = keyof typeof routes;
+export type SectionKey = keyof typeof routes.sections;

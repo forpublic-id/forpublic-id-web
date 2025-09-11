@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
-import { SimpleFooter } from '@/components/layout/Footer'
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { SimpleFooter } from '@/components/layout/Footer';
 
 // Translation object for both languages
 const translations = {
@@ -20,48 +20,50 @@ const translations = {
     description:
       'Sorry, the page you are looking for could not be found. It may have been moved, deleted, or the URL entered is incorrect.',
     button: 'Back to Home',
-    copyright: '© 2025 ForPublic.id. All rights reserved. Made with ❤️ for public good.',
+    copyright:
+      '© 2025 ForPublic.id. All rights reserved. Made with ❤️ for public good.',
   },
-}
+};
 
 function getCookie(name: string): string | null {
-  if (typeof document === 'undefined') return null
-  const value = `; ${document.cookie}`
-  const parts = value.split(`; ${name}=`)
-  if (parts.length === 2) return parts.pop()?.split(';').shift() || null
-  return null
+  if (typeof document === 'undefined') return null;
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
+  return null;
 }
 
 function detectLocaleFromURL(): 'id' | 'en' {
-  if (typeof window === 'undefined') return 'id'
+  if (typeof window === 'undefined') return 'id';
 
-  const pathname = window.location.pathname
-  if (pathname.startsWith('/en')) return 'en'
-  if (pathname.startsWith('/id')) return 'id'
+  const pathname = window.location.pathname;
+  if (pathname.startsWith('/en')) return 'en';
+  if (pathname.startsWith('/id')) return 'id';
 
   // Try to get from cookie as secondary option
-  const cookieLocale = getCookie('NEXT_LOCALE')
-  if (cookieLocale === 'en') return 'en'
-  if (cookieLocale === 'id') return 'id'
+  const cookieLocale = getCookie('NEXT_LOCALE');
+  if (cookieLocale === 'en') return 'en';
+  if (cookieLocale === 'id') return 'id';
 
-  return 'id' // Default fallback
+  return 'id'; // Default fallback
 }
 
 export default function GlobalNotFound() {
-  const [locale, setLocale] = useState<'id' | 'en'>('id') // Safe server-side default
+  const [locale, setLocale] = useState<'id' | 'en'>('id'); // Safe server-side default
 
   useEffect(() => {
-    const detectedLocale = detectLocaleFromURL()
-    setLocale(detectedLocale)
-  }, [])
+    const detectedLocale = detectLocaleFromURL();
+    setLocale(detectedLocale);
+  }, []);
 
-  const t = translations[locale]
+  const t = translations[locale];
 
   return (
     <html lang={locale}>
       <head>
         <title>
-          {locale === 'id' ? 'Halaman Tidak Ditemukan' : 'Page Not Found'} - ForPublic.id
+          {locale === 'id' ? 'Halaman Tidak Ditemukan' : 'Page Not Found'} -
+          ForPublic.id
         </title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -226,7 +228,13 @@ export default function GlobalNotFound() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <circle cx="11" cy="11" r="8" stroke="#dc2626" strokeWidth="2" />
+                <circle
+                  cx="11"
+                  cy="11"
+                  r="8"
+                  stroke="#dc2626"
+                  strokeWidth="2"
+                />
                 <path
                   d="m21 21-4.35-4.35"
                   stroke="#dc2626"
@@ -254,5 +262,5 @@ export default function GlobalNotFound() {
         <SimpleFooter copyrightText={t.copyright} />
       </body>
     </html>
-  )
+  );
 }

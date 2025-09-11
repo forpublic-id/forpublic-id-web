@@ -1,63 +1,95 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://forpublic.id'
-  const locales = ['id', 'en']
+  const baseUrl = 'https://forpublic.id';
+  const locales = ['id', 'en'];
+  const currentDate = new Date();
 
   // Generate sitemap entries for each locale
-  const sitemapEntries: MetadataRoute.Sitemap = []
+  const sitemapEntries: MetadataRoute.Sitemap = [];
 
-  locales.forEach(locale => {
-    // Main pages
+  locales.forEach((locale) => {
+    // Main pages with specific priorities and frequencies
     const pages = [
       {
         url: `${baseUrl}/${locale}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: 1,
+        lastModified: currentDate,
+        changeFrequency: 'daily' as const,
+        priority: 1.0,
       },
       {
         url: `${baseUrl}/${locale}/applications`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
+        lastModified: currentDate,
+        changeFrequency: 'daily' as const,
         priority: 0.9,
       },
       {
+        url: `${baseUrl}/${locale}/about`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      },
+      {
         url: `${baseUrl}/${locale}/contact`,
-        lastModified: new Date(),
+        lastModified: currentDate,
         changeFrequency: 'monthly' as const,
         priority: 0.8,
       },
       {
         url: `${baseUrl}/${locale}/faq`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
+        lastModified: currentDate,
+        changeFrequency: 'weekly' as const,
         priority: 0.7,
       },
       {
         url: `${baseUrl}/${locale}/features`,
-        lastModified: new Date(),
+        lastModified: currentDate,
         changeFrequency: 'monthly' as const,
         priority: 0.6,
       },
-      {
-        url: `${baseUrl}/${locale}/about`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.5,
-      },
-    ]
+    ];
 
-    sitemapEntries.push(...pages)
-  })
+    sitemapEntries.push(...pages);
+  });
 
-  // Add root redirect
+  // Add root redirect with highest priority
   sitemapEntries.push({
     url: baseUrl,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: 1,
-  })
+    lastModified: currentDate,
+    changeFrequency: 'daily',
+    priority: 1.0,
+  });
 
-  return sitemapEntries
+  // Add external application URLs (high priority)
+  const externalApps = [
+    {
+      url: 'https://holiday.forpublic.id',
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: 'https://budget.forpublic.id',
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: 'https://salary.forpublic.id',
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: 'https://plan.forpublic.id',
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+  ];
+
+  sitemapEntries.push(...externalApps);
+
+  // Sort by priority (highest first)
+  return sitemapEntries.sort((a, b) => (b.priority || 0) - (a.priority || 0));
 }

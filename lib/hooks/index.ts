@@ -1,2 +1,2 @@
-export { useLocale } from './useLocale'
-export { useNavigation } from './useNavigation'
+export { useLocale } from './useLocale';
+export { useNavigation } from './useNavigation';

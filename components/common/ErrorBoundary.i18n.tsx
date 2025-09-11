@@ -1,10 +1,14 @@
-'use client'
+'use client';
 
-import ErrorBoundary from './ErrorBoundary'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl';
+import ErrorBoundary from './ErrorBoundary';
 
-export default function I18nErrorBoundary({ children }: { children: React.ReactNode }) {
-  const t = useTranslations('errorBoundary')
+export default function I18nErrorBoundary({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const t = useTranslations('errorBoundary');
 
   return (
     <ErrorBoundary
@@ -18,5 +22,5 @@ export default function I18nErrorBoundary({ children }: { children: React.ReactN
     >
       {children}
     </ErrorBoundary>
-  )
+  );
 }

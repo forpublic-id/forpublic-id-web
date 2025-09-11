@@ -1,19 +1,18 @@
-import { Header } from '@/components/layout'
-import { Footer } from '@/components/layout'
-import { FAQ } from '@/components/sections'
-import { PageHeader } from '@/components/common'
-import { MessageCircle, Mail, Phone } from 'lucide-react'
-import { getTranslations } from 'next-intl/server'
-import type { Metadata } from 'next'
+import { Mail, MessageCircle, Phone } from 'lucide-react';
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+import { PageHeader } from '@/components/common';
+import { Footer, Header } from '@/components/layout';
+import { FAQ } from '@/components/sections';
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const resolvedParams = await params
-  const locale = resolvedParams?.locale || 'id'
-  const t = await getTranslations({ locale })
+  const resolvedParams = await params;
+  const locale = resolvedParams?.locale || 'id';
+  const t = await getTranslations({ locale });
 
   return {
     title: `${t('faq.title')} - ForPublic.id`,
@@ -28,16 +27,23 @@ export async function generateMetadata({
           ? 'Temukan jawaban untuk pertanyaan yang sering diajukan tentang ForPublic.id. Pelajari cara menggunakan platform dan aplikasi digital kami.'
           : 'Find answers to frequently asked questions about ForPublic.id. Learn how to use our platform and digital applications.',
     },
-  }
+  };
 }
 
-export default async function FAQPage({ params }: { params: Promise<{ locale: string }> }) {
-  const resolvedParams = await params
-  const locale = resolvedParams?.locale || 'id'
-  const t = await getTranslations({ locale })
+export default async function FAQPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const resolvedParams = await params;
+  const locale = resolvedParams?.locale || 'id';
+  const t = await getTranslations({ locale });
 
   // Get all FAQ items
-  const faqItems = t.raw('faq.items') as Array<{ question: string; answer: string }>
+  const faqItems = t.raw('faq.items') as Array<{
+    question: string;
+    answer: string;
+  }>;
 
   // Additional FAQ items for dedicated page
   const additionalFAQs =
@@ -54,17 +60,20 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
               'Saat ini ForPublic.id tersedia dalam bahasa Indonesia dan bahasa Inggris. Kami berencana menambahkan dukungan untuk bahasa daerah di Indonesia di masa mendatang berdasarkan kebutuhan pengguna.',
           },
           {
-            question: 'Bagaimana cara bergabung sebagai kontributor atau volunteer?',
+            question:
+              'Bagaimana cara bergabung sebagai kontributor atau volunteer?',
             answer:
               'Kami selalu terbuka untuk kolaborasi dengan individu atau organisasi yang memiliki visi serupa. Silakan hubungi kami melalui email forpublic.indonesia@gmail.com dengan mencantumkan keahlian dan kontribusi yang ingin Anda berikan.',
           },
           {
-            question: 'Apakah data yang digunakan dalam aplikasi selalu terbaru?',
+            question:
+              'Apakah data yang digunakan dalam aplikasi selalu terbaru?',
             answer:
               'Kami berusaha memastikan data yang disajikan selalu terbaru dan akurat. Data diperbarui secara berkala sesuai dengan sumber resmi. Jika Anda menemukan data yang tidak akurat, silakan laporkan kepada kami.',
           },
           {
-            question: 'Bisakah saya menggunakan API atau data dari ForPublic.id untuk proyek lain?',
+            question:
+              'Bisakah saya menggunakan API atau data dari ForPublic.id untuk proyek lain?',
             answer:
               'Kami mendukung penggunaan data untuk kepentingan publik. Untuk akses API atau penggunaan data dalam skala besar, silakan hubungi tim kami untuk mendiskusikan persyaratan dan ketentuan penggunaan.',
           },
@@ -91,16 +100,39 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
               'We strive to ensure the data presented is always current and accurate. Data is updated regularly according to official sources. If you find inaccurate data, please report it to us.',
           },
           {
-            question: 'Can I use API or data from ForPublic.id for other projects?',
+            question:
+              'Can I use API or data from ForPublic.id for other projects?',
             answer:
               'We support data usage for public interest. For API access or large-scale data usage, please contact our team to discuss terms and conditions of use.',
           },
-        ]
+        ];
 
-  const allFAQs = [...faqItems, ...additionalFAQs]
+  const allFAQs = [...faqItems, ...additionalFAQs];
+
+  // Generate FAQ structured data
+  const faqStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: allFAQs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
 
   return (
     <div className="min-h-screen bg-background">
+      {/* FAQ Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData),
+        }}
+      />
+
       <Header locale={locale} />
 
       {/* Header Section */}
@@ -119,14 +151,22 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
       />
 
       {/* FAQ Section */}
-      <FAQ title="" subtitle="" items={allFAQs} locale={locale} showViewAllButton={false} />
+      <FAQ
+        title=""
+        subtitle=""
+        items={allFAQs}
+        locale={locale}
+        showViewAllButton={false}
+      />
 
       {/* Contact Section */}
       <section className="py-20 px-4 md:px-6 lg:px-8 bg-white">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-              {locale === 'id' ? 'Masih Ada Pertanyaan?' : 'Still Have Questions?'}
+              {locale === 'id'
+                ? 'Masih Ada Pertanyaan?'
+                : 'Still Have Questions?'}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               {locale === 'id'
@@ -140,7 +180,9 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-gray-900">Email</h3>
+              <h3 className="text-lg font-semibold mb-2 text-gray-900">
+                Email
+              </h3>
               <p className="text-gray-600 mb-4">
                 {locale === 'id'
                   ? 'Kirim email untuk pertanyaan detail'
@@ -193,5 +235,5 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
 
       <Footer locale={locale} />
     </div>
-  )
+  );
 }
